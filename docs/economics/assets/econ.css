@@ -1,0 +1,84 @@
+/* 經濟與金錢：互動工具與疑問卡樣式（沿用 ../../assets/style.css 的色票） */
+
+.tool {
+  background: var(--surface); border-radius: 22px; box-shadow: var(--shadow);
+  padding: 1.1rem 1.2rem 1.2rem; margin: 1.2rem 0;
+  border: 2px solid color-mix(in srgb, var(--unit) 30%, transparent);
+}
+.tool > h3:first-child { margin-top: 0; color: var(--unit); }
+.tool .hint { color: var(--ink-2); font-size: .92rem; }
+
+.fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: .6rem .9rem; margin: .8rem 0; }
+.fields label { display: flex; flex-direction: column; justify-content: flex-end; gap: .2rem; font-size: .92rem; font-weight: 700; }
+.fields label small { font-weight: 400; color: var(--ink-2); }
+.tool input[type="number"], .tool input[type="text"], .tool input[type="month"], .tool select {
+  font: inherit; font-size: 1rem; color: var(--ink); background: var(--bg);
+  border: 1px solid var(--line); border-radius: 12px; padding: .35rem .6rem; width: 100%; min-width: 0;
+}
+.tool input[type="range"] { width: 100%; accent-color: var(--unit); }
+.tool input:focus-visible, .tool select:focus-visible { outline: 3px solid color-mix(in srgb, var(--unit) 55%, transparent); outline-offset: 1px; }
+
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: .6rem; margin: .8rem 0; }
+.stat { background: var(--surface-2); border-radius: 16px; padding: .6rem .8rem; }
+.stat small { display: block; color: var(--ink-2); font-size: .82rem; }
+.stat b { font-family: var(--round); font-weight: 400; font-size: 1.35rem; font-variant-numeric: tabular-nums; }
+.stat.good b { color: var(--good); }
+.stat.bad b { color: var(--bad); }
+
+.say { margin: .6rem 0 0; padding: .6rem .9rem; border-radius: 14px; background: color-mix(in srgb, var(--unit) 10%, var(--surface)); }
+
+/* 橫條圖 */
+.hbars { display: grid; gap: .35rem; margin: .8rem 0; }
+.hbar { display: grid; grid-template-columns: 5.5em 1fr auto; gap: .5rem; align-items: center; font-size: .9rem; }
+.hbar .track { height: 14px; background: var(--line); border-radius: 99px; overflow: hidden; display: flex; }
+.hbar .track i { display: block; height: 100%; }
+.hbar .track i.a { background: var(--unit); }
+.hbar .track i.b { background: var(--sun); }
+.hbar .track i.c { background: var(--bad); }
+.hbar span:last-child { font-variant-numeric: tabular-nums; color: var(--ink-2); white-space: nowrap; }
+.legend { display: flex; flex-wrap: wrap; gap: .3rem 1rem; font-size: .85rem; color: var(--ink-2); }
+.legend i { display: inline-block; width: .8em; height: .8em; border-radius: 3px; margin-right: .3em; vertical-align: -1px; }
+
+.tool .btns { display: flex; flex-wrap: wrap; gap: .5rem; margin: .7rem 0; }
+.tool table { min-width: 560px; font-size: .92rem; }
+.tool td:first-child { font-weight: 400; }
+.tool td input { padding: .2rem .4rem; font-size: .92rem; }
+.tool td input[type="text"] { min-width: 8em; }
+.tool td input[data-k="why"] { min-width: 14em; }
+.tool td input[type="number"] { min-width: 6em; }
+.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.up { color: var(--good); }
+.down { color: var(--bad); }
+.event { font-weight: 700; }
+
+/* 疑問卡 */
+.qa { background: var(--surface); border-radius: 18px; box-shadow: var(--shadow); margin: .7rem 0; }
+.qa summary {
+  cursor: pointer; list-style: none; padding: .75rem 1rem .75rem 2.8rem; position: relative;
+  font-family: var(--round); font-size: 1.05rem;
+}
+.qa summary::-webkit-details-marker { display: none; }
+.qa summary::before {
+  content: "？"; position: absolute; left: .8rem; top: .7rem; width: 1.5rem; height: 1.5rem;
+  display: grid; place-items: center; border-radius: 8px; font-size: .9rem;
+  background: var(--unit); color: var(--on-color); transform: rotate(-6deg);
+}
+.qa[open] summary::before { content: "！"; background: var(--sun); color: #3b2c22; }
+.qa .qa-body { padding: 0 1.1rem .9rem 2.8rem; }
+.qa .qa-body > :first-child { margin-top: 0; }
+.qa .qa-body > :last-child { margin-bottom: 0; }
+.qa .more { font-size: .9rem; }
+
+/* 概念關係圖 */
+.concept-map { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: .5rem; margin: 1rem 0; counter-reset: cm; }
+.concept-map div {
+  counter-increment: cm; background: var(--surface); border-radius: 16px; box-shadow: var(--shadow);
+  padding: .6rem .8rem; font-size: .92rem; position: relative;
+}
+.concept-map div::before { content: counter(cm); font-family: var(--round); color: var(--unit); font-size: 1.3rem; margin-right: .3rem; }
+.concept-map b { font-family: var(--round); font-weight: 400; font-size: 1.05rem; }
+
+@media print {
+  .tool .btns, .tool input[type="range"] { display: none !important; }
+  .qa .qa-body { display: block !important; }
+}

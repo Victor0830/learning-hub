@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>動手做｜經濟與金錢｜探索未來世界的能力</title>
+<meta name="description" content="經濟與金錢實作：零用錢預算表、用假的 10 萬元做模擬投資紀錄、家庭經濟小專題。資料只存在這台裝置。">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💰</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Huninn&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="assets/econ.css">
+</head>
+<body data-page="econ-practice" data-unit="econ">
+<header class="site-header">
+  <div class="inner">
+    <a class="brand" href="../index.html"><span class="seal">探</span>探索未來世界的能力</a>
+    <nav class="section-nav" aria-label="主題">
+      <a href="../chinese/index.html">國文閱讀</a>
+      <a href="../english/index.html">英文聽說寫</a>
+      <a href="../planning/index.html">升學規劃</a>
+      <a href="../economics/index.html" aria-current="true">經濟與金錢</a>
+    </nav>
+  </div>
+  <div class="subnav"><div class="inner">
+    <a class="sub-home" href="index.html">💰 經濟與金錢</a>
+    <nav class="site-nav" aria-label="經濟與金錢頁面">
+      <a href="basics.html">① 工作與錢</a>
+      <a href="market.html">② 價格與市場</a>
+      <a href="bank.html">③ 銀行、利息與通膨</a>
+      <a href="stocks.html">④ 公司與股票</a>
+      <a href="world.html">⑤ 世界經濟</a>
+      <a href="questions.html">🙋 讀書時的疑問</a>
+      <a href="practice.html" aria-current="page">🧪 動手做</a>
+      <a href="parents.html">給家長</a>
+    </nav>
+  </div></div>
+</header>
+
+<main>
+  <section class="hero">
+    <span class="eyebrow">動手做</span>
+    <h1>把學到的東西用在生活裡</h1>
+    <p class="lead">讀懂了、會做題了，還要真的用過一次才會變成自己的。這一頁有三個練習：管理自己的零用錢、用假的 10 萬元練習投資，以及和家人一起做的經濟小專題。</p>
+  </section>
+
+  <nav class="toc" aria-label="本頁目錄">
+    <a href="#budget">零用錢預算表</a><a href="#portfolio">模擬投資紀錄</a><a href="#journal">每月投資日記</a><a href="#projects">家庭經濟小專題</a>
+  </nav>
+
+  <h2 id="budget"><span class="num">一</span>零用錢預算表</h2>
+  <p>先決定錢要怎麼分，再開始花。比「花完再看剩多少」更能掌握自己的錢。</p>
+  <div class="tool" data-tool="budget">
+    <h3>💰 我的每月預算</h3>
+    <div class="fields">
+      <label>每個月的零用錢（元）<input type="number" name="allowance" min="0" step="50"></label>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>項目</th><th>預算（元）</th><th></th></tr></thead>
+        <tbody data-out="rows"></tbody>
+      </table>
+    </div>
+    <div class="btns"><button type="button" data-act="add">＋ 加一個項目</button></div>
+    <div class="stats">
+      <div class="stat"><small>已經分配</small><b data-out="used"></b></div>
+      <div class="stat"><small>還沒分配</small><b data-out="left"></b></div>
+    </div>
+    <div class="fields">
+      <label>想存錢買的東西<input type="text" name="goal" placeholder="例如：藍牙耳機"></label>
+      <label>它的價格（元）<input type="number" name="goalPrice" min="0" step="100"></label>
+    </div>
+    <p class="say" data-out="say"></p>
+    <p class="hint">項目名稱裡有「存」字的那一列，會被當成每個月存下來的錢。</p>
+  </div>
+  <div class="callout tip">
+    <span class="title">💡 讓預算真的有用的三個小習慣</span>
+    <ul>
+      <li><b>拿到零用錢，先把「存下來」的部分放進另一個錢包或帳戶。</b></li>
+      <li>買「想要」的東西前，<b>等 24 小時</b>，隔天還想要再買。</li>
+      <li>月底對照一次：實際花的和預算差多少？下個月要調整哪一項？</li>
+    </ul>
+  </div>
+
+  <h2 id="portfolio"><span class="num">二</span>模擬投資紀錄：用假的 10 萬元</h2>
+  <p>不用真的花錢，也能練習投資最重要的能力：<b>選擇的理由、面對漲跌的心情、長期的耐心</b>。</p>
+  <ol class="steps-list">
+    <li><b>挑 3～5 家「你看得懂」的公司</b>：你常用的產品、常去的店、讀過新聞的公司。說得出「它靠什麼賺錢」才可以選。</li>
+    <li><b>寫下選它的理由</b>：一句話就好，例如「很多人每天都在用它的產品」。</li>
+    <li><b>記下買進價格和股數</b>：上網查「公司名稱＋股價」就找得到。10 萬元要分配給幾家公司，自己決定。</li>
+    <li><b>每個月固定一天更新價格</b>（例如每月 1 日），按「記下這個月」。</li>
+    <li><b>三個月後回顧</b>：漲最多和跌最多的是哪一家？當初的理由還成立嗎？</li>
+  </ol>
+  <div class="callout key">
+    <span class="title">📌 這個練習的重點不是賺多少</span>
+    <p>模擬投資賺了錢，可能只是運氣好；賠了錢，也不代表選錯。<b>真正要練習的是寫下理由，並在事後誠實檢討。</b></p>
+  </div>
+
+  <div class="tool" data-tool="portfolio">
+    <h3>📈 我的模擬投資組合</h3>
+    <p class="hint">起始資金 100,000 元。台灣股價是「每股」價格，一張是 1,000 股，模擬時可以用零股（例如 20 股）。先不計手續費和稅。</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>公司</th><th>為什麼選它</th><th>買進價</th><th>股數</th><th>目前價格</th><th class="num">損益</th><th></th></tr></thead>
+        <tbody data-out="rows"></tbody>
+      </table>
+    </div>
+    <div class="btns"><button type="button" data-act="add">＋ 加一家公司</button></div>
+    <p class="callout warn" data-out="warn" hidden>⚠️ 買進的總金額超過 10 萬元了，請減少股數。</p>
+    <div class="stats">
+      <div class="stat"><small>剩下的現金</small><b data-out="cash"></b></div>
+      <div class="stat"><small>股票現值</small><b data-out="value"></b></div>
+      <div class="stat"><small>總資產</small><b data-out="total"></b></div>
+      <div class="stat"><small>跟 10 萬元比</small><b data-out="gain"></b></div>
+    </div>
+    <div class="btns"><button type="button" class="btn-primary" data-act="snap">📌 記下這個月</button></div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>日期</th><th class="num">總資產</th><th class="num">和上次比</th><th></th></tr></thead>
+        <tbody data-out="snaps"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <section class="practice" id="journal">
+    <h2>📓 每月投資日記</h2>
+    <div class="toolbar">
+      <button data-action="print">列印</button>
+      <button data-action="reset">清除日記</button>
+    </div>
+    <p class="small muted">「清除日記」會清掉這一頁寫的文字（日記和小專題發現），不會清掉上面的預算表和投資紀錄。</p>
+    <div class="write">
+      <h3>第 1 個月</h3>
+      <label class="field-label" for="j1a">這個月漲最多、跌最多的是哪一家？我猜原因是什麼？</label>
+      <textarea id="j1a" data-note="j1-move" rows="2"></textarea>
+      <label class="field-label" for="j1b">看到下跌的時候，我的心情是？我有想賣掉嗎？</label>
+      <textarea id="j1b" data-note="j1-feel" rows="2"></textarea>
+    </div>
+    <div class="write">
+      <h3>第 2 個月</h3>
+      <label class="field-label" for="j2a">這個月有沒有和我選的公司有關的新聞？</label>
+      <textarea id="j2a" data-note="j2-news" rows="2"></textarea>
+      <label class="field-label" for="j2b">如果現在重新選，我會做一樣的決定嗎？為什麼？</label>
+      <textarea id="j2b" data-note="j2-again" rows="2"></textarea>
+    </div>
+    <div class="write">
+      <h3>第 3 個月：回顧</h3>
+      <label class="field-label" for="j3a">當初寫的理由，現在還成立嗎？</label>
+      <textarea id="j3a" data-note="j3-reason" rows="2"></textarea>
+      <label class="field-label" for="j3b">這三個月，我對「投資」最大的新體會是什麼？</label>
+      <textarea id="j3b" data-note="j3-learn" rows="3"></textarea>
+      <button class="reveal-btn"></button>
+      <div class="answer">
+        <p>常見的體會有：</p>
+        <ul>
+          <li>「股價每天都在動，但大部分的漲跌跟公司好不好沒什麼關係。」</li>
+          <li>「跌的時候真的會很想賣，原來控制情緒這麼難。」</li>
+          <li>「三個月太短了，看不出公司到底好不好。」</li>
+          <li>「我選的公司都在同一個產業，一起漲一起跌，應該分散一點。」</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <h2 id="projects"><span class="num">三</span>家庭經濟小專題</h2>
+  <p>挑一個和家人一起做，做完用一段話分享你的發現。</p>
+  <div class="chips">
+    <div class="chip-card"><b>🍜 物價考古</b>問爸媽或爺爺奶奶：你們國中時，一碗麵、一張公車票、一本漫畫多少錢？和現在比漲了幾倍？</div>
+    <div class="chip-card"><b>🧾 發票偵探</b>收集家裡一週的發票，分類成吃、用、交通、娛樂，哪一類花最多？</div>
+    <div class="chip-card"><b>💡 帳單解讀</b>看一張電費或水費帳單：用了多少度？夏天和冬天差多少？為什麼？</div>
+    <div class="chip-card"><b>🛒 比價挑戰</b>同一款牙膏或衛生紙，在超市、量販店、網路上各賣多少？換算成「每 100 克多少錢」比比看。</div>
+    <div class="chip-card"><b>✈️ 旅行預算</b>規劃一趟三天兩夜的家庭旅行：交通、住宿、吃飯、門票要多少？如果是去日本，匯率怎麼影響？</div>
+    <div class="chip-card"><b>🏪 小老闆計畫</b>假設在園遊會擺攤賣一種東西：成本多少、賣多少錢、要賣幾份才不會賠？</div>
+  </div>
+  <div class="write">
+    <h3>我的小專題發現</h3>
+    <textarea data-note="project" rows="4" aria-label="我的小專題發現"></textarea>
+  </div>
+
+  <nav class="pager">
+    <a href="questions.html"><small>← 上一頁</small>🙋 讀書時的疑問</a>
+    <a class="next" href="parents.html"><small>下一頁 →</small>給家長</a>
+  </nav>
+</main>
+
+<footer class="site-footer"><a href="../index.html">探索未來世界的能力</a>．經濟與金錢．範例數字都是教學用的假設，不是投資建議；作答紀錄只存在你這台裝置的瀏覽器裡</footer>
+<script src="../assets/quiz.js"></script>
+<script src="assets/econ.js"></script>
+</body>
+</html>
