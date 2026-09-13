@@ -410,12 +410,12 @@ a.section-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(
   font-size: clamp(.75rem, 2.4vw, .85rem); letter-spacing: .18em; font-weight: 700; color: rgba(255,255,255,.88);
 }
 .hub-hero-copy h1 {
-  font-size: clamp(1.7rem, 3vw, 2.4rem); color: #fff; margin: 0 0 .35em; white-space: nowrap;
+  font-size: clamp(1.8rem, 3.4vw, 2.8rem); color: #fff; margin: 0 0 .35em; max-width: 24rem; line-height: 1.2;
   text-wrap: balance; text-shadow: 0 2px 16px rgba(0,0,0,.35);
 }
 .hub-hero-copy .lede {
   font-size: clamp(.98rem, 2.8vw, 1.15rem); color: rgba(255,255,255,.95);
-  margin: 0; text-shadow: 0 1px 12px rgba(0,0,0,.5);
+  margin: 0; text-shadow: 0 1px 12px rgba(0,0,0,.5); text-wrap: balance; word-break: keep-all;
 }
 .hero-pills { display: flex; flex-wrap: wrap; gap: 12px; margin-top: clamp(16px, 3vw, 26px); }
 .hero-pill {
