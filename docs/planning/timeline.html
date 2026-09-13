@@ -81,7 +81,75 @@
   .route-ab b { color: var(--unit); }
   .route-ab p { margin: .2rem 0 0; font-size: .93rem; color: var(--ink-2); }
 
+  /* ---------- 自我探索 ---------- */
+  .ex { margin-top: 1rem; }
+  .ex-who { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin: 1rem 0; }
+  .ex-who > b { margin-right: .2rem; }
+  .ex-who button[aria-pressed="true"] { background: var(--unit); color: var(--on-color); border-color: var(--unit); font-weight: 700; }
+  .ex-who label { display: flex; align-items: center; gap: .4rem; font-size: .92rem; margin-left: auto; }
+  .ex-who input[type="text"] {
+    font: inherit; font-size: .95rem; width: 9em; padding: .3rem .6rem; border-radius: 10px;
+    border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+  }
+  @media (max-width: 720px) { .ex-who label { margin-left: 0; } }
+  .ex .toolbar .btn-primary[disabled] { opacity: .55; cursor: default; }
+  .ex-part > h3 { margin-top: 1.6rem; }
+  .ex-q {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+    padding: .7rem .9rem; margin: .55rem 0;
+  }
+  .ex-q.done { border-color: color-mix(in srgb, var(--unit) 45%, var(--line)); }
+  .ex-q .ex-stem { margin: 0 0 .45rem; font-weight: 700; }
+  .ex-q .ex-stem .n { color: var(--unit); margin-right: .35rem; font-family: var(--round); }
+  .ex-opts { display: flex; flex-wrap: wrap; gap: .4rem; border: 0; padding: 0; margin: 0; }
+  .ex-opts input { position: absolute; opacity: 0; width: 1px; height: 1px; pointer-events: none; }
+  .ex-opts label {
+    cursor: pointer; border: 1px solid var(--line); border-radius: 999px; background: var(--bg);
+    padding: .3rem .85rem; font-size: .94rem; line-height: 1.5;
+  }
+  .ex-opts label:hover { border-color: var(--unit); }
+  .ex-opts input:checked + label { background: var(--unit); color: var(--on-color); border-color: var(--unit); font-weight: 700; }
+  .ex-opts input:focus-visible + label { outline: 3px solid color-mix(in srgb, var(--unit) 55%, transparent); outline-offset: 2px; }
+  .ex-scen .ex-opts { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+  .ex-scen .ex-opts label { border-radius: 12px; }
+
+  .ex-result {
+    margin: 1.4rem 0; padding: 1.1rem 1.2rem 1.3rem; border-radius: var(--radius);
+    background: var(--surface); border: 2px solid var(--unit); box-shadow: var(--shadow);
+    scroll-margin-top: 190px;
+  }
+  @media (max-width: 720px) { .ex-result { scroll-margin-top: 120px; } }
+  .ex-result > h3 { margin: 0 0 .4rem; }
+  .ex-top { display: flex; flex-wrap: wrap; gap: .5rem; margin: .6rem 0 1rem; }
+  .ex-pill {
+    display: inline-flex; align-items: center; gap: .35rem; padding: .35rem .9rem; border-radius: 999px;
+    background: var(--c); color: var(--on-color); font-weight: 700; font-family: var(--round); font-size: 1.05rem;
+  }
+  .ex-pill small { font-family: var(--sans); font-size: .78rem; font-weight: 400; opacity: .9; }
+  .ex-bars { display: grid; gap: .45rem; margin: .8rem 0 1.1rem; }
+  .ex-bar-row { display: grid; grid-template-columns: 6.5em 1fr 2.2em; align-items: center; gap: .6rem; font-size: .93rem; }
+  .ex-bar-row .track { height: 14px; background: var(--surface-2); border-radius: 99px; overflow: hidden; }
+  .ex-bar-row .track i { display: block; height: 100%; background: var(--c); border-radius: 99px; transition: width .4s; }
+  .ex-bar-row .val { text-align: right; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+  .ex-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: .8rem; margin: .8rem 0; }
+  .ex-card { background: var(--bg); border: 1px solid var(--line); border-top: 6px solid var(--c); border-radius: 14px; padding: .8rem 1rem; }
+  .ex-card h4 { margin: 0 0 .3rem; font-family: var(--round); font-size: 1.15rem; }
+  .ex-card p { margin: .3rem 0; font-size: .93rem; }
+  .ex-card dl { margin: .4rem 0 0; font-size: .92rem; }
+  .ex-card dt { font-weight: 700; color: var(--ink); margin-top: .45rem; }
+  .ex-card dd { margin: .1rem 0 0; color: var(--ink-2); }
+  .ex-actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
+  .ex-hist { list-style: none; padding: 0; margin: .4rem 0 0; }
+  .ex-hist li { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; padding: .35rem 0; border-top: 1px dashed var(--line); font-size: .93rem; }
+  .ex-hist li:first-child { border-top: 0; }
+  .ex-hist .d { color: var(--ink-2); font-variant-numeric: tabular-nums; }
+  .ex-hist button { margin-left: auto; font-size: .8rem; padding: .1rem .6rem; }
+  details.ex-parent summary { cursor: pointer; font-weight: 700; }
+  details.ex-parent[open] summary { margin-bottom: .3rem; }
+
   @media print {
+    .ex-quiz, .ex-who, .ex .toolbar, .ex-actions, .ex-hist button { display: none !important; }
+    .ex-result { box-shadow: none; }
     .tabs, .panel-bar button { display: none !important; }
     .tab-panel[hidden] { display: block !important; }
     .tab-panel + .tab-panel { break-before: page; }
@@ -126,6 +194,12 @@
     <p><b>兩個孩子不需要走同一條路。</b>一個出國、一個留在台灣，或兩個念不同高中，都很正常。避免在孩子面前用「理科的那個」「平均的那個」來比較他們。</p>
   </div>
 
+  <nav class="toc" aria-label="本頁段落">
+    <a href="#overview">① 路線和決策點</a>
+    <a href="#timeline">② 每學期的時間表</a>
+    <a href="#explore">③ 自我探索（給孩子點選）</a>
+  </nav>
+
   <h2 id="overview"><span class="num">一</span>先看懂兩條路線和決策點</h2>
   <div class="route-ab">
     <div><b>A 路線：台灣念大學 → 美國研究所</b><p>風險低、可以晚點決定要不要出國。理工科美國博士班通常有獎學金。適合想回台灣發展，或孩子需要多一點時間成熟。</p></div>
@@ -154,7 +228,7 @@
     </p>
   </div>
 
-  <div class="tabs" role="tablist" aria-label="選擇孩子">
+  <div class="tabs" id="timeline" role="tablist" aria-label="選擇孩子">
     <button type="button" role="tab" id="tab-stem" aria-controls="stem" aria-selected="true" data-tab="stem">🔬 偏理科的孩子<small>數理強．英文好．國文要顧住</small></button>
     <button type="button" role="tab" id="tab-balanced" aria-controls="balanced" aria-selected="false" data-tab="balanced">🌱 平均型的孩子<small>各科平均．先廣泛探索</small></button>
   </div>
@@ -191,7 +265,7 @@
             <li><label class="todo"><input type="checkbox" data-todo="s-7b-1"><span class="todo-text"><span class="tag t-zh">國文</span> 依錯題分析，每週固定：<b>閱讀策略 1 次</b>（找證據、判斷錯誤選項是偷換概念、過度推論、無中生有還是因果顛倒）＋<b>文言虛詞 1 次</b></span></label></li>
             <li><label class="todo"><input type="checkbox" data-todo="s-7b-2"><span class="todo-text"><span class="tag t-zh">國文</span> 作文每月 1～2 篇，練固定結構：破題 → 2～3 個具體例子 → 反思 → 呼應題目</span></label></li>
             <li><label class="todo"><input type="checkbox" data-todo="s-7b-3"><span class="todo-text"><span class="tag t-math">數理</span> 開始學 <b>Python</b>，以寫小程式解數學問題為主</span></label></li>
-            <li><label class="todo"><input type="checkbox" data-todo="s-7b-4"><span class="todo-text"><span class="tag t-explore">探索</span> 觀察：遇到超出課本的難題，孩子是<b>越做越有興趣</b>，還是只喜歡「會做」的感覺？</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="s-7b-4"><span class="todo-text"><span class="tag t-explore">探索</span> 觀察：遇到超出課本的難題，孩子是<b>越做越有興趣</b>，還是只喜歡「會做」的感覺？也可以讓孩子做本頁的<a href="#explore">自我探索</a>，看看數理以外還有哪些興趣</span></label></li>
           </ul>
         </li>
         <li class="tl-item" data-from="2027-07-01" data-to="2027-08-31">
@@ -376,7 +450,7 @@
           <ul class="todos">
             <li><label class="todo"><input type="checkbox" data-todo="b-7a-1"><span class="todo-text"><span class="tag t-school">課業</span> 維持各科平均的好習慣。以後繁星推薦看高中全科成績，讀書習慣要從現在養成</span></label></li>
             <li><label class="todo"><input type="checkbox" data-todo="b-7a-2"><span class="todo-text"><span class="tag t-explore">探索</span> 這學期嘗試 1～2 個<b>全新的課外活動</b>（社團、才藝、營隊），不看表現，看孩子投不投入</span></label></li>
-            <li><label class="todo"><input type="checkbox" data-todo="b-7a-3"><span class="todo-text"><span class="tag t-explore">探索</span> 開始記<b>興趣觀察筆記</b>：孩子主動花時間、做到忘記時間的是什麼事？家長也可以一起記</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="b-7a-3"><span class="todo-text"><span class="tag t-explore">探索</span> 開始記<b>興趣觀察筆記</b>：孩子主動花時間、做到忘記時間的是什麼事？家長也可以一起記。可以先讓孩子做本頁的<a href="#explore">自我探索</a></span></label></li>
             <li><label class="todo"><input type="checkbox" data-todo="b-7a-4"><span class="todo-text"><span class="tag t-en">英文</span> 了解孩子英文聽、說、讀、寫各自的程度，可以參考本站<a href="../english/index.html">英文聽說寫</a>的診斷錄音</span></label></li>
           </ul>
         </li>
@@ -530,6 +604,54 @@
     </section>
   </section>
 
+  <section class="ex" id="explore-wrap" aria-labelledby="explore">
+    <h2 id="explore"><span class="num">二</span>自我探索：我可能對哪些領域有興趣？</h2>
+
+    <div class="callout unit">
+      <span class="title">👋 給你的話</span>
+      <p>這<b>不是考試</b>，沒有對錯，也沒有哪一種比較好。每個人都是好幾種興趣混在一起，而且興趣會隨著經驗改變。</p>
+      <p>照直覺點選就好，大約 5～8 分鐘。沒做過的事，就想像一下自己會不會想試試看。你的答案只存在這台裝置的瀏覽器裡。</p>
+    </div>
+
+    <details class="callout tip ex-parent">
+      <summary>給家長：怎麼使用這個練習</summary>
+      <ul>
+        <li>讓兩個孩子<b>各自</b>在自己的時間作答，不要一起做、也不要在旁邊看或評論。</li>
+        <li>結果只是<b>聊天的起點</b>。可以問孩子：「你覺得準嗎？哪裡不像你？」而不是「所以你以後應該念某某系」。</li>
+        <li>國一的興趣還在變，建議<b>每學期做一次</b>，按「儲存這次結果」留下紀錄，之後比較變化。</li>
+        <li>這個練習參考何倫（Holland）六種興趣類型的概念設計，<b>不是正式量表，也不是診斷</b>。需要正式施測，可以詢問學校輔導室。</li>
+      </ul>
+    </details>
+
+    <div class="ex-who" role="group" aria-label="誰在作答">
+      <b>誰在作答？</b>
+      <button type="button" data-ex-profile="p1" aria-pressed="true">🙋 第一位</button>
+      <button type="button" data-ex-profile="p2" aria-pressed="false">🙋 第二位</button>
+      <label>暱稱 <input type="text" data-ex-name maxlength="12" placeholder="可以不填"></label>
+    </div>
+
+    <div class="toolbar">
+      <span class="score">已回答 <span data-ex-count>0 / 30</span><span class="bar"><i data-ex-bar></i></span></span>
+      <button type="button" class="btn-primary" data-ex-show>看我的結果</button>
+      <button type="button" data-ex-clear>清除這位的答案</button>
+    </div>
+
+    <div class="ex-quiz">
+      <section class="ex-part">
+        <h3>第一部分：這些事，你喜歡嗎？</h3>
+        <div data-ex-likes></div>
+      </section>
+      <section class="ex-part ex-scen">
+        <h3>第二部分：如果是你，會選哪一個？</h3>
+        <p class="muted small">每題選一個最像你的。都有一點像的話，選最想做的那個。</p>
+        <div data-ex-scen></div>
+      </section>
+    </div>
+
+    <div class="ex-result" data-ex-result hidden tabindex="-1"></div>
+    <div data-ex-history></div>
+  </section>
+
   <div class="callout warn">
     <span class="title">⚠️ 會變動的事</span>
     <p>考試、甄選、申請的時程每年都可能調整，台灣以大學招生委員會聯合會和各校簡章為準，美國以各校官網為準。美國的學生簽證和畢業後工作簽證政策近年變動很大，高一下做決定前要再確認一次。</p>
@@ -618,6 +740,295 @@
   });
   var hash = location.hash.slice(1);
   show(hash === 'stem' || hash === 'balanced' ? hash : (state.tab || 'stem'), false);
+})();
+
+/* ---------- 自我探索（參考何倫六種興趣類型；只是探索，不是診斷） ---------- */
+(function () {
+  var KEY = 'learning-hub:planning-explore:v1';
+  var ORDER = ['R', 'I', 'A', 'S', 'E', 'C'];
+  var TYPES = {
+    R: { name: '實作型', nick: '動手做', icon: '🔧', color: 'var(--u0)',
+      desc: '喜歡用雙手和工具把東西做出來，看得到、摸得到的成果最有成就感。',
+      groups: '工程、建築設計、生物資源、遊憩運動、醫藥衛生（如物理治療）',
+      jobs: '機械或土木工程師、建築師、廚師、獸醫、飛機維修技師、運動教練',
+      tryIt: '機器人社、做模型或木工、種植物、露營、下廚' },
+    I: { name: '研究型', nick: '探究思考', icon: '🔬', color: 'var(--en)',
+      desc: '喜歡問「為什麼」，享受把難題想通、把道理弄懂的感覺。',
+      groups: '數理化、資訊、生命科學、醫藥衛生、地球環境、工程',
+      jobs: '科學家、軟體工程師、醫師、數據分析師、研究員',
+      tryIt: '數學競賽、科展、寫程式、科學營、讀科普書' },
+    A: { name: '藝術型', nick: '創意表達', icon: '🎨', color: 'var(--u4)',
+      desc: '喜歡用自己的方式表達想法和感受，不太喜歡一成不變。',
+      groups: '藝術、建築設計、大眾傳播、文史哲、外語',
+      jobs: '設計師、動畫師、作家、導演、音樂人、遊戲美術',
+      tryIt: '美術或音樂社、拍短片、寫故事、參加設計比賽' },
+    S: { name: '社會型', nick: '助人合作', icon: '🤝', color: 'var(--u3)',
+      desc: '在乎別人的感受，喜歡教人、幫人，和大家一起把事情做好。',
+      groups: '教育、社會心理、醫藥衛生、遊憩運動、外語',
+      jobs: '老師、心理師、護理師、社工師、職能治療師',
+      tryIt: '志工服務、當小老師、服務性社團、照顧小動物或小朋友' },
+    E: { name: '企業型', nick: '領導說服', icon: '📣', color: 'var(--u1)',
+      desc: '喜歡帶頭、做決定、說服別人，有目標就很有動力。',
+      groups: '管理、財經、法政、大眾傳播',
+      jobs: '創業家、經理人、律師、業務、記者、公關',
+      tryIt: '當班級幹部、辯論或演講、園遊會擺攤、模擬聯合國' },
+    C: { name: '事務型', nick: '規劃整理', icon: '🗂️', color: 'var(--u2)',
+      desc: '喜歡清楚的規則和計畫，把事情安排得有條理，也很注意細節。',
+      groups: '財經、管理、資訊、法政',
+      jobs: '會計師、精算師、專案經理、資料管理師、圖書資訊人員',
+      tryIt: '記零用錢的帳、當社團總務、幫家裡排旅行行程、把資料整理成表格' }
+  };
+  var LIKES = [
+    ['I1', '碰到不懂的事，會一直查到弄懂為止'],
+    ['R1', '自己組裝模型、樂高或家具'],
+    ['S1', '教同學看不懂的題目'],
+    ['A1', '畫畫、拍照、剪影片或做設計'],
+    ['C1', '把房間、書桌或電腦裡的檔案整理得井井有條'],
+    ['E1', '在小組裡當負責人，分配大家的工作'],
+    ['A2', '寫故事、寫詩，或自己編劇情'],
+    ['I2', '解數學難題、邏輯謎題或數獨'],
+    ['E2', '說服別人接受自己的想法'],
+    ['R2', '修理壞掉的東西，或拆開看看裡面怎麼運作'],
+    ['C2', '事先排好計畫表，照著進度一步一步完成'],
+    ['S2', '聽朋友說心事，幫忙想辦法'],
+    ['R3', '戶外活動，例如爬山、露營、種植物、照顧動物'],
+    ['C3', '記帳，或把資料整理成表格'],
+    ['A3', '唱歌、演奏樂器或跳舞'],
+    ['S3', '參加志工服務，或照顧比自己小的孩子'],
+    ['I3', '做實驗，看看結果跟自己猜的一不一樣'],
+    ['E3', '辦活動、擺攤，或想辦法賺零用錢'],
+    ['S4', '和大家一起合作完成一件事'],
+    ['E4', '參加辯論、演講，或上台報告'],
+    ['R4', '做料理、烘焙或其他手作'],
+    ['C4', '仔細檢查細節，把錯誤找出來'],
+    ['A4', '想出和別人不一樣的點子，用自己的方式呈現'],
+    ['I4', '看科學、自然或太空的影片和文章']
+  ];
+  var LIKE_OPTS = [[2, '😍 很喜歡'], [1, '🙂 還可以／想試試'], [0, '😐 不太喜歡']];
+  var SCEN = [
+    { q: '學校園遊會，你最想負責哪個工作？', o: [
+      ['A', '設計海報和攤位裝飾'], ['C', '管收支、記帳、排值班表'], ['R', '搭攤位、做道具'],
+      ['E', '當攤長，想辦法讓營業額最高'], ['I', '研究怎麼讓遊戲更好玩、算獎品的機率'], ['S', '招呼客人、照顧來玩的小朋友']] },
+    { q: '週末多出一整個下午，你最想做什麼？', o: [
+      ['S', '約朋友見面聊天，或去當志工'], ['R', '動手做東西，或到戶外走走'], ['E', '規劃一個活動，找大家一起參加'],
+      ['I', '看紀錄片，或研究一個好奇很久的問題'], ['C', '把房間和自己的東西好好整理一遍'], ['A', '畫畫、玩音樂或剪影片']] },
+    { q: '分組報告，你最想負責哪個部分？', o: [
+      ['I', '查資料、分析數據'], ['E', '上台報告、回答問題'], ['A', '做簡報美編，想有創意的呈現方式'],
+      ['C', '排進度、檢查格式和錯字'], ['R', '做模型或實物展示'], ['S', '協調組員，讓每個人都有參與']] },
+    { q: '如果可以參加一個營隊，你會選：', o: [
+      ['R', '機器人、木工或野外求生營'], ['A', '藝術、音樂或影片創作營'], ['C', '圖書館或博物館的館藏整理體驗'],
+      ['S', '服務學習或小老師營'], ['I', '科學實驗或數學營'], ['E', '模擬聯合國或創業營']] },
+    { q: '看電影的時候，你最常注意什麼？', o: [
+      ['C', '劇情的時間線，有沒有前後矛盾的地方'], ['S', '角色的心情和彼此的關係'], ['I', '劇情合不合理、背後的科學'],
+      ['R', '特效、道具和動作場面是怎麼做出來的'], ['E', '誰在帶領大家，怎麼做決定'], ['A', '畫面、配樂和整體風格']] },
+    { q: '別人最常稱讚你哪一點？', o: [
+      ['E', '很有想法、很會帶人'], ['I', '很聰明、很會想'], ['S', '很體貼、很好相處'],
+      ['A', '很有創意'], ['C', '很細心、很可靠'], ['R', '手很巧、很會做東西']] }
+  ];
+  var TOTAL = LIKES.length + SCEN.length;
+  var MIN = 24;
+
+  var state;
+  try { state = JSON.parse(localStorage.getItem(KEY)); } catch (e) { state = null; }
+  if (!state || !state.profiles) state = { cur: 'p1', profiles: {} };
+  ['p1', 'p2'].forEach(function (p) {
+    var pr = state.profiles[p] || {};
+    state.profiles[p] = { name: pr.name || '', a: pr.a || {}, s: pr.s || {}, hist: pr.hist || [] };
+  });
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
+  function prof() { return state.profiles[state.cur]; }
+  function who(p) { var pr = state.profiles[p]; return pr.name || (p === 'p1' ? '第一位' : '第二位'); }
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+
+  var root = document.getElementById('explore-wrap');
+  var likesEl = root.querySelector('[data-ex-likes]');
+  var scenEl = root.querySelector('[data-ex-scen]');
+  var resultEl = root.querySelector('[data-ex-result]');
+  var histEl = root.querySelector('[data-ex-history]');
+  var nameInput = root.querySelector('[data-ex-name]');
+  var showBtn = root.querySelector('[data-ex-show]');
+
+  /* 題目 */
+  likesEl.innerHTML = LIKES.map(function (item, i) {
+    return '<div class="ex-q" data-q="L-' + item[0] + '"><p class="ex-stem" id="exl-' + item[0] + '"><span class="n">' + (i + 1) + '</span>' + item[1] + '</p>' +
+      '<div class="ex-opts" role="radiogroup" aria-labelledby="exl-' + item[0] + '">' +
+      LIKE_OPTS.map(function (o) {
+        var id = 'ex-' + item[0] + '-' + o[0];
+        return '<input type="radio" name="L-' + item[0] + '" id="' + id + '" value="' + o[0] + '"><label for="' + id + '">' + o[1] + '</label>';
+      }).join('') + '</div></div>';
+  }).join('');
+  scenEl.innerHTML = SCEN.map(function (sc, i) {
+    return '<div class="ex-q" data-q="S-' + i + '"><p class="ex-stem" id="exs-' + i + '"><span class="n">' + (i + 1) + '</span>' + sc.q + '</p>' +
+      '<div class="ex-opts" role="radiogroup" aria-labelledby="exs-' + i + '">' +
+      sc.o.map(function (o) {
+        var id = 'ex-s' + i + '-' + o[0];
+        return '<input type="radio" name="S-' + i + '" id="' + id + '" value="' + o[0] + '"><label for="' + id + '">' + o[1] + '</label>';
+      }).join('') + '</div></div>';
+  }).join('');
+
+  function answered(pr) { return Object.keys(pr.a).length + Object.keys(pr.s).length; }
+
+  function syncInputs() {
+    var pr = prof();
+    root.querySelectorAll('.ex-quiz input[type="radio"]').forEach(function (inp) {
+      var parts = inp.name.split('-');
+      inp.checked = parts[0] === 'L' ? String(pr.a[parts[1]]) === inp.value : pr.s[parts[1]] === inp.value;
+    });
+    root.querySelectorAll('.ex-q').forEach(function (q) {
+      var parts = q.dataset.q.split('-');
+      q.classList.toggle('done', parts[0] === 'L' ? parts[1] in pr.a : parts[1] in pr.s);
+    });
+    root.querySelectorAll('[data-ex-profile]').forEach(function (b) {
+      b.setAttribute('aria-pressed', b.dataset.exProfile === state.cur ? 'true' : 'false');
+      b.textContent = '🙋 ' + who(b.dataset.exProfile);
+    });
+    nameInput.value = pr.name;
+    updateCount();
+  }
+
+  function updateCount() {
+    var n = answered(prof());
+    root.querySelector('[data-ex-count]').textContent = n + ' / ' + TOTAL;
+    root.querySelector('[data-ex-bar]').style.width = (n / TOTAL * 100) + '%';
+    showBtn.textContent = n >= MIN ? '看我的結果' : '再回答 ' + (MIN - n) + ' 題就能看結果';
+    showBtn.disabled = n < MIN;
+  }
+
+  function scores(pr) {
+    var sc = { R: 0, I: 0, A: 0, S: 0, E: 0, C: 0 };
+    Object.keys(pr.a).forEach(function (id) { sc[id.charAt(0)] += pr.a[id]; });
+    Object.keys(pr.s).forEach(function (i) { sc[pr.s[i]] += 2; });
+    return sc;
+  }
+  function ranked(sc) {
+    return ORDER.slice().sort(function (x, y) { return sc[y] - sc[x] || ORDER.indexOf(x) - ORDER.indexOf(y); });
+  }
+  function today() {
+    var d = new Date();
+    return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+  }
+
+  function renderResult() {
+    var pr = prof();
+    if (answered(pr) < MIN) { resultEl.hidden = true; return; }
+    var sc = scores(pr), r = ranked(sc), max = sc[r[0]] || 1;
+    var spread = sc[r[0]] - sc[r[5]];
+    var cardsN = sc[r[2]] >= sc[r[1]] - 1 ? 3 : 2;
+    var html = '<h3>' + esc(who(state.cur)) + ' 的興趣分布</h3>' +
+      '<p class="muted small">分數越高，代表你在這次作答裡越常選到這一類的事情。</p>' +
+      '<div class="ex-top">' + r.slice(0, 3).map(function (k, i) {
+        var t = TYPES[k];
+        return '<span class="ex-pill" style="--c:' + t.color + '">' + ['🥇', '🥈', '🥉'][i] + ' ' + t.icon + ' ' + t.name + ' <small>' + t.nick + '</small></span>';
+      }).join('') + '</div>' +
+      '<div class="ex-bars">' + r.map(function (k) {
+        var t = TYPES[k];
+        return '<div class="ex-bar-row" style="--c:' + t.color + '"><span>' + t.icon + ' ' + t.name + '</span>' +
+          '<span class="track" role="img" aria-label="' + t.name + ' ' + sc[k] + ' 分"><i style="width:' + Math.round(sc[k] / max * 100) + '%"></i></span>' +
+          '<span class="val">' + sc[k] + '</span></div>';
+      }).join('') + '</div>';
+
+    if (spread <= 4) {
+      html += '<div class="callout tip"><p><b>你的興趣分布很平均。</b>這不是沒有興趣，而是代表還有很多可能性。接下來可以多嘗試幾種沒做過的活動，下學期再做一次，看看哪一類慢慢變突出。</p></div>';
+    } else if (max <= 8) {
+      html += '<div class="callout tip"><p><b>很多事情你都還沒特別喜歡</b>，這很正常，可能只是還沒遇到。可以從前兩名的「現在可以試試」挑一件來做看看。</p></div>';
+    }
+
+    html += '<div class="ex-cards">' + r.slice(0, cardsN).map(function (k) {
+      var t = TYPES[k];
+      return '<div class="ex-card" style="--c:' + t.color + '"><h4>' + t.icon + ' ' + t.name + '（' + t.nick + '）</h4><p>' + t.desc + '</p><dl>' +
+        '<dt>可能有興趣的大學學群</dt><dd>' + t.groups + '</dd>' +
+        '<dt>未來工作的例子</dt><dd>' + t.jobs + '</dd>' +
+        '<dt>現在可以試試</dt><dd>' + t.tryIt + '</dd></dl></div>';
+    }).join('') + '</div>';
+
+    html += '<div class="callout"><span class="title">💬 想一想，也可以和家人聊聊</span><ul>' +
+      '<li>你覺得這個結果像你嗎？哪裡不像？</li>' +
+      '<li>最近一次做到忘記時間的事情是什麼？它比較接近哪一類？</li>' +
+      '<li>「現在可以試試」裡，有沒有一件你這學期真的想做？</li></ul>' +
+      '<p class="small muted">興趣不等於能力，也不代表以後一定要念哪個科系。這只是幫你多認識自己一點。</p></div>';
+
+    var earlier = pr.hist.filter(function (h) { return h.date !== today(); });
+    var last = earlier[earlier.length - 1];
+    if (last) {
+      html += '<p class="small"><b>和上次比：</b>' + esc(last.date) + ' 的前三名是 ' +
+        last.top.map(function (k) { return TYPES[k].icon + ' ' + TYPES[k].name; }).join('、') + '。</p>';
+    }
+    html += '<div class="ex-actions"><button type="button" class="btn-primary" data-ex-save>儲存這次結果（' + today() + '）</button>' +
+      '<button type="button" onclick="window.print()">列印結果</button></div>';
+    resultEl.innerHTML = html;
+    resultEl.hidden = false;
+  }
+
+  function renderHistory() {
+    var pr = prof();
+    if (!pr.hist.length) { histEl.innerHTML = ''; return; }
+    histEl.innerHTML = '<div class="callout"><span class="title">🗓️ ' + esc(who(state.cur)) + ' 的歷次紀錄</span><ul class="ex-hist">' +
+      pr.hist.map(function (h, i) {
+        return '<li><span class="d">' + esc(h.date) + '</span><span>' + h.top.map(function (k) { return TYPES[k].icon + ' ' + TYPES[k].name; }).join('、') + '</span>' +
+          '<button type="button" data-ex-del="' + i + '" aria-label="刪除 ' + esc(h.date) + ' 的紀錄">刪除</button></li>';
+      }).join('') + '</ul></div>';
+  }
+
+  /* 事件 */
+  root.querySelector('.ex-quiz').addEventListener('change', function (e) {
+    var inp = e.target;
+    if (inp.type !== 'radio') return;
+    var parts = inp.name.split('-'), pr = prof();
+    if (parts[0] === 'L') pr.a[parts[1]] = Number(inp.value); else pr.s[parts[1]] = inp.value;
+    inp.closest('.ex-q').classList.add('done');
+    save();
+    updateCount();
+    if (!resultEl.hidden) renderResult();
+  });
+  showBtn.addEventListener('click', function () {
+    renderResult();
+    if (!resultEl.hidden) { resultEl.scrollIntoView({ behavior: 'smooth', block: 'start' }); resultEl.focus({ preventScroll: true }); }
+  });
+  root.querySelector('[data-ex-clear]').addEventListener('click', function () {
+    if (!confirm('要清除「' + who(state.cur) + '」這次的答案嗎？（已儲存的歷次紀錄會保留）')) return;
+    var pr = prof();
+    pr.a = {}; pr.s = {};
+    save();
+    resultEl.hidden = true;
+    syncInputs();
+  });
+  root.querySelectorAll('[data-ex-profile]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      state.cur = b.dataset.exProfile;
+      save();
+      resultEl.hidden = true;
+      syncInputs();
+      renderHistory();
+    });
+  });
+  nameInput.addEventListener('input', function () {
+    prof().name = nameInput.value.trim();
+    save();
+    root.querySelector('[data-ex-profile="' + state.cur + '"]').textContent = '🙋 ' + who(state.cur);
+    if (!resultEl.hidden) renderResult();
+    renderHistory();
+  });
+  resultEl.addEventListener('click', function (e) {
+    if (!e.target.matches('[data-ex-save]')) return;
+    var pr = prof(), sc = scores(pr), d = today();
+    var entry = { date: d, top: ranked(sc).slice(0, 3), scores: sc };
+    if (pr.hist.length && pr.hist[pr.hist.length - 1].date === d) pr.hist[pr.hist.length - 1] = entry; else pr.hist.push(entry);
+    save();
+    renderHistory();
+    e.target.textContent = '✅ 已儲存';
+    e.target.disabled = true;
+  });
+  histEl.addEventListener('click', function (e) {
+    if (!e.target.matches('[data-ex-del]')) return;
+    var pr = prof();
+    pr.hist.splice(Number(e.target.dataset.exDel), 1);
+    save();
+    renderHistory();
+    if (!resultEl.hidden) renderResult();
+  });
+
+  syncInputs();
+  renderHistory();
 })();
 </script>
 </body>

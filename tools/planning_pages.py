@@ -90,7 +90,7 @@ page("index.html", "總覽與時間軸",
     <a href="routes.html"><b>② 台灣與美國制度</b><span>各升學管道看什麼、適合誰；費用、簽證與折衷路線</span></a>
     <a href="stem.html"><b>③ 偏理科的孩子</b><span>國文怎麼補、台灣念大學還是直接出國、高中怎麼選</span></a>
     <a href="balanced.html"><b>④ 平均型的孩子</b><span>繁星優勢、找到主軸、文理學院的彈性</span></a>
-    <a href="timeline.html"><b>📅 兩個孩子的升學時間表</b><span>國一到高三每個學期要做什麼、五個決策點在什麼時候，可勾選追蹤進度。</span></a>
+    <a href="timeline.html"><b>📅 兩個孩子的升學時間表</b><span>國一到高三每個學期要做什麼、五個決策點在什麼時候，可勾選追蹤進度；還有孩子可以點選的「自我探索」興趣小練習。</span></a>
   </div>
 
   <h2><span class="num">一</span>目前的狀況與結論</h2>
