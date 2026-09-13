@@ -177,3 +177,28 @@ input:focus-visible, select:focus-visible { outline: 3px solid color-mix(in srgb
   .shadow-text { font-size: 1.08rem; padding: .5rem .7rem; }
   .pq-choices button { font-size: 1.2rem; }
 }
+
+/* ---------- KK 音標與文法 ---------- */
+.kk {
+  font-family: "Charis SIL", "Doulos SIL", "Lucida Grande", "Segoe UI", "Arial Unicode MS", "Noto Sans", sans-serif;
+  color: var(--unit); font-weight: 700; letter-spacing: .02em; white-space: nowrap;
+}
+.kk-table td:first-child { font-size: 1.25rem; text-align: center; }
+.kk-table td { vertical-align: middle; }
+.q-text u, .opt u { text-decoration-thickness: 2px; text-underline-offset: 3px; text-decoration-color: var(--unit); }
+.listen-ab { display: inline-flex; flex-wrap: wrap; gap: .3rem; align-items: center; margin-left: .2rem; font-size: .85rem; color: var(--ink-2); }
+.rule {
+  background: var(--surface); border: 2px dashed color-mix(in srgb, var(--unit) 55%, transparent);
+  border-radius: var(--radius); padding: .8rem 1.1rem; margin: 1rem 0;
+}
+.rule > :first-child { margin-top: 0; }
+.rule > :last-child { margin-bottom: 0; }
+.rule .title { display: block; font-weight: 700; color: var(--unit); margin-bottom: .2rem; }
+.trap { list-style: none; padding-left: 0; }
+.trap li { padding-left: 1.6rem; position: relative; }
+.trap li::before { content: "⚠️"; position: absolute; left: 0; }
+.ok-ng { font-family: var(--en-font); }
+.ok-ng .ng { color: var(--bad); text-decoration: line-through; text-decoration-thickness: 2px; }
+.ok-ng .ok { color: var(--good); font-weight: 700; }
+.gram-unit { border-top: 2px solid var(--line); margin-top: 2.6rem; }
+.gram-unit > h3 { font-size: 1.3rem; margin-top: 1.4rem; }
