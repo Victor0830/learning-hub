@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>兩個孩子的升學時間表｜學習導航站</title>
+<meta name="description" content="雙胞胎從國一到高三的升學規劃時間表：偏理科的孩子和各科平均的孩子，每個學期要做什麼、什麼時候要做決定。">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧭</text></svg>">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  /* ---------- 本頁：時間表 ---------- */
+  .tabs {
+    display: flex; gap: .5rem; margin: 1.5rem 0 .5rem; padding: .4rem;
+    background: var(--surface-2); border-radius: 16px;
+  }
+  .tabs button {
+    flex: 1; border: 0; border-radius: 12px; padding: .7rem .8rem; background: transparent;
+    font-size: 1rem; font-weight: 700; color: var(--ink-2); line-height: 1.4;
+  }
+  .tabs button small { display: block; font-weight: 400; font-size: .82rem; }
+  .tabs button[aria-selected="true"] { background: var(--surface); color: var(--ink); box-shadow: var(--shadow); }
+  .tabs button[aria-selected="true"] small { color: var(--unit); }
+
+  .panel-bar { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin: .8rem 0 1.2rem; }
+  .panel-bar .done-count { margin-right: auto; font-size: .92rem; font-weight: 700; }
+  .panel-bar .bar { display: block; height: 6px; width: min(240px, 55vw); background: var(--line); border-radius: 99px; overflow: hidden; margin-top: .2rem; }
+  .panel-bar .bar i { display: block; height: 100%; width: 0; background: var(--unit); transition: width .3s; }
+
+  .year { margin: 2.2rem 0 0; }
+  .year > h2 { margin: 0 0 .9rem; display: flex; align-items: baseline; gap: .6rem; flex-wrap: wrap; }
+  .year > h2 .when { font-family: var(--sans); font-size: .9rem; font-weight: 400; color: var(--ink-2); letter-spacing: 0; }
+
+  .tl { list-style: none; padding: 0 0 0 1.6rem; margin: 0; position: relative; }
+  .tl::before { content: ""; position: absolute; left: .45rem; top: .4rem; bottom: .4rem; width: 2px; background: var(--line); }
+  .tl-item {
+    position: relative; margin: 0 0 .9rem; padding: .85rem 1.1rem 1rem;
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow);
+  }
+  .tl-item::before {
+    content: ""; position: absolute; left: -1.45rem; top: 1.15rem; width: .9rem; height: .9rem; border-radius: 50%;
+    background: var(--surface); border: 3px solid var(--line);
+  }
+  .tl-item h3 { margin: 0 0 .1rem; font-size: 1.08rem; display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
+  .tl-item .period { font-size: .82rem; color: var(--ink-2); margin: 0 0 .4rem; }
+  .tl-item.decision { border: 2px solid var(--tip); background: color-mix(in srgb, var(--tip-soft) 55%, var(--surface)); }
+  .tl-item.decision::before { border-color: var(--tip); background: var(--tip); }
+  .tl-item.now { outline: 3px solid color-mix(in srgb, var(--unit) 45%, transparent); outline-offset: 2px; }
+  .tl-item.now::before { border-color: var(--unit); background: var(--unit); box-shadow: 0 0 0 4px color-mix(in srgb, var(--unit) 25%, transparent); }
+  .badge { font-family: var(--sans); font-size: .72rem; font-weight: 700; padding: .05rem .5rem; border-radius: 999px; letter-spacing: .03em; }
+  .badge.dp { background: var(--tip); color: #fff; }
+  .badge.now-b { background: var(--unit); color: #fff; }
+
+  .todos { list-style: none; padding: 0; margin: .3rem 0 0; }
+  .todos li { margin: .15rem 0; }
+  .todo { display: flex; gap: .55rem; align-items: baseline; cursor: pointer; padding: .2rem .3rem; border-radius: 8px; }
+  .todo:hover { background: var(--surface-2); }
+  .todo input { flex-shrink: 0; width: 1.05rem; height: 1.05rem; accent-color: var(--unit); transform: translateY(.15rem); cursor: pointer; }
+  .todo input:checked + span { color: var(--ink-2); text-decoration: line-through; text-decoration-color: color-mix(in srgb, var(--ink-2) 60%, transparent); }
+  .todo .tag { flex-shrink: 0; margin: 0; }
+  .todo-text { flex: 1; }
+
+  .tag.t-zh { background: color-mix(in srgb, var(--u3) 18%, transparent); color: var(--u3); }
+  .tag.t-math { background: color-mix(in srgb, var(--u1) 16%, transparent); color: var(--u1); }
+  .tag.t-en { background: color-mix(in srgb, var(--en) 16%, transparent); color: var(--en); }
+  .tag.t-explore { background: color-mix(in srgb, var(--u2) 16%, transparent); color: var(--u2); }
+  .tag.t-school { background: var(--surface-2); color: var(--ink-2); }
+  .tag.t-tw { background: color-mix(in srgb, var(--u4) 16%, transparent); color: var(--u4); }
+  .tag.t-us { background: color-mix(in srgb, var(--accent) 15%, transparent); color: var(--accent); }
+  .tag.t-dp { background: var(--tip-soft); color: var(--tip); }
+
+  .judge { margin: .6rem 0 0; padding: .55rem .8rem; border-radius: 10px; background: var(--surface); border: 1px dashed var(--tip); font-size: .93rem; }
+  .judge > :first-child { margin-top: 0; }
+  .judge > :last-child { margin-bottom: 0; }
+
+  .legend { display: flex; flex-wrap: wrap; gap: .35rem .5rem; font-size: .85rem; margin: .6rem 0 0; }
+  .route-ab { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: .7rem; margin: 1rem 0; }
+  .route-ab div { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: .7rem .9rem; }
+  .route-ab b { color: var(--unit); }
+  .route-ab p { margin: .2rem 0 0; font-size: .93rem; color: var(--ink-2); }
+
+  @media print {
+    .tabs, .panel-bar button { display: none !important; }
+    .tab-panel[hidden] { display: block !important; }
+    .tab-panel + .tab-panel { break-before: page; }
+    .tl-item { box-shadow: none; break-inside: avoid; }
+    .tl-item.now { outline: 0; }
+  }
+</style>
+</head>
+<body data-page="planning-timeline" data-unit="plan">
+<header class="site-header">
+  <div class="inner">
+    <a class="brand" href="../index.html"><span class="seal">學</span>學習導航站</a>
+    <nav class="section-nav" aria-label="主題">
+      <a href="../chinese/index.html">國文閱讀</a>
+      <a href="../english/index.html">英文聽說寫</a>
+      <a href="../planning/index.html" aria-current="true">升學規劃</a>
+    </nav>
+  </div>
+  <div class="subnav"><div class="inner">
+    <a class="sub-home" href="index.html">🧭 升學規劃</a>
+    <nav class="site-nav" aria-label="升學規劃頁面">
+      <a href="index.html">總覽與時間軸</a>
+      <a href="assess.html">判斷孩子特質</a>
+      <a href="routes.html">台灣與美國制度</a>
+      <a href="stem.html">偏理科的孩子</a>
+      <a href="balanced.html">平均型的孩子</a>
+      <a href="timeline.html" aria-current="page">兩個孩子的升學時間表</a>
+    </nav>
+  </div></div>
+</header>
+
+<main>
+  <section class="hero">
+    <span class="eyebrow">升學規劃．時間表</span>
+    <h1>兩個孩子的升學時間表</h1>
+    <p class="lead">雙胞胎目前國一，念公立國中。一個明顯偏理科，英文和科普閱讀都沒問題，但國文課的文言文、文學作品和寫作比較弱；另一個各科平均，還沒有明顯偏好。這一頁從國一排到高三，列出每個學期要做什麼，以及什麼時候要做決定。</p>
+  </section>
+
+  <div class="callout key">
+    <p><b>兩個孩子不需要走同一條路。</b>一個出國、一個留在台灣，或兩個念不同高中，都很正常。避免在孩子面前用「理科的那個」「平均的那個」來比較他們。</p>
+  </div>
+
+  <h2 id="overview"><span class="num">一</span>先看懂兩條路線和決策點</h2>
+  <div class="route-ab">
+    <div><b>A 路線：台灣念大學 → 美國研究所</b><p>風險低、可以晚點決定要不要出國。理工科美國博士班通常有獎學金。適合想回台灣發展，或孩子需要多一點時間成熟。</p></div>
+    <div><b>B 路線：直接念美國大學</b><p>大學部就能做研究、轉主修容易、不受國文影響。適合獨立、自律，而且家裡不排斥孩子以後留在美國。</p></div>
+  </div>
+  <p>家裡預算沒問題，所以兩條路都走得通。建議<b>先按 B 路線準備，同時顧好台灣升學的基本盤，到高一下再做最後決定</b>，因為 B 需要比較早開始準備，A 隨時都能轉回來。</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>決策點</th><th>偏理科的孩子</th><th>平均型的孩子</th></tr></thead>
+      <tbody>
+        <tr><td>① 國二暑假</td><td>海外數理營隊 2～4 週，實際測試獨立生活的能力</td><td>興趣領域的營隊，確認方向；如考慮出國，也可一起安排海外營隊</td></tr>
+        <tr><td>② 國三上</td><td>選高中類型：頂尖公立高中、科學班，或私校國際部</td><td>選高中：一併考慮繁星推薦看校內排名的特性</td></tr>
+        <tr><td>③ 高一下</td><td><b>最後決定 A 或 B</b>；選自然組</td><td>選組；決定要不要走美國路線</td></tr>
+        <tr><td>④ 高二下</td><td>列出目標學校清單</td><td>列出目標校系；比較繁星和個人申請哪條最有利</td></tr>
+        <tr><td>⑤ 高三下</td><td colspan="2">比較錄取結果，決定去向</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout tip">
+    <span class="title">📌 使用方式</span>
+    <p>每一項都可以勾選，勾選紀錄只存在這台裝置的瀏覽器裡，不會上傳。框線標示的是<b>目前所在的學期</b>；黃色框是<b>決策點</b>。各項考試、甄選和申請的日期每年會變，<b>一律以當年度簡章為準</b>。</p>
+    <p class="legend">
+      <span class="tag t-zh">國文</span><span class="tag t-math">數理</span><span class="tag t-en">英文</span><span class="tag t-explore">探索</span><span class="tag t-school">課業</span><span class="tag t-tw">台灣升學</span><span class="tag t-us">美國升學</span><span class="tag t-dp">決策</span>
+    </p>
+  </div>
+
+  <div class="tabs" role="tablist" aria-label="選擇孩子">
+    <button type="button" role="tab" id="tab-stem" aria-controls="stem" aria-selected="true" data-tab="stem">🔬 偏理科的孩子<small>數理強．英文好．國文要顧住</small></button>
+    <button type="button" role="tab" id="tab-balanced" aria-controls="balanced" aria-selected="false" data-tab="balanced">🌱 平均型的孩子<small>各科平均．先廣泛探索</small></button>
+  </div>
+
+  <!-- ==================== 偏理科 ==================== -->
+  <section class="tab-panel" id="stem" role="tabpanel" aria-labelledby="tab-stem" data-kid="stem">
+    <div class="panel-bar">
+      <span class="done-count">已完成 <span data-count>0 / 0</span><span class="bar"><i></i></span></span>
+      <button type="button" data-jump-now>跳到目前學期</button>
+      <button type="button" onclick="window.print()">列印</button>
+    </div>
+
+    <div class="callout unit">
+      <p><b>這個孩子的主軸：</b>往深處發展數理，英文推到學術程度，國文的目標是「不拖後腿」。國文弱在台灣升學（會考、繁星、學測篩選）處處受影響，在美國申請則幾乎沒有影響，所以<b>國三會考前一定要把國文顧住</b>，高中的選擇權才不會受限。</p>
+    </div>
+
+    <section class="year">
+      <h2>國一 <span class="when">2026–2027 學年</span></h2>
+      <ol class="tl">
+        <li class="tl-item" data-from="2026-08-01" data-to="2027-01-31">
+          <h3>國一上</h3><p class="period">2026.9 – 2027.1</p>
+          <ul class="todos">
+            <li><label class="todo"><input type="checkbox" data-todo="s-7a-1"><span class="todo-text"><span class="tag t-zh">國文</span> 限時做一份<b>會考國文歷屆試題</b>，把錯題分成：文言文／文學作品／說明文與圖表／字詞常識，找出失分集中在哪一類</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="s-7a-2"><span class="todo-text"><span class="tag t-zh">國文</span> 建立觀念：會考國文沒有真正主觀的題目，<b>正確答案一定能在文章裡找到證據</b></span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="s-7a-3"><span class="todo-text"><span class="tag t-math">數理</span> 報名並參加 <b>AMC 8</b>（多在 1 月考，限 8 年級以下，國一、國二都能考）。看成績，也看孩子考完的反應</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="s-7a-4"><span class="todo-text"><span class="tag t-math">數理</span> 開始 <b>AoPS 線上課程</b>，依程度選 Prealgebra 或 Introduction to Algebra。數學和英文一起練</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="s-7a-5"><span class="todo-text"><span class="tag t-school">課業</span> 問學校輔導室：國中階段有沒有<b>數理資優鑑定</b>或區域資優方案</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="s-7a-6"><span class="todo-text"><span class="tag t-en">英文</span> 每週讀 1～2 篇英文科普文章，把英文從「可以」往學術程度推</span></label></li>
+          </ul>
+        </li>
+        <li class="tl-item" data-from="2027-02-01" data-to="2027-06-30">
+          <h3>國一下</h3><p class="period">2027.2 – 2027.6</p>
+          <ul class="todos">
+            <li><label class="todo"><input type="checkbox" data-todo="s-7b-1"><span class="todo-text"><span class="tag t-zh">國文</span> 依錯題分析，每週固定：<b>閱讀策略 1 次</b>（找證據、判斷錯誤選項是偷換概念、過度推論、無中生有還是因果顛倒）＋<b>文言虛詞 1 次</b></span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="s-7b-2"><span class="todo-text"><span class="tag t-zh">國文</span> 作文每月 1～2 篇，練固定結構：破題 → 2～3 個具體例子 → 反思 → 呼應題目</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="s-7b-3"><span class="todo-text"><span class="tag t-math">數理</span> 開始學 <b>Python</b>，以寫小程式解數學問題為主</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="s-7b-4"><span class="todo-text"><span class="tag t-explore">探索</span> 觀察：遇到超出課本的難題，孩子是<b>越做越有興趣</b>，還是只喜歡「會做」的感覺？</span></label></li>
+          </ul>
+        </li>
+        <li class="tl-item" data-from="2027-07-01" data-to="2027-08-31">
+          <h3>國一暑假</h3><p class="period">2027.7 – 2027.8</p>
+          <ul class="todos">
+            <li><label class="todo"><input type="checkbox" data-todo="s-7s-1"><span class="todo-text"><span class="tag t-math">數理</span> 參加國內的數學或程式營隊</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="s-7s-2"><span class="todo-text"><span class="tag t-math">數理</span> AoPS 接續下一門課</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="s-7s-3"><span class="todo-text"><span class="tag t-en">英文</span> 讀完一本英文非小說類書籍，例如科學家傳記或科普書</span></label></li>
+          </ul>
+        </li>
+      </ol>
+    </section>
+
+    <section class="year">
+      <h2>國二 <span class="when">2027–2028 學年</span></h2>
+      <ol class="tl">
+        <li class="tl-item" data-from="2027-09-01" data-to="2028-01-31">
+          <h3>國二上</h3><p class="period">2027.9 – 2028.1</p>
+          <ul class="todos">
+            <li><label class="todo"><input type="checkbox" data-todo="s-8a-1"><span class="todo-text"><span class="tag t-math">數理</span> 參加 <b>USACO</b> 美國程式競賽（每年冬季到春季有數場線上比賽），從 Bronze 級開始</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="s-8a-2"><span class="todo-text"><span class="tag t-math">數理</span> 第二次 AMC 8（國二是最後一年可以考）</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="s-8a-3"><span class="todo-text"><span class="tag t-zh">國文</span> 重點轉向<b>文言文</b>：虛詞（之、而、以、於、其……）當成語法關鍵字，倒裝、省略、判斷句當成語法規則來整理</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="s-8a-4"><span class="todo-text"><span class="tag t-explore">探索</span> 參加校內科展或數學能力競賽</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="s-8a-5"><span class="todo-text"><span class="tag t-us">美國升學</span> 開始查國二暑假的<b>海外數理營隊</b>，很多營隊冬季到春季就截止申請</span></label></li>
+          </ul>
+        </li>
+        <li class="tl-item" data-from="2028-02-01" data-to="2028-06-30">
+          <h3>國二下</h3><p class="period">2028.2 – 2028.6</p>
+          <ul class="todos">
+            <li><label class="todo"><input type="checkbox" data-todo="s-8b-1"><span class="todo-text"><span class="tag t-us">美國升學</span> 送出海外營隊申請</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="s-8b-2"><span class="todo-text"><span class="tag t-zh">國文</span> 再限時做一份會考國文歷屆試題，<b>和國一時比較錯題分布</b>，調整練習重點</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="s-8b-3"><span class="todo-text"><span class="tag t-en">英文</span> 開始英文寫作：摘要科普文章、寫短篇心得</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="s-8b-4"><span class="todo-text"><span class="tag t-school">課業</span> 了解三種高中選項，找<b>科學班甄選</b>和數理資優班的簡章來看</span></label></li>
+          </ul>
+        </li>
+        <li class="tl-item decision" data-from="2028-07-01" data-to="2028-08-31">
+          <h3>國二暑假 <span class="badge dp">決策點 ①</span></h3><p class="period">2028.7 – 2028.8．測試獨立性</p>
+          <ul class="todos">
+            <li><label class="todo"><input type="checkbox" data-todo="s-8s-1"><span class="todo-text"><span class="tag t-dp">決策</span> 參加 <b>2～4 週海外數理營隊</b></span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="s-8s-2"><span class="todo-text"><span class="tag t-dp">決策</span> 觀察：能不能自己管理作息？和外國同學相處得好嗎？遇到問題會不會主動解決？</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="s-8s-3"><span class="todo-text"><span class="tag t-dp">決策</span> 回來後和孩子聊：喜不喜歡那樣的學習環境？想不想出國念大學？</span></label></li>
+          </ul>
+          <div class="judge"><p><b>怎麼判斷：</b>適應得好又喜歡，B 路線（直接念美國大學）加分；明顯吃力或很想家，A 路線（台灣念大學再出國）比較穩。只是一次參考，不用當成定案。</p></div>
+        </li>
+      </ol>
+    </section>
+
+    <section class="year">
+      <h2>國三 <span class="when">2028–2029 學年</span></h2>
+      <ol class="tl">
+        <li class="tl-item decision" data-from="2028-09-01" data-to="2029-01-31">
+          <h3>國三上 <span class="badge dp">決策點 ②</span></h3><p class="period">2028.9 – 2029.1．選高中類型</p>
+          <ul class="todos">
+            <li><label class="todo"><input type="checkbox" data-todo="s-9a-1"><span class="todo-text"><span class="tag t-dp">決策</span> 三選一：<b>①</b> 頂尖公立高中＋自己準備美國申請（還沒決定路線時的首選）<b>②</b> 科學班（數理實力真的強）<b>③</b> 私校國際部或雙語部（高度確定走 B 時）</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="s-9a-2"><span class="todo-text"><span class="tag t-math">數理</span> 如果目標是科學班：針對甄選題型準備</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="s-9a-3"><span class="todo-text"><span class="tag t-math">數理</span> 可以試考一次 <b>AMC 10</b>（秋季舉行）</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="s-9a-4"><span class="todo-text"><span class="tag t-zh">國文</span> 寫作測驗改成每月 2 篇，目標<b>會考作文 4～5 級</b></span></label></li>
+          </ul>
+          <div class="judge"><p><b>如果模擬考國文明顯拉低成績</b>、上理想公立高中有困難，科學班甄選或私校國際部就更值得考慮，因為這兩條路不看會考國文成績。</p></div>
+        </li>
+        <li class="tl-item" data-from="2029-02-01" data-to="2029-06-30">
+          <h3>國三下</h3><p class="period">2029.2 – 2029.6</p>
+          <ul class="todos">
+            <li><label class="todo"><input type="checkbox" data-todo="s-9b-1"><span class="todo-text"><span class="tag t-tw">台灣升學</span> 科學班甄選（多在會考前，時程以各校簡章為準）</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="s-9b-2"><span class="todo-text"><span class="tag t-school">課業</span> 5 月<b>國中教育會考</b></span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="s-9b-3"><span class="todo-text"><span class="tag t-school">課業</span> 依會考成績和決策點 ② 的方向選填志願</span></label></li>
+          </ul>
+        </li>
+        <li class="tl-item" data-from="2029-07-01" data-to="2029-08-31">
+          <h3>國三暑假</h3><p class="period">2029.7 – 2029.8</p>
+          <ul class="todos">
+            <li><label class="todo"><input type="checkbox" data-todo="s-9s-1"><span class="todo-text"><span class="tag t-en">英文</span> 開始準備<b>托福</b></span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="s-9s-2"><span class="todo-text"><span class="tag t-math">數理</span> 高中數學先銜接；AoPS 往進階課程走</span></label></li>
+          </ul>
+        </li>
+      </ol>
+    </section>
+
+    <section class="year">
+      <h2>高一 <span class="when">2029–2030 學年</span></h2>
+      <ol class="tl">
+        <li class="tl-item" data-from="2029-09-01" data-to="2030-01-31">
+          <h3>高一上</h3><p class="period">2029.9 – 2030.1</p>
+          <ul class="todos">
+            <li><label class="todo"><input type="checkbox" data-todo="s-10a-1"><span class="todo-text"><span class="tag t-math">數理</span> 秋季考 <b>AMC 10 或 AMC 12</b>，成績夠就挑戰 <b>AIME</b></span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="s-10a-2"><span class="todo-text"><span class="tag t-math">數理</span> USACO 往 Silver、Gold 級前進</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="s-10a-3"><span class="todo-text"><span class="tag t-en">英文</span> 考第一次托福，確認目前程度</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="s-10a-4"><span class="todo-text"><span class="tag t-tw">台灣升學</span> 開始累積<b>學習歷程檔案</b>（課程學習成果每學期上傳）</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="s-10a-5"><span class="todo-text"><span class="tag t-us">美國升學</span> 選定 1～2 個<b>長期投入的主軸活動</b>，例如數學社、程式專題、科展研究。美國申請看的是持續性和深度</span></label></li>
+          </ul>
+        </li>
+        <li class="tl-item decision" data-from="2030-02-01" data-to="2030-06-30">
+          <h3>高一下 <span class="badge dp">決策點 ③</span></h3><p class="period">2030.2 – 2030.6．最後決定 A 或 B</p>
+          <ul class="todos">
+            <li><label class="todo"><input type="checkbox" data-todo="s-10b-1"><span class="todo-text"><span class="tag t-dp">決策</span> 決定走 <b>A（台灣念大學再出國）</b>還是 <b>B（直接念美國大學）</b>。美國申請看高中三年的成績和活動，這個決定不能再拖</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="s-10b-2"><span class="todo-text"><span class="tag t-tw">台灣升學</span> 選組：自然組</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="s-10b-3"><span class="todo-text"><span class="tag t-en">英文</span> 托福目標 <b>100 分以上</b>，高二前達成</span></label></li>
+          </ul>
+          <div class="judge"><p><b>決定時看三件事：</b>① 國二暑假營隊觀察到的獨立性 ② 孩子自己的意願（這時候孩子的想法要放在最重要的位置）③ 家裡希望孩子以後在哪裡生活、工作，以及當時美國學生和工作簽證的政策。</p></div>
+        </li>
+        <li class="tl-item" data-from="2030-07-01" data-to="2030-08-31">
+          <h3>高一暑假</h3><p class="period">2030.7 – 2030.8</p>
+          <ul class="todos">
+            <li><label class="todo"><input type="checkbox" data-todo="s-10s-1"><span class="todo-text"><span class="tag t-us">美國升學</span> 申請研究型數學營（例如 Ross Mathematics Program），或到大學實驗室做專題</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="s-10s-2"><span class="todo-text"><span class="tag t-tw">台灣升學</span> 參加國內大學的科學營、電資或理學院營隊</span></label></li>
+          </ul>
+        </li>
+      </ol>
+    </section>
+
+    <section class="year">
+      <h2>高二 <span class="when">2030–2031 學年</span></h2>
+      <ol class="tl">
+        <li class="tl-item" data-from="2030-09-01" data-to="2031-01-31">
+          <h3>高二上</h3><p class="period">2030.9 – 2031.1</p>
+          <ul class="todos">
+            <li><label class="todo"><input type="checkbox" data-todo="s-11a-1"><span class="todo-text"><span class="tag t-math">數理</span> 競賽往高階走：AIME；有機會的話參加奧林匹亞選訓</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="s-11a-2"><span class="todo-text"><span class="tag t-explore">探索</span> 把研究題目做深：科展、專題研究</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="s-11a-3"><span class="todo-text"><span class="tag t-us">美國升學</span> <b>B 路線：</b>開始準備 SAT；整理課外活動和獎項紀錄</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="s-11a-4"><span class="todo-text"><span class="tag t-tw">台灣升學</span> <b>A 路線：</b>準備學測；留意<b>特殊選才</b>需要的作品和成果</span></label></li>
+          </ul>
+        </li>
+        <li class="tl-item decision" data-from="2031-02-01" data-to="2031-06-30">
+          <h3>高二下 <span class="badge dp">決策點 ④</span></h3><p class="period">2031.2 – 2031.6．目標學校清單</p>
+          <ul class="todos">
+            <li><label class="todo"><input type="checkbox" data-todo="s-11b-1"><span class="todo-text"><span class="tag t-dp">決策</span> 列出目標學校或校系清單（B 路線分成夢想校、目標校、保底校）</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="s-11b-2"><span class="todo-text"><span class="tag t-us">美國升學</span> <b>B 路線：</b>找好寫推薦信的老師</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="s-11b-3"><span class="todo-text"><span class="tag t-zh">國文</span> <b>A 路線：</b>學測國文和國寫以「不在第一階段被篩掉」為目標，查清楚目標校系怎麼採計國文</span></label></li>
+          </ul>
+        </li>
+        <li class="tl-item" data-from="2031-07-01" data-to="2031-08-31">
+          <h3>高二暑假</h3><p class="period">2031.7 – 2031.8</p>
+          <ul class="todos">
+            <li><label class="todo"><input type="checkbox" data-todo="s-11s-1"><span class="todo-text"><span class="tag t-us">美國升學</span> <b>B 路線：</b>考 SAT；開始構思申請主文書</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="s-11s-2"><span class="todo-text"><span class="tag t-us">美國升學</span> 參加暑期研究計畫或營隊</span></label></li>
+          </ul>
+        </li>
+      </ol>
+    </section>
+
+    <section class="year">
+      <h2>高三 <span class="when">2031–2032 學年</span></h2>
+      <ol class="tl">
+        <li class="tl-item" data-from="2031-09-01" data-to="2032-01-31">
+          <h3>高三上</h3><p class="period">2031.9 – 2032.1．申請季</p>
+          <ul class="todos">
+            <li><label class="todo"><input type="checkbox" data-todo="s-12a-1"><span class="todo-text"><span class="tag t-us">美國升學</span> 11 月初：Early Decision／Early Action 截止；1 月初：Regular Decision 截止</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="s-12a-2"><span class="todo-text"><span class="tag t-tw">台灣升學</span> 特殊選才報名（多在秋季，以各校簡章為準）</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="s-12a-3"><span class="todo-text"><span class="tag t-tw">台灣升學</span> 1 月<b>學測</b></span></label></li>
+          </ul>
+          <div class="callout" style="margin-bottom:0"><p class="small">兩邊同時申請做得到，工作量大但內容可以共用：學習歷程裡的專題和活動，也是美國申請文書和活動表的素材。</p></div>
+        </li>
+        <li class="tl-item decision" data-from="2032-02-01" data-to="2032-07-31">
+          <h3>高三下 <span class="badge dp">決策點 ⑤</span></h3><p class="period">2032.2 – 2032.7．決定去向</p>
+          <ul class="todos">
+            <li><label class="todo"><input type="checkbox" data-todo="s-12b-1"><span class="todo-text"><span class="tag t-tw">台灣升學</span> 繁星推薦、個人申請；7 月分科測驗</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="s-12b-2"><span class="todo-text"><span class="tag t-us">美國升學</span> 3 月底左右放榜；5 月 1 日前回覆要去的學校</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="s-12b-3"><span class="todo-text"><span class="tag t-dp">決策</span> 比較錄取結果，和孩子一起決定去向</span></label></li>
+          </ul>
+        </li>
+      </ol>
+    </section>
+  </section>
+
+  <!-- ==================== 平均型 ==================== -->
+  <section class="tab-panel" id="balanced" role="tabpanel" aria-labelledby="tab-balanced" data-kid="balanced" hidden>
+    <div class="panel-bar">
+      <span class="done-count">已完成 <span data-count>0 / 0</span><span class="bar"><i></i></span></span>
+      <button type="button" data-jump-now>跳到目前學期</button>
+      <button type="button" onclick="window.print()">列印</button>
+    </div>
+
+    <div class="callout unit">
+      <p><b>這個孩子的主軸：</b>國中先<b>廣泛探索、找到真正的興趣</b>，同時維持各科平均。平均型在台灣有<b>繁星推薦</b>的優勢；如果要走美國路線，高中前必須從「什麼都不錯」變成「有一兩個真正投入的領域」。</p>
+    </div>
+
+    <section class="year">
+      <h2>國一 <span class="when">2026–2027 學年</span></h2>
+      <ol class="tl">
+        <li class="tl-item" data-from="2026-08-01" data-to="2027-01-31">
+          <h3>國一上</h3><p class="period">2026.9 – 2027.1</p>
+          <ul class="todos">
+            <li><label class="todo"><input type="checkbox" data-todo="b-7a-1"><span class="todo-text"><span class="tag t-school">課業</span> 維持各科平均的好習慣。以後繁星推薦看高中全科成績，讀書習慣要從現在養成</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="b-7a-2"><span class="todo-text"><span class="tag t-explore">探索</span> 這學期嘗試 1～2 個<b>全新的課外活動</b>（社團、才藝、營隊），不看表現，看孩子投不投入</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="b-7a-3"><span class="todo-text"><span class="tag t-explore">探索</span> 開始記<b>興趣觀察筆記</b>：孩子主動花時間、做到忘記時間的是什麼事？家長也可以一起記</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="b-7a-4"><span class="todo-text"><span class="tag t-en">英文</span> 了解孩子英文聽、說、讀、寫各自的程度，可以參考本站<a href="../english/index.html">英文聽說寫</a>的診斷錄音</span></label></li>
+          </ul>
+        </li>
+        <li class="tl-item" data-from="2027-02-01" data-to="2027-06-30">
+          <h3>國一下</h3><p class="period">2027.2 – 2027.6</p>
+          <ul class="todos">
+            <li><label class="todo"><input type="checkbox" data-todo="b-7b-1"><span class="todo-text"><span class="tag t-explore">探索</span> 翻看興趣觀察筆記：出現最多次的是什麼？</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="b-7b-2"><span class="todo-text"><span class="tag t-explore">探索</span> 多元閱讀：商業、心理、設計、生物、歷史等不同領域各讀一本，看孩子對哪一本特別有反應</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="b-7b-3"><span class="todo-text"><span class="tag t-math">數理</span> 數學是台灣和美國升學的共同基礎，就算沒有特別喜歡也要保持穩定</span></label></li>
+          </ul>
+        </li>
+        <li class="tl-item" data-from="2027-07-01" data-to="2027-08-31">
+          <h3>國一暑假</h3><p class="period">2027.7 – 2027.8</p>
+          <ul class="todos">
+            <li><label class="todo"><input type="checkbox" data-todo="b-7s-1"><span class="todo-text"><span class="tag t-explore">探索</span> 參加 <b>2 個不同主題的營隊</b>（例如一個人文社會、一個自然科技），比較孩子的反應</span></label></li>
+          </ul>
+        </li>
+      </ol>
+    </section>
+
+    <section class="year">
+      <h2>國二 <span class="when">2027–2028 學年</span></h2>
+      <ol class="tl">
+        <li class="tl-item" data-from="2027-09-01" data-to="2028-01-31">
+          <h3>國二上</h3><p class="period">2027.9 – 2028.1</p>
+          <ul class="todos">
+            <li><label class="todo"><input type="checkbox" data-todo="b-8a-1"><span class="todo-text"><span class="tag t-explore">探索</span> 從觀察到的興趣挑 <b>1～2 個開始深入</b>：上進階課程、參加比賽，或做一個小作品</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="b-8a-2"><span class="todo-text"><span class="tag t-school">課業</span> 注意雙胞胎比較：不要說「你是平均的那個」，讓孩子覺得自己也可以有擅長的領域</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="b-8a-3"><span class="todo-text"><span class="tag t-us">美國升學</span> 如果家裡也想替孩子保留美國選項，一樣開始查國二暑假的營隊</span></label></li>
+          </ul>
+        </li>
+        <li class="tl-item" data-from="2028-02-01" data-to="2028-06-30">
+          <h3>國二下</h3><p class="period">2028.2 – 2028.6</p>
+          <ul class="todos">
+            <li><label class="todo"><input type="checkbox" data-todo="b-8b-1"><span class="todo-text"><span class="tag t-explore">探索</span> 在興趣領域做出<b>一個具體成果</b>：作品、參賽或小專題</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="b-8b-2"><span class="todo-text"><span class="tag t-tw">台灣升學</span> 了解高中選項，特別是<b>繁星推薦看校內排名</b>的規則</span></label></li>
+          </ul>
+        </li>
+        <li class="tl-item decision" data-from="2028-07-01" data-to="2028-08-31">
+          <h3>國二暑假 <span class="badge dp">決策點 ①</span></h3><p class="period">2028.7 – 2028.8．確認興趣方向</p>
+          <ul class="todos">
+            <li><label class="todo"><input type="checkbox" data-todo="b-8s-1"><span class="todo-text"><span class="tag t-dp">決策</span> 參加興趣領域的營隊；如果考慮出國，可以和另一個孩子一樣安排海外營隊測試獨立性</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="b-8s-2"><span class="todo-text"><span class="tag t-dp">決策</span> 回來後聊：孩子對哪個領域最有感覺？想不想出國念書？</span></label></li>
+          </ul>
+          <div class="judge"><p><b>還沒找到方向也沒關係。</b>那就把高一選社團和高一暑假的科系營隊當成下一輪探索，只是美國路線會比較難準備。</p></div>
+        </li>
+      </ol>
+    </section>
+
+    <section class="year">
+      <h2>國三 <span class="when">2028–2029 學年</span></h2>
+      <ol class="tl">
+        <li class="tl-item decision" data-from="2028-09-01" data-to="2029-01-31">
+          <h3>國三上 <span class="badge dp">決策點 ②</span></h3><p class="period">2028.9 – 2029.1．選高中</p>
+          <ul class="todos">
+            <li><label class="todo"><input type="checkbox" data-todo="b-9a-1"><span class="todo-text"><span class="tag t-dp">決策</span> 考慮<b>繁星策略</b>：繁星看校內排名，與其勉強擠進最頂尖的學校，在稍微不那麼競爭、但孩子能排在前段的學校，繁星的機會可能更大</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="b-9a-2"><span class="todo-text"><span class="tag t-dp">決策</span> 看學校有沒有孩子興趣領域的社團、特色課程或多元選修</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="b-9a-3"><span class="todo-text"><span class="tag t-dp">決策</span> 兩個孩子念不同高中完全沒問題，依各自的需要選</span></label></li>
+          </ul>
+        </li>
+        <li class="tl-item" data-from="2029-02-01" data-to="2029-06-30">
+          <h3>國三下</h3><p class="period">2029.2 – 2029.6</p>
+          <ul class="todos">
+            <li><label class="todo"><input type="checkbox" data-todo="b-9b-1"><span class="todo-text"><span class="tag t-school">課業</span> 5 月<b>國中教育會考</b></span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="b-9b-2"><span class="todo-text"><span class="tag t-school">課業</span> 依會考成績和決策點 ② 的考量選填志願</span></label></li>
+          </ul>
+        </li>
+        <li class="tl-item" data-from="2029-07-01" data-to="2029-08-31">
+          <h3>國三暑假</h3><p class="period">2029.7 – 2029.8</p>
+          <ul class="todos">
+            <li><label class="todo"><input type="checkbox" data-todo="b-9s-1"><span class="todo-text"><span class="tag t-explore">探索</span> 高中銜接之外，繼續在興趣領域做點東西</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="b-9s-2"><span class="todo-text"><span class="tag t-en">英文</span> 如果保留美國路線，開始準備托福</span></label></li>
+          </ul>
+        </li>
+      </ol>
+    </section>
+
+    <section class="year">
+      <h2>高一 <span class="when">2029–2030 學年</span></h2>
+      <ol class="tl">
+        <li class="tl-item" data-from="2029-09-01" data-to="2030-01-31">
+          <h3>高一上</h3><p class="period">2029.9 – 2030.1</p>
+          <ul class="todos">
+            <li><label class="todo"><input type="checkbox" data-todo="b-10a-1"><span class="todo-text"><span class="tag t-tw">台灣升學</span> <b>從第一次段考就重視在校成績</b>：繁星看高一到高三上共五學期的成績</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="b-10a-2"><span class="todo-text"><span class="tag t-explore">探索</span> 社團選興趣領域；開始累積學習歷程檔案</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="b-10a-3"><span class="todo-text"><span class="tag t-us">美國升學</span> 如果保留美國路線：選定 1～2 個長期投入的主軸活動</span></label></li>
+          </ul>
+        </li>
+        <li class="tl-item decision" data-from="2030-02-01" data-to="2030-06-30">
+          <h3>高一下 <span class="badge dp">決策點 ③</span></h3><p class="period">2030.2 – 2030.6．選組、定路線</p>
+          <ul class="todos">
+            <li><label class="todo"><input type="checkbox" data-todo="b-10b-1"><span class="todo-text"><span class="tag t-dp">決策</span> <b>選組</b>：依興趣和能力決定自然組或社會組。拿不定主意時，先找幾個想念的科系，看它們的學測採計科目再回推</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="b-10b-2"><span class="todo-text"><span class="tag t-dp">決策</span> 決定要不要走美國路線</span></label></li>
+          </ul>
+        </li>
+        <li class="tl-item" data-from="2030-07-01" data-to="2030-08-31">
+          <h3>高一暑假</h3><p class="period">2030.7 – 2030.8</p>
+          <ul class="todos">
+            <li><label class="todo"><input type="checkbox" data-todo="b-10s-1"><span class="todo-text"><span class="tag t-explore">探索</span> 參加 <b>2～3 個大學科系營隊</b>，實際比較想念的科系</span></label></li>
+          </ul>
+        </li>
+      </ol>
+    </section>
+
+    <section class="year">
+      <h2>高二 <span class="when">2030–2031 學年</span></h2>
+      <ol class="tl">
+        <li class="tl-item" data-from="2030-09-01" data-to="2031-01-31">
+          <h3>高二上</h3><p class="period">2030.9 – 2031.1</p>
+          <ul class="todos">
+            <li><label class="todo"><input type="checkbox" data-todo="b-11a-1"><span class="todo-text"><span class="tag t-explore">探索</span> 在興趣領域做專題或深入研究，可以結合學校的自主學習計畫</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="b-11a-2"><span class="todo-text"><span class="tag t-tw">台灣升學</span> 維持校內排名；學習歷程的多元表現聚焦在同一個主題</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="b-11a-3"><span class="todo-text"><span class="tag t-us">美國升學</span> 如果走美國：主軸活動做出影響力（帶領、創立、服務成果）；準備托福和 SAT</span></label></li>
+          </ul>
+        </li>
+        <li class="tl-item decision" data-from="2031-02-01" data-to="2031-06-30">
+          <h3>高二下 <span class="badge dp">決策點 ④</span></h3><p class="period">2031.2 – 2031.6．目標校系清單</p>
+          <ul class="todos">
+            <li><label class="todo"><input type="checkbox" data-todo="b-11b-1"><span class="todo-text"><span class="tag t-dp">決策</span> 列出目標校系；比較<b>繁星推薦</b>和<b>個人申請</b>哪一條最有利</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="b-11b-2"><span class="todo-text"><span class="tag t-us">美國升學</span> 如果走美國：把<b>文理學院</b>列入考慮，大多到大二才需要決定主修</span></label></li>
+          </ul>
+        </li>
+        <li class="tl-item" data-from="2031-07-01" data-to="2031-08-31">
+          <h3>高二暑假</h3><p class="period">2031.7 – 2031.8</p>
+          <ul class="todos">
+            <li><label class="todo"><input type="checkbox" data-todo="b-11s-1"><span class="todo-text"><span class="tag t-tw">台灣升學</span> 擬定學測衝刺計畫</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="b-11s-2"><span class="todo-text"><span class="tag t-us">美國升學</span> 如果走美國：考 SAT；開始構思申請文書</span></label></li>
+          </ul>
+        </li>
+      </ol>
+    </section>
+
+    <section class="year">
+      <h2>高三 <span class="when">2031–2032 學年</span></h2>
+      <ol class="tl">
+        <li class="tl-item" data-from="2031-09-01" data-to="2032-01-31">
+          <h3>高三上</h3><p class="period">2031.9 – 2032.1．申請季</p>
+          <ul class="todos">
+            <li><label class="todo"><input type="checkbox" data-todo="b-12a-1"><span class="todo-text"><span class="tag t-tw">台灣升學</span> 1 月<b>學測</b>；準備繁星推薦的校內作業</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="b-12a-2"><span class="todo-text"><span class="tag t-us">美國升學</span> 如果走美國：11 月初 Early Decision／Early Action、1 月初 Regular Decision 截止</span></label></li>
+          </ul>
+        </li>
+        <li class="tl-item decision" data-from="2032-02-01" data-to="2032-07-31">
+          <h3>高三下 <span class="badge dp">決策點 ⑤</span></h3><p class="period">2032.2 – 2032.7．決定去向</p>
+          <ul class="todos">
+            <li><label class="todo"><input type="checkbox" data-todo="b-12b-1"><span class="todo-text"><span class="tag t-tw">台灣升學</span> 繁星推薦放榜；個人申請備審和面試；7 月分科測驗</span></label></li>
+            <li><label class="todo"><input type="checkbox" data-todo="b-12b-2"><span class="todo-text"><span class="tag t-dp">決策</span> 比較錄取結果，和孩子一起決定去向</span></label></li>
+          </ul>
+        </li>
+      </ol>
+    </section>
+  </section>
+
+  <div class="callout warn">
+    <span class="title">⚠️ 會變動的事</span>
+    <p>考試、甄選、申請的時程每年都可能調整，台灣以大學招生委員會聯合會和各校簡章為準，美國以各校官網為準。美國的學生簽證和畢業後工作簽證政策近年變動很大，高一下做決定前要再確認一次。</p>
+  </div>
+
+  <nav class="pager">
+    <a href="balanced.html"><small>← 上一頁</small>平均型的孩子</a>
+    <a class="next" href="index.html"><small>回到 →</small>升學規劃總覽</a>
+  </nav>
+</main>
+<footer class="site-footer"><a href="../index.html">學習導航站</a>．升學時間表．勾選紀錄只存在你這台裝置的瀏覽器裡</footer>
+
+<script>
+(function () {
+  var KEY = 'learning-hub:planning-timeline:v1';
+  var state = {};
+  try { state = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { state = {}; }
+  if (!state.todos) state.todos = {};
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
+
+  var panels = Array.prototype.slice.call(document.querySelectorAll('.tab-panel'));
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('[data-tab]'));
+
+  /* ---------- 勾選紀錄 ---------- */
+  function updateCounts() {
+    panels.forEach(function (p) {
+      var boxes = p.querySelectorAll('input[data-todo]');
+      var done = p.querySelectorAll('input[data-todo]:checked').length;
+      p.querySelector('[data-count]').textContent = done + ' / ' + boxes.length;
+      p.querySelector('.bar i').style.width = (boxes.length ? done / boxes.length * 100 : 0) + '%';
+    });
+  }
+  document.querySelectorAll('input[data-todo]').forEach(function (box) {
+    box.checked = !!state.todos[box.dataset.todo];
+    box.addEventListener('change', function () {
+      if (box.checked) state.todos[box.dataset.todo] = true; else delete state.todos[box.dataset.todo];
+      save();
+      updateCounts();
+    });
+  });
+  updateCounts();
+
+  /* ---------- 目前學期 ---------- */
+  var today = new Date();
+  var ymd = today.getFullYear() + '-' + String(today.getMonth() + 1).padStart(2, '0') + '-' + String(today.getDate()).padStart(2, '0');
+  document.querySelectorAll('.tl-item[data-from]').forEach(function (item) {
+    if (ymd >= item.dataset.from && ymd <= item.dataset.to) {
+      item.classList.add('now');
+      var b = document.createElement('span');
+      b.className = 'badge now-b';
+      b.textContent = '現在';
+      item.querySelector('h3').appendChild(b);
+    }
+  });
+  document.querySelectorAll('[data-jump-now]').forEach(function (btn) {
+    var now = btn.closest('.tab-panel').querySelector('.tl-item.now');
+    if (!now) { btn.hidden = true; return; }
+    btn.addEventListener('click', function () { now.scrollIntoView({ behavior: 'smooth', block: 'center' }); });
+  });
+
+  /* ---------- 分頁 ---------- */
+  function show(id, push) {
+    if (!document.getElementById(id)) return;
+    tabs.forEach(function (t) { t.setAttribute('aria-selected', t.dataset.tab === id ? 'true' : 'false'); });
+    panels.forEach(function (p) { p.hidden = p.id !== id; });
+    state.tab = id;
+    save();
+    if (push && history.replaceState) history.replaceState(null, '', '#' + id);
+  }
+  tabs.forEach(function (t) {
+    t.addEventListener('click', function () { show(t.dataset.tab, true); });
+    t.addEventListener('keydown', function (e) {
+      if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+      var i = tabs.indexOf(t) + (e.key === 'ArrowRight' ? 1 : -1);
+      var next = tabs[(i + tabs.length) % tabs.length];
+      next.focus();
+      show(next.dataset.tab, true);
+    });
+  });
+  document.querySelectorAll('[data-tab-link]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      show(a.dataset.tabLink, true);
+      document.querySelector('.tabs').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+  var hash = location.hash.slice(1);
+  show(hash === 'stem' || hash === 'balanced' ? hash : (state.tab || 'stem'), false);
+})();
+</script>
+</body>
+</html>

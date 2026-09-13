@@ -8,6 +8,7 @@ PAGES = [
     ("routes.html", "台灣與美國制度"),
     ("stem.html", "偏理科的孩子"),
     ("balanced.html", "平均型的孩子"),
+    ("timeline.html", "兩個孩子的升學時間表"),  # 由升學規劃工作階段手寫維護，不由本檔產生
 ]
 
 
@@ -86,6 +87,7 @@ page("index.html", "總覽與時間軸",
     <a href="routes.html"><b>② 台灣與美國制度</b><span>各升學管道看什麼、適合誰；費用、簽證與折衷路線</span></a>
     <a href="stem.html"><b>③ 偏理科的孩子</b><span>國文怎麼補、台灣念大學還是直接出國、高中怎麼選</span></a>
     <a href="balanced.html"><b>④ 平均型的孩子</b><span>繁星優勢、找到主軸、文理學院的彈性</span></a>
+    <a href="timeline.html"><b>📅 兩個孩子的升學時間表</b><span>國一到高三每個學期要做什麼、五個決策點在什麼時候，可勾選追蹤進度。</span></a>
   </div>
 
   <h2><span class="num">一</span>目前的狀況與結論</h2>
@@ -122,6 +124,7 @@ page("index.html", "總覽與時間軸",
   </div>
 
   <h2><span class="num">二</span>時間軸與決策點</h2>
+  <p>下面是整體架構；每個學期的詳細待辦清單，請看 <a href="timeline.html">兩個孩子的升學時間表</a>。</p>
   <div class="table-wrap">
     <table>
       <thead><tr><th>階段</th><th>重點</th><th>要做的判斷</th></tr></thead>
@@ -551,6 +554,6 @@ page("balanced.html", "平均型的孩子",
   </div>
   <p>英文練習可以參考 <a href="../english/index.html">英文聽說寫</a>；如果國文閱讀也想加強，可以使用 <a href="../chinese/index.html">國文閱讀力練習室</a>。</p>
 
-{pager(("stem.html", "③ 偏理科的孩子"), ("index.html", "回到總覽"))}""")
+{pager(("stem.html", "③ 偏理科的孩子"), ("timeline.html", "📅 兩個孩子的升學時間表"))}""")
 
 print("planning pages written to", OUT)
