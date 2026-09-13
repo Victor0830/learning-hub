@@ -19,7 +19,7 @@ def page(fname, title, desc, body, data_page=None):
     )
     dp = f' data-page="{data_page}"' if data_page else ""
     script = '\n<script src="../assets/quiz.js"></script>' if data_page else ""
-    full_title = "升學規劃｜接軌" if fname == "index.html" else f"{title}｜升學規劃｜接軌"
+    full_title = "升學規劃｜探索未來世界的能力" if fname == "index.html" else f"{title}｜升學規劃｜探索未來世界的能力"
     html = f"""<!DOCTYPE html>
 <html lang="zh-Hant-TW">
 <head>
@@ -36,7 +36,7 @@ def page(fname, title, desc, body, data_page=None):
 <body data-unit="plan"{dp}>
 <header class="site-header">
   <div class="inner">
-    <a class="brand" href="../index.html"><span class="seal">接</span>接軌</a>
+    <a class="brand" href="../index.html"><span class="seal">探</span>探索未來世界的能力</a>
     <nav class="section-nav" aria-label="主題">
       <a href="../chinese/index.html">國文閱讀</a>
       <a href="../english/index.html">英文聽說寫</a>
@@ -54,7 +54,7 @@ def page(fname, title, desc, body, data_page=None):
 <main>
 {body}
 </main>
-<footer class="site-footer"><a href="../index.html">接軌</a>．升學規劃．制度與政策會變動，實際以各校簡章與官方公告為準</footer>{script}
+<footer class="site-footer"><a href="../index.html">探索未來世界的能力</a>．升學規劃．制度與政策會變動，實際以各校簡章與官方公告為準</footer>{script}
 </body>
 </html>
 """
