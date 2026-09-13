@@ -1,0 +1,148 @@
+/* 體能訓練：訓練卡、打卡表、比賽計數器、動作檢查、測驗趨勢圖（沿用 ../../assets/style.css 的色票） */
+
+:root {
+  --fit-fallback: #c2410c;
+  /* 圖表兩個孩子的線：藍／橘（已用色盲檢查，淺色 #fff、深色 #2c221c 底都通過） */
+  --kid1: #2a78d6;
+  --kid2: #eb6834;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fit-fallback: #ff9a5c;
+    --kid1: #3987e5;
+    --kid2: #d95926;
+  }
+}
+/* 共用樣式還沒有 --fit 時，也有顏色可用 */
+body[data-unit="fit"] { --unit: var(--fit, var(--fit-fallback)); }
+
+/* ---------- 誰的紀錄 ---------- */
+.who-bar {
+  display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin: 1rem 0;
+  background: var(--surface); border-radius: 18px; padding: .7rem .9rem; box-shadow: var(--shadow);
+}
+.who-bar > b { margin-right: .2rem; }
+.who-bar button[aria-pressed="true"] { background: var(--unit); color: var(--on-color); border-color: var(--unit); font-weight: 700; }
+.who-bar .names { display: flex; flex-wrap: wrap; gap: .5rem; margin-left: auto; font-size: .9rem; }
+.who-bar .names label { display: flex; align-items: center; gap: .3rem; }
+@media (max-width: 720px) { .who-bar .names { margin-left: 0; } }
+.fit-input, .fit-select {
+  font: inherit; font-size: .95rem; padding: .35rem .6rem; border-radius: 10px;
+  border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+}
+.fit-input.name { width: 7em; }
+.fit-input:focus-visible, .fit-select:focus-visible { outline: 3px solid color-mix(in srgb, var(--unit) 55%, transparent); outline-offset: 2px; }
+.dot { display: inline-block; width: .7rem; height: .7rem; border-radius: 50%; vertical-align: middle; margin-right: .25rem; }
+.dot.k1 { background: var(--kid1); }
+.dot.k2 { background: var(--kid2); }
+
+/* ---------- 訓練動作卡 ---------- */
+.drills { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: .8rem; margin: 1rem 0; }
+.drill {
+  background: var(--surface); border-radius: 20px; padding: .9rem 1rem; box-shadow: var(--shadow);
+  border-top: 5px solid var(--unit);
+}
+.drill h4 { font-family: var(--round); font-weight: 400; font-size: 1.08rem; margin: 0 0 .2rem; }
+.drill .dose { display: inline-block; font-size: .8rem; font-weight: 700; color: var(--unit); background: color-mix(in srgb, var(--unit) 12%, var(--surface)); border-radius: 999px; padding: .05rem .6rem; margin-bottom: .3rem; }
+.drill p { margin: .3rem 0; font-size: .95rem; }
+.drill ul { margin: .3rem 0; font-size: .93rem; }
+.drill .cue { font-size: .9rem; color: var(--ink-2); }
+.drill .cue b { color: var(--good); }
+.drill .oops { font-size: .9rem; color: var(--ink-2); }
+.drill .oops b { color: var(--bad); }
+
+/* ---------- 本週打卡 ---------- */
+.week-head { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin: .6rem 0; }
+.week-head .label { font-weight: 700; margin-right: auto; }
+.week-table td, .week-table th { text-align: center; padding: .45rem .3rem; }
+.week-table td:first-child, .week-table th:first-child { text-align: left; white-space: nowrap; padding-left: .8rem; }
+.week-table table { min-width: 560px; }
+.week-table input[type="checkbox"] { width: 1.25rem; height: 1.25rem; accent-color: var(--unit); cursor: pointer; }
+.week-table th.today { background: color-mix(in srgb, var(--unit) 32%, var(--surface)); }
+.week-sum { font-size: .92rem; color: var(--ink-2); }
+
+/* ---------- 比賽數據計數器 ---------- */
+.tally-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: .6rem; margin: .8rem 0; }
+.tally {
+  display: flex; align-items: center; gap: .5rem; background: var(--surface); border-radius: 16px;
+  padding: .55rem .7rem; box-shadow: var(--shadow);
+}
+.tally .t-name { flex: 1; font-size: .95rem; line-height: 1.3; }
+.tally .t-name small { display: block; color: var(--ink-2); font-size: .78rem; }
+.tally .t-num { min-width: 2.2rem; text-align: center; font-family: var(--round); font-size: 1.35rem; font-variant-numeric: tabular-nums; }
+.tally button { min-width: 2.4rem; min-height: 2.4rem; padding: 0; font-size: 1.1rem; }
+.tally button.plus { background: var(--unit); color: var(--on-color); border-color: var(--unit); }
+.shot {
+  background: var(--surface); border-radius: 16px; padding: .6rem .75rem; box-shadow: var(--shadow);
+  display: grid; grid-template-columns: 1fr auto; gap: .35rem .6rem; align-items: center;
+}
+.shot .t-name { font-size: .95rem; }
+.shot .t-rate { font-family: var(--round); font-size: 1.2rem; font-variant-numeric: tabular-nums; text-align: right; }
+.shot .t-rate small { font-family: var(--sans); font-size: .78rem; color: var(--ink-2); display: block; }
+.shot .btns { grid-column: 1 / -1; display: flex; gap: .4rem; flex-wrap: wrap; }
+.shot .btns button { flex: 1; min-height: 2.4rem; }
+.shot .btns .make { background: var(--good-soft); border-color: var(--good); }
+.shot .btns .miss { background: var(--bad-soft); border-color: var(--bad); }
+.shot .btns .undo { flex: 0 0 auto; font-size: .85rem; }
+
+.form-row { display: flex; flex-wrap: wrap; gap: .6rem 1rem; align-items: end; margin: .6rem 0; }
+.form-row label { display: flex; flex-direction: column; gap: .2rem; font-size: .9rem; font-weight: 700; }
+.form-row label .fit-input { font-weight: 400; }
+.form-row .grow { flex: 1 1 220px; }
+.form-row .grow .fit-input { width: 100%; }
+.saved-msg { color: var(--good); font-weight: 700; font-size: .92rem; }
+
+/* ---------- 動作檢查清單 ---------- */
+.check-list { list-style: none; padding: 0; margin: .6rem 0; counter-reset: ck; }
+.check-item {
+  background: var(--surface); border-radius: 16px; padding: .6rem .8rem; margin: .45rem 0; box-shadow: var(--shadow);
+  display: flex; flex-wrap: wrap; gap: .4rem .8rem; align-items: center;
+}
+.check-item .ck-text { flex: 1 1 260px; font-size: .96rem; }
+.check-item .ck-text::before { counter-increment: ck; content: counter(ck) ". "; color: var(--unit); font-weight: 700; }
+.check-item .ck-text small { display: block; color: var(--ink-2); font-size: .85rem; }
+.rate { display: flex; gap: .3rem; }
+.rate button { font-size: .85rem; padding: .3rem .7rem; }
+.rate button[aria-pressed="true"][data-v="0"] { background: var(--bad-soft); border-color: var(--bad); font-weight: 700; }
+.rate button[aria-pressed="true"][data-v="1"] { background: var(--tip-soft); border-color: var(--tip); font-weight: 700; }
+.rate button[aria-pressed="true"][data-v="2"] { background: var(--good-soft); border-color: var(--good); font-weight: 700; }
+
+/* ---------- 紀錄列表 ---------- */
+.log-table td.num, .log-table th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.log-table td:first-child { white-space: nowrap; }
+.log-table button { font-size: .8rem; padding: .15rem .6rem; }
+.delta { font-size: .8rem; font-weight: 700; margin-left: .25rem; white-space: nowrap; }
+.delta.up { color: var(--good); }
+.delta.down { color: var(--bad); }
+.delta.same { color: var(--ink-2); }
+.empty { color: var(--ink-2); font-size: .95rem; padding: .6rem 0; }
+
+/* ---------- 趨勢圖 ---------- */
+.chart-card { background: var(--surface); border-radius: 20px; box-shadow: var(--shadow); padding: .9rem 1rem 1rem; margin: 1rem 0; }
+.chart-head { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem .8rem; }
+.chart-head h3 { margin: 0; font-size: 1.1rem; margin-right: auto; }
+.chart-sub { font-size: .88rem; color: var(--ink-2); margin: .3rem 0 .4rem; }
+.legend { display: flex; flex-wrap: wrap; gap: .3rem 1rem; font-size: .9rem; color: var(--ink); margin: .2rem 0 .3rem; }
+.legend button { font-size: .88rem; padding: .2rem .7rem; }
+.legend button[aria-pressed="false"] { opacity: .5; }
+.chart-wrap { position: relative; width: 100%; }
+.chart-wrap svg { display: block; width: 100%; height: auto; overflow: visible; }
+.chart-wrap .grid line { stroke: var(--line); stroke-width: 1; }
+.chart-wrap .axis text { fill: var(--ink-2); font-size: 12px; font-family: var(--sans); }
+.chart-wrap .series path { fill: none; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.chart-wrap .series circle { stroke: var(--surface); stroke-width: 2; }
+.chart-wrap .end-label { font-size: 12px; font-family: var(--sans); fill: var(--ink); }
+.chart-wrap .cross { stroke: var(--ink-2); stroke-width: 1; stroke-dasharray: 3 3; }
+.chart-tip {
+  position: absolute; pointer-events: none; background: var(--surface); color: var(--ink);
+  border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--shadow-lift);
+  padding: .45rem .65rem; font-size: .85rem; line-height: 1.45; white-space: nowrap; z-index: 3;
+}
+.chart-tip .tip-date { color: var(--ink-2); font-size: .8rem; }
+.chart-tip b { font-variant-numeric: tabular-nums; }
+
+/* ---------- 列印 ---------- */
+@media print {
+  .who-bar, .tally-grid, .rate, .log-table button, .chart-head select, .legend button { display: none !important; }
+  .drill, .chart-card, .check-item { box-shadow: none; border: 1px solid #ccc; break-inside: avoid; }
+}
