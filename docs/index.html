@@ -6,6 +6,9 @@
 <title>學習導航站</title>
 <meta name="description" content="陪國一孩子一起成長的學習網站：國文閱讀理解練習、英文口說聽力與寫作、台灣與美國升學規劃，內容持續新增。">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧭</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Huninn&display=swap">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
@@ -20,13 +23,25 @@
   </div>
 </header>
 
-<main class="wide">
-  <section class="home-hero">
-    <span class="seal" style="width:56px;height:56px;font-size:30px;border-radius:14px">學</span>
-    <h1>學習導航站</h1>
-    <p class="lead muted">陪國一的孩子一步一步往前走：把國文讀懂、讓英文說得出口，也提早想清楚未來的升學方向。</p>
-  </section>
+<section class="hub-hero" aria-labelledby="hub-title">
+  <div class="hub-hero-media">
+    <img src="assets/hero-family.jpg" alt="水彩插畫：爸爸媽媽牽著雙胞胎，在河邊草地上開心地散步" width="1536" height="1024" fetchpriority="high" onerror="this.remove()">
+  </div>
+  <div class="hub-hero-copy">
+    <div class="hub-hero-inner">
+      <p class="eyebrow">學習導航站</p>
+      <h1 id="hub-title">陪孩子一步一步往前走</h1>
+      <p class="lede">把國文讀懂、讓英文說得出口，也提早想清楚未來的升學方向。</p>
+      <div class="hero-pills">
+        <a class="hero-pill" href="chinese/index.html">📖 國文閱讀</a>
+        <a class="hero-pill" href="english/index.html">🎧 英文聽說寫</a>
+        <a class="hero-pill" href="planning/index.html">🧭 升學規劃</a>
+      </div>
+    </div>
+  </div>
+</section>
 
+<main class="wide">
   <div class="section-grid">
     <a class="section-card" href="chinese/index.html" style="--c:var(--u1)">
       <span class="icon">📖</span>
