@@ -387,31 +387,35 @@ a.section-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(
 .two-col { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; }
 
 /* ---------- hub hero（版型參考 drcwlin.pages.dev：滿版圖＋漸層＋左下文字） ---------- */
-.hub-hero { position: relative; background: #1d2b36; border-bottom: 1px solid var(--line); }
+.hub-hero { position: relative; background: #3a2616; border-bottom: 1px solid var(--line); }
 /* width:100% 必要：只寫 aspect-ratio + max-height 時，瀏覽器會用被夾住的高度反推寬度 */
 .hub-hero-media {
   position: relative; width: 100%;
-  aspect-ratio: 1536 / 1024; max-height: 64vh; overflow: hidden;
+  aspect-ratio: 1536 / 1024; max-height: 80vh; min-height: 420px; overflow: hidden;
   background: linear-gradient(160deg, #bcd9ee 0%, #e6f0dc 55%, #9fcf8a 100%);
 }
-.hub-hero-media img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%; }
+.hub-hero-media img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 28%; }
 .hub-hero-media::after {
   content: ""; position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(10,24,34,.10) 0%, rgba(10,24,34,.05) 40%, rgba(10,24,34,.72) 100%);
+  background:
+    radial-gradient(ellipse 60% 70% at 8% 100%, rgba(50,24,8,.78) 0%, rgba(50,24,8,.45) 45%, rgba(50,24,8,0) 75%),
+    linear-gradient(180deg, rgba(50,24,8,0) 70%, rgba(50,24,8,.25) 100%);
 }
 .hub-hero-copy { position: absolute; inset: auto 0 0 0; z-index: 2; padding-block: clamp(20px, 4.5vw, 48px); color: #fff; }
-.hub-hero-inner { max-width: 1080px; margin: 0 auto; padding-inline: 1.1rem; }
+.hub-hero-inner { padding-inline: clamp(1.1rem, 4vw, 3.5rem); }
+/* 文字限寬靠左，避開畫面中間的雙胞胎 */
+.hub-hero-inner > .lede, .hub-hero-inner > .hero-pills { max-width: 24rem; }
 .hub-hero-copy .eyebrow {
   display: block; background: none; padding: 0; margin: 0 0 .5em;
   font-size: clamp(.75rem, 2.4vw, .85rem); letter-spacing: .18em; font-weight: 700; color: rgba(255,255,255,.88);
 }
 .hub-hero-copy h1 {
-  font-size: clamp(1.7rem, 5.4vw, 3rem); color: #fff; margin: 0 0 .35em;
+  font-size: clamp(1.7rem, 3.4vw, 2.7rem); color: #fff; margin: 0 0 .35em; white-space: nowrap;
   text-wrap: balance; text-shadow: 0 2px 16px rgba(0,0,0,.35);
 }
 .hub-hero-copy .lede {
   font-size: clamp(.98rem, 2.8vw, 1.15rem); color: rgba(255,255,255,.95);
-  max-width: 40em; margin: 0; text-shadow: 0 1px 12px rgba(0,0,0,.45);
+  margin: 0; text-shadow: 0 1px 12px rgba(0,0,0,.5);
 }
 .hero-pills { display: flex; flex-wrap: wrap; gap: 12px; margin-top: clamp(16px, 3vw, 26px); }
 .hero-pill {
@@ -424,10 +428,12 @@ a.section-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(
 .hero-pill:hover { background: rgba(255,255,255,.26); border-color: rgba(255,255,255,.7); color: #fff; }
 /* 小螢幕：圖在上、文字在下，避免文字比圖高而蓋住整張圖 */
 @media (max-width: 720px) {
-  .hub-hero-media { aspect-ratio: 3 / 2; max-height: 46vh; }
-  .hub-hero-media::after { background: linear-gradient(180deg, rgba(10,24,34,0) 55%, #1d2b36 100%); }
+  .hub-hero-media { aspect-ratio: 3 / 2; max-height: 46vh; min-height: 0; }
+  .hub-hero-media::after { background: linear-gradient(180deg, rgba(58,38,22,0) 60%, #3a2616 100%); }
   .hub-hero-copy { position: static; padding-block: 6px 26px; }
   .hub-hero-copy .lede { text-shadow: none; }
+  .hub-hero-inner > .lede, .hub-hero-inner > .hero-pills { max-width: none; }
+  .hub-hero-copy h1 { white-space: normal; }
   .hero-pill { padding: 10px 16px; white-space: normal; }
 }
 
