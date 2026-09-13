@@ -28,8 +28,4 @@ python3 -m http.server 8765 --directory docs
 ## 部署
 
 - **GitHub Pages**：從 `main` 分支的 `/docs` 資料夾發布，push 後自動更新。
-- **Cloudflare Pages**：`.github/workflows/cloudflare-pages.yml` 在每次 push 到 `main` 時，用 Wrangler 部署 `docs/` 到 Pages 專案 `learning-hub`。需要在 GitHub repo 設定兩個 Secrets：
-  - `CLOUDFLARE_API_TOKEN`：Cloudflare API Token，權限需包含 **Account → Cloudflare Pages → Edit**
-  - `CLOUDFLARE_ACCOUNT_ID`：Cloudflare 帳號 ID
-
-  未設定 Secrets 時，workflow 會略過部署，不會失敗。
+- **Cloudflare Pages**：在 Cloudflare 後台以 Git 整合連接本 repo（專案 `learning-hub`，production branch `main`，無建置指令，輸出目錄 `docs`），push 到 `main` 後自動部署到 https://learning-hub-85l.pages.dev/
