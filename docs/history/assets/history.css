@@ -1,0 +1,188 @@
+/* 世界史與台灣史：年表、因果鏈、排序練習、筆記卡樣式（沿用 ../../assets/style.css 的色票） */
+
+:root {
+  --e0: #8c6a48;  /* 史前 */
+  --e1: #1f78b0;  /* 大航海 */
+  --e2: #c0432b;  /* 鄭氏 */
+  --e3: #a8740a;  /* 清帝國 */
+  --e4: #bd3a6c;  /* 日本 */
+  --e5: #2c8456;  /* 戰後戒嚴 */
+  --e6: #6650c4;  /* 民主化 */
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --e0: #d2ab86;
+    --e1: #6cbef0;
+    --e2: #ff9a80;
+    --e3: #f0c05a;
+    --e4: #ff8fb8;
+    --e5: #74d3a0;
+    --e6: #b7a6ff;
+  }
+}
+/* 萬一共用樣式還沒有 --hist，也有顏色可用 */
+body[data-unit="hist"] { --unit: var(--hist, #8a4b2e); }
+
+.era-0 { --era: var(--e0); } .era-1 { --era: var(--e1); } .era-2 { --era: var(--e2); }
+.era-3 { --era: var(--e3); } .era-4 { --era: var(--e4); } .era-5 { --era: var(--e5); } .era-6 { --era: var(--e6); }
+
+/* ---------- 比例時間帶 ---------- */
+.ribbon-wrap { margin: 1.2rem 0; }
+.ribbon { display: flex; height: 58px; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); background: var(--surface); }
+.ribbon a {
+  position: relative; display: flex; align-items: center; justify-content: center; min-width: 0;
+  background: var(--era); color: var(--on-color); text-decoration: none; font-family: var(--round);
+  font-size: .9rem; line-height: 1.2; text-align: center; padding: 0; box-shadow: inset -2px 0 0 var(--surface);
+}
+.ribbon a:last-child { box-shadow: none; }
+.ribbon a:hover { filter: brightness(1.08); }
+.ribbon a.pre { flex: 0 0 64px; background: repeating-linear-gradient(135deg, var(--e0) 0 8px, color-mix(in srgb, var(--e0) 75%, var(--surface)) 8px 16px); }
+.ribbon a span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ribbon-years { position: relative; height: 1.4rem; font-size: .78rem; color: var(--ink-2); font-variant-numeric: tabular-nums; margin-left: 64px; }
+.ribbon-years span { position: absolute; transform: translateX(-50%); white-space: nowrap; }
+@media (max-width: 560px) {
+  .ribbon { height: 50px; }
+  .ribbon a { font-size: .72rem; }
+  .ribbon a.pre { flex-basis: 34px; }
+  .ribbon-years { margin-left: 34px; font-size: .7rem; }
+  .ribbon a.short span { display: none; }
+}
+
+/* ---------- 年表 ---------- */
+.tl-controls { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin: 1rem 0; }
+.tl-controls button[aria-pressed="true"] { background: var(--unit); color: var(--on-color); border-color: var(--unit); }
+
+.era {
+  margin: 2.2rem 0; background: var(--surface); border-radius: 26px; box-shadow: var(--shadow);
+  overflow: hidden; border-top: 8px solid var(--era);
+}
+.era-head { padding: 1.1rem 1.3rem .4rem; }
+@media (max-width: 720px) { .era { scroll-margin-top: 70px; } }
+.era-head .years {
+  display: inline-block; font-size: .85rem; font-weight: 700; color: var(--on-color); background: var(--era);
+  border-radius: 999px; padding: .05rem .75rem; font-variant-numeric: tabular-nums;
+}
+.era-head h2 { margin: .5rem 0 .2rem; font-size: 1.45rem; }
+.era-head .span-note { color: var(--ink-2); font-size: .9rem; margin: 0; }
+.era .oneline {
+  margin: .6rem 1.3rem; padding: .6rem 1rem; border-radius: 16px; font-family: var(--round); font-size: 1.1rem;
+  background: color-mix(in srgb, var(--era) 12%, var(--surface));
+}
+.era .oneline::before { content: "一句話記住　"; font-family: var(--sans); font-size: .78rem; font-weight: 700; color: var(--era); display: block; }
+.wave {
+  margin: .6rem 1.3rem; padding: .6rem 1rem; border-radius: 16px; border: 2px dashed color-mix(in srgb, var(--era) 45%, transparent);
+}
+.wave b.label { color: var(--era); }
+
+.lanes { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin: .8rem 0 0; border-top: 1px solid var(--line); }
+.lane { padding: .7rem 1.1rem .9rem; min-width: 0; }
+.lane + .lane { border-left: 1px solid var(--line); background: color-mix(in srgb, var(--surface-2) 45%, var(--surface)); }
+.lane h3 { margin: 0 0 .4rem; font-size: 1rem; font-family: var(--round); }
+.lane ol { list-style: none; padding: 0; margin: 0; }
+.lane li { display: grid; grid-template-columns: 5.2em 1fr; gap: .5rem; padding: .35rem 0; border-bottom: 1px dashed var(--line); font-size: .96rem; line-height: 1.7; }
+.lane li:last-child { border-bottom: 0; }
+.lane .yr { font-weight: 700; color: var(--era); font-variant-numeric: tabular-nums; font-size: .88rem; padding-top: .1rem; }
+.lane li.big .txt { font-weight: 700; }
+.lane li.big .txt::after { content: " ★"; color: var(--sun); }
+.lane li.link { background: color-mix(in srgb, var(--era) 9%, transparent); border-radius: 8px; padding-left: .3rem; padding-right: .3rem; }
+.hide-world .lanes { grid-template-columns: 1fr; }
+.hide-world .lane.world { display: none; }
+.only-big .lane li:not(.big) { display: none; }
+@media (max-width: 680px) {
+  .lanes { grid-template-columns: 1fr; }
+  .lane + .lane { border-left: 0; border-top: 1px solid var(--line); }
+}
+
+.skeleton { padding: .2rem 1.3rem 1.2rem; }
+.skeleton > summary {
+  cursor: pointer; font-family: var(--round); font-size: 1.05rem; padding: .5rem 0; color: var(--era); list-style: none;
+}
+.skeleton > summary::-webkit-details-marker { display: none; }
+.skeleton > summary::before { content: "▸ "; }
+.skeleton[open] > summary::before { content: "▾ "; }
+.skel-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: .6rem; }
+.skel-grid div { background: var(--surface-2); border-radius: 14px; padding: .55rem .8rem; font-size: .95rem; }
+.skel-grid b { display: block; color: var(--era); font-family: var(--round); font-weight: 400; }
+.skel-grid .ans { transition: filter .2s; }
+.cover .skel-grid .ans { filter: blur(6px); user-select: none; cursor: pointer; }
+.cover .skel-grid .ans.peek { filter: none; }
+
+/* ---------- 世界的浪 表格小標 ---------- */
+.dot { display: inline-block; width: .7em; height: .7em; border-radius: 50%; background: var(--era); margin-right: .35em; vertical-align: 0; }
+
+/* ---------- 因果鏈 ---------- */
+.chain { background: var(--surface); border-radius: 24px; box-shadow: var(--shadow); padding: 1.1rem 1.2rem 1.2rem; margin: 1.4rem 0; }
+.chain > h3:first-child { margin-top: 0; }
+.chain .q-line { font-family: var(--round); font-size: 1.15rem; margin: 0 0 .6rem; }
+.links { list-style: none; padding: 0; margin: .4rem 0; }
+.links > li {
+  position: relative; margin: 0 0 1.5rem; padding: .55rem .9rem .55rem 1rem; border-radius: 14px;
+  background: color-mix(in srgb, var(--k, var(--unit)) 10%, var(--surface)); border-left: 5px solid var(--k, var(--unit));
+}
+.links > li:not(:last-child)::after {
+  content: "↓"; position: absolute; left: 1.3rem; bottom: -1.45rem; color: var(--ink-2); font-weight: 700; line-height: 1.4rem;
+}
+.links > li:last-child { margin-bottom: 0; }
+.links .kind { display: inline-block; font-size: .75rem; font-weight: 700; border-radius: 999px; padding: 0 .55rem; margin-right: .4rem; color: var(--on-color); background: var(--k, var(--unit)); vertical-align: 1px; }
+.k-bg { --k: var(--e1); } .k-fuse { --k: var(--e2); } .k-proc { --k: var(--e3); } .k-eff { --k: var(--e5); }
+.ctags { display: flex; flex-wrap: wrap; gap: .35rem; margin: .6rem 0 0; }
+.ctag { font-size: .8rem; border-radius: 999px; padding: .05rem .6rem; background: var(--surface-2); color: var(--ink-2); }
+.whatif { margin-top: .8rem; padding: .6rem .9rem; border-radius: 14px; background: var(--tip-soft); }
+.whatif::before { content: "🤔 如果……會怎樣？"; display: block; font-weight: 700; font-size: .9rem; }
+
+.fourbox { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: .7rem; margin: 1rem 0; }
+.fourbox div { border-radius: 18px; padding: .7rem .9rem; background: color-mix(in srgb, var(--k) 11%, var(--surface)); border-top: 5px solid var(--k); box-shadow: var(--shadow); }
+.fourbox b { display: block; font-family: var(--round); font-weight: 400; font-size: 1.1rem; color: var(--k); }
+
+/* ---------- 排序練習 ---------- */
+.order { background: var(--surface); border-radius: 22px; box-shadow: var(--shadow); padding: 1rem 1.1rem 1.1rem; margin: 1rem 0; }
+.order h4 { margin: 0 0 .3rem; font-family: var(--round); font-weight: 400; font-size: 1.1rem; }
+.order .hint { color: var(--ink-2); font-size: .9rem; margin: 0 0 .5rem; }
+.pool, .picked { display: grid; gap: .45rem; margin: .5rem 0; }
+.pool:empty { display: none; }
+.picked:empty::before { content: "（點下面的卡片，依照發生順序排進來）"; color: var(--ink-2); font-size: .9rem; }
+.card-btn { text-align: left; border-radius: 14px; border-width: 2px; padding: .5rem .8rem; display: flex; gap: .6rem; align-items: baseline; }
+.picked .card-btn { background: color-mix(in srgb, var(--unit) 8%, var(--surface)); }
+.card-btn .n { flex-shrink: 0; font-weight: 700; color: var(--unit); min-width: 1.4em; }
+.card-btn.right { background: var(--good-soft); border-color: var(--good); }
+.card-btn.wrong { background: var(--bad-soft); border-color: var(--bad); }
+.order .row button[disabled] { opacity: .45; cursor: default; transform: none; }
+.order .row { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-top: .4rem; }
+.order .result { font-weight: 700; margin: 0; }
+.order .result.ok { color: var(--good); }
+.order .result.no { color: var(--bad); }
+
+/* ---------- 筆記卡 ---------- */
+.note-form { background: var(--surface); border-radius: 24px; box-shadow: var(--shadow); padding: 1.1rem 1.2rem 1.2rem; margin: 1rem 0; }
+.note-form .grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: .2rem .9rem; }
+.note-form label { display: block; font-weight: 700; font-size: .92rem; margin-top: .55rem; }
+.note-form label small { font-weight: 400; color: var(--ink-2); }
+.note-form input, .note-form select {
+  font: inherit; font-size: 1rem; color: var(--ink); background: var(--bg); width: 100%;
+  border: 1px solid var(--line); border-radius: 12px; padding: .35rem .6rem; margin-top: .2rem;
+}
+.note-form textarea { min-height: 2.6em; }
+.note-form input:focus-visible, .note-form select:focus-visible { outline: 3px solid color-mix(in srgb, var(--unit) 55%, transparent); outline-offset: 1px; }
+.note-form .row { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .8rem; align-items: center; }
+.saved-msg { color: var(--good); font-weight: 700; }
+
+.filters { display: flex; flex-wrap: wrap; gap: .4rem; margin: .8rem 0; }
+.filters button[aria-pressed="true"] { background: var(--unit); color: var(--on-color); border-color: var(--unit); }
+.my-era { margin: 1.2rem 0; }
+.my-era > h3 { display: flex; align-items: center; gap: .4rem; margin: 0 0 .5rem; font-size: 1.1rem; }
+.my-era .empty { color: var(--ink-2); font-size: .9rem; margin: 0; }
+.ncard { background: var(--surface); border-radius: 18px; box-shadow: var(--shadow); padding: .8rem 1rem; margin: .6rem 0; border-left: 6px solid var(--era); }
+.ncard h4 { margin: 0; font-family: var(--round); font-weight: 400; font-size: 1.12rem; }
+.ncard .meta { color: var(--ink-2); font-size: .85rem; margin: .1rem 0 .4rem; }
+.ncard dl { margin: 0; display: grid; grid-template-columns: 6.5em 1fr; gap: .15rem .6rem; font-size: .95rem; }
+.ncard dt { font-weight: 700; color: var(--era); }
+.ncard dd { margin: 0; white-space: pre-wrap; }
+.ncard .row { display: flex; gap: .4rem; margin-top: .5rem; }
+.ncard .row button { font-size: .82rem; padding: .15rem .7rem; }
+@media (max-width: 520px) { .ncard dl { grid-template-columns: 1fr; } .ncard dd { margin-bottom: .3rem; } }
+
+@media print {
+  .era, .chain, .order, .ncard { box-shadow: none; break-inside: avoid; }
+  .tl-controls, .note-form, .filters, .ncard .row, .order .row { display: none !important; }
+  .cover .skel-grid .ans { filter: none; }
+}

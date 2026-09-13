@@ -10,7 +10,7 @@ SECTIONS = [
     ("english", "英文聽說寫", True),
     ("planning", "升學規劃", True),
     ("economics", "經濟與金錢", True),
-    ("history", "世界史與台灣史", False),
+    ("history", "世界史與台灣史", True),
 ]
 NAV_RE = re.compile(r'<nav class="section-nav" aria-label="主題">.*?</nav>', re.S)
 

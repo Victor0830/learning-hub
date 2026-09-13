@@ -6,6 +6,8 @@
 |---|---|---|
 | `docs/chinese/` | 國文閱讀力練習室 | 詞性、抓重點、譬喻與言外之意、成語古文轉品、給家長的陪練指南，附互動練習 |
 | `docs/english/` | 英文聽說寫 | 口說、聽力、寫作沒跟上閱讀的原因、發音優先順序、診斷錄音、跟讀／重述／聽寫／仿寫、每週安排 |
+| `docs/economics/` | 經濟與金錢 | 工作與錢、價格與市場、銀行利息通膨、公司與股票、世界經濟、讀書疑問、模擬投資、給家長 |
+| `docs/history/` | 世界史與台灣史 | 歷史骨架、台灣 × 世界年表、因果鏈練習、看影片筆記卡 |
 | `docs/planning/` | 升學規劃 | 雙胞胎（偏理科／平均型）的特質判斷、台灣與美國制度、A/B 路線比較、高中選擇、時間軸 |
 
 共用資源在 `docs/assets/`（`style.css`、`quiz.js`）。作答紀錄只存在瀏覽器的 localStorage。
@@ -14,8 +16,8 @@
 ## 新增子目錄
 
 1. 建立 `docs/<新主題>/index.html`，引用 `../assets/style.css`（需要練習題時再引用 `../assets/quiz.js`，並在 `<body>` 設定唯一的 `data-page`）。
-2. 複製現有頁面的 `<header class="site-header">`，把新主題加進 `section-nav`。
-3. 在 `docs/index.html` 的 `.section-grid` 加一張卡片，並把新主題加進其他頁面的 `section-nav`。
+2. 在 `tools/update_section_nav.py` 的 `SECTIONS` 加一行（建置中先設 `False`），完成後改成 `True`，執行 `python3 tools/update_section_nav.py` 更新所有頁面的主題導覽。
+3. 在 `docs/index.html` 的 `.section-grid` 加一張卡片。
 
 ## 本機預覽
 

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>台灣 × 世界年表｜世界史與台灣史｜探索未來世界的能力</title>
+<meta name="description" content="台灣史七個時代和同時期的世界大事並排看，每個時代附一句話重點、世界的浪和骨架卡。">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏛️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Huninn&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="assets/history.css">
+</head>
+<body data-unit="hist">
+<header class="site-header">
+  <div class="inner">
+    <a class="brand" href="../index.html"><span class="seal">探</span>探索未來世界的能力</a>
+    <nav class="section-nav" aria-label="主題">
+      <a href="../chinese/index.html">國文閱讀</a>
+      <a href="../english/index.html">英文聽說寫</a>
+      <a href="../planning/index.html">升學規劃</a>
+      <a href="../economics/index.html">經濟與金錢</a>
+      <a href="../history/index.html" aria-current="true">世界史與台灣史</a>
+    </nav>
+  </div>
+  <div class="subnav"><div class="inner">
+    <a class="sub-home" href="index.html">🏛️ 世界史與台灣史</a>
+    <nav class="site-nav" aria-label="世界史與台灣史頁面">
+      <a href="index.html">總覽：歷史的骨架</a>
+      <a href="timeline.html" aria-current="page">台灣 × 世界年表</a>
+      <a href="why.html">因果鏈練習</a>
+      <a href="notes.html">看影片筆記卡</a>
+    </nav>
+  </div></div>
+</header>
+
+<main class="wide">
+  <section class="hero">
+    <span class="eyebrow">第一層骨架：時代座標</span>
+    <h1>台灣 × 世界年表</h1>
+    <p class="lead">左邊是台灣，右邊是同時的世界。上課聽到一個重點，先來這裡找它在哪個時代，再看看旁邊的世界發生了什麼。</p>
+  </section>
+
+  <h2><span class="num">一</span>先看比例：每個時代有多長？</h2>
+  <p>下面這條帶子是從 1624 年到今天，<b>長度照真實年數的比例</b>畫的（最左邊斜線是史前，實際上長達好幾萬年，放不下）。點一下可以跳到那個時代。</p>
+  <div class="ribbon-wrap" id="ribbon"></div>
+  <div class="callout key">
+    <span class="title">📌 看出來了嗎？</span>
+    <p><b>清朝統治約 212 年</b>，比荷西、鄭氏、日本加起來還要久，也是台灣近四百年裡最長的時代。可是課本裡清朝常常只有幾課，所以更要把它的<b>前期</b>（限制移民、民變械鬥）和<b>後期</b>（開港、建省）分清楚。</p>
+  </div>
+
+  <h2><span class="num">二</span>七個時代，一次看完</h2>
+  <div class="callout">
+    <span class="title">🧩 怎麼看這張年表</span>
+    <ul>
+      <li><b>★</b> 是最重要的大事，先記這些就好。</li>
+      <li><span class="hl">淡色底</span>的事件，和另一邊（台灣或世界）有<b>牽動關係</b>，試著找出是哪一件推動了哪一件。</li>
+      <li><b>🦴 骨架卡</b>整理每個時代的五個問題。按「遮住骨架卡答案」可以自我測驗，點一下模糊的字就會顯示。</li>
+    </ul>
+  </div>
+  <div class="tl-controls" role="group" aria-label="年表顯示方式">
+    <button type="button" data-toggle="only-big" aria-pressed="false">★ 只看大事</button>
+    <button type="button" data-toggle="hide-world" aria-pressed="false">🏝️ 只看台灣</button>
+    <button type="button" data-toggle="cover" aria-pressed="false">🙈 遮住骨架卡答案</button>
+    <button type="button" onclick="window.print()">列印</button>
+  </div>
+
+  <div id="timeline"></div>
+
+  <div class="callout tip">
+    <span class="title">💡 資料說明</span>
+    <p>年代和事件以國中課本常見的說法為主。史前文化的年代是考古推估，不同研究會有些差距；像「清朝前期是否消極」「日治建設怎麼評價」這類問題，學者看法也不一樣，年表裡用「👀 不同的看法」標出來。遇到和課本不同的地方，<b>以學校課本和老師的說明為準</b>。</p>
+  </div>
+
+  <nav class="pager">
+    <a href="index.html"><small>← 上一頁</small>總覽：歷史的骨架</a>
+    <a class="next" href="why.html"><small>下一頁 →</small>🔗 因果鏈練習</a>
+  </nav>
+</main>
+<footer class="site-footer"><a href="../index.html">探索未來世界的能力</a>．世界史與台灣史．紀錄只存在你這台裝置的瀏覽器裡</footer>
+<script src="assets/history.js"></script>
+</body>
+</html>
