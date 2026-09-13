@@ -1,0 +1,179 @@
+/* ===== 英文聽說練習：在共用 style.css 上加的部分 ===== */
+:root {
+  --en-font: "Avenir Next", "Helvetica Neue", "Segoe UI", Roboto, system-ui, sans-serif;
+}
+
+.en { font-family: var(--en-font); letter-spacing: .005em; }
+.big-en { font-family: var(--en-font); font-size: 1.15rem; letter-spacing: .005em; }
+.center { justify-content: center; }
+.ok-text { color: var(--good); font-weight: 700; }
+.no-text { color: var(--bad); font-weight: 700; }
+
+.say { padding: .02rem .45rem; font-size: .85rem; border-radius: 8px; vertical-align: 1px; margin: 0 .15rem; line-height: 1.5; }
+button.say.en { font-size: 1rem; }
+
+select {
+  font: inherit; font-size: .9rem; color: var(--ink); background: var(--bg);
+  border: 1px solid var(--line); border-radius: 8px; padding: .25rem .4rem; max-width: 16rem;
+}
+button.on, button[aria-pressed="true"] { background: var(--unit); color: #fff; border-color: var(--unit); }
+button[disabled] { opacity: .45; cursor: not-allowed; }
+a.btn { text-decoration: none; display: inline-block; }
+input:focus-visible, select:focus-visible { outline: 3px solid color-mix(in srgb, var(--unit) 55%, transparent); outline-offset: 1px; }
+
+.voicebar {
+  display: flex; flex-wrap: wrap; gap: .45rem .9rem; align-items: center;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+  padding: .45rem .8rem; margin: 1rem 0; font-size: .9rem;
+}
+.voicebar label { display: flex; gap: .35rem; align-items: center; color: var(--ink-2); }
+.vb-title { font-weight: 700; }
+
+.tools { display: flex; flex-wrap: wrap; gap: .45rem; align-items: center; margin: .55rem 0; }
+
+/* ---------- 跟讀 ---------- */
+.shadow {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 18px;
+  padding: 1rem 1.2rem 1.1rem; margin: 1.4rem 0; box-shadow: var(--shadow);
+}
+.shadow > h3:first-child { margin-top: 0; }
+.shadow .meta { font-size: .9rem; color: var(--ink-2); margin: 0; }
+.shadow-text {
+  font-family: var(--en-font); font-size: 1.22rem; line-height: 2.15; letter-spacing: .01em;
+  margin: .5rem 0; padding: .6rem .9rem; background: var(--bg); border-radius: 12px;
+  transition: filter .2s;
+}
+.shadow-text .s { border-radius: 6px; cursor: pointer; padding: .12em .05em; transition: background .15s; }
+.shadow-text .s:hover { background: color-mix(in srgb, var(--unit) 10%, transparent); }
+.shadow-text .s.playing { background: color-mix(in srgb, var(--unit) 25%, transparent); }
+.shadow-text b, .stress-demo b { color: var(--unit); font-weight: 800; }
+.lk { font-style: normal; color: var(--accent); font-weight: 700; }
+.no-stress .shadow-text b { color: inherit; font-weight: inherit; }
+.no-link .lk { color: transparent; }
+.hide-text .shadow-text { filter: blur(7px); user-select: none; }
+.shadow details { margin: .4rem 0; font-size: .95rem; }
+.shadow details summary { cursor: pointer; color: var(--ink-2); }
+.shadow-practice { border-top: 1px dashed var(--line); margin-top: .8rem; padding-top: .5rem; }
+.check-result .diff { font-size: 1.05rem; }
+.steps-check {
+  display: flex; flex-wrap: wrap; gap: .25rem .9rem; align-items: center; font-size: .92rem;
+  border-top: 1px dashed var(--line); margin-top: .8rem; padding-top: .6rem;
+}
+.steps-check label { display: flex; gap: .3rem; align-items: center; cursor: pointer; }
+.steps-check input { width: 1.05rem; height: 1.05rem; accent-color: var(--unit); }
+.steps-check .days { margin-left: auto; font-weight: 700; color: var(--unit); }
+
+/* ---------- 比對結果 ---------- */
+.diff {
+  font-size: 1.05rem; line-height: 1.9; margin: .5rem 0; padding: .55rem .8rem;
+  border-radius: 10px; background: var(--surface-2);
+}
+.diff .small { margin-right: .4rem; }
+.w-ok { color: var(--good); }
+.w-miss { color: var(--bad); font-weight: 700; text-decoration: underline wavy; text-underline-offset: 4px; }
+.w-extra { color: var(--bad); text-decoration: line-through; text-decoration-thickness: 2px; }
+
+/* ---------- 錄音 ---------- */
+.recorder { display: flex; flex-wrap: wrap; gap: .45rem; align-items: center; margin: .5rem 0; }
+.rec-status { font-size: .88rem; color: var(--ink-2); }
+.rec-dot { display: inline-block; width: .6rem; height: .6rem; border-radius: 50%; background: #d33; margin-right: .35rem; animation: rec-pulse 1s infinite; }
+@keyframes rec-pulse { 50% { opacity: .25; } }
+@media (prefers-reduced-motion: reduce) { .rec-dot { animation: none; } }
+.card {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: .9rem 1.1rem; margin: 1rem 0; box-shadow: var(--shadow);
+}
+.card > :first-child { margin-top: 0; }
+.card > :last-child { margin-bottom: 0; }
+.card h3 { margin-top: 0; }
+.live-text {
+  min-height: 3.2em; padding: .6rem .8rem; border-radius: 10px; background: var(--bg);
+  border: 1px solid var(--line); font-size: 1.05rem; line-height: 1.8;
+}
+.rec-month h4 { margin: 1.2rem 0 .4rem; font-size: 1.05rem; }
+.rec-item { display: grid; gap: .35rem; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: .6rem .8rem; margin: .5rem 0; }
+.rec-head { display: flex; flex-wrap: wrap; gap: .2rem .8rem; align-items: baseline; }
+.rec-item audio { width: 100%; height: 2.4rem; }
+.rec-item .tools { margin: 0; }
+
+/* ---------- 聽寫 ---------- */
+.dict-set { counter-reset: d; }
+.dict {
+  counter-increment: d; background: var(--surface); border: 1px solid var(--line); border-left: 5px solid var(--line);
+  border-radius: var(--radius); padding: .75rem 1rem; margin: .8rem 0; box-shadow: var(--shadow);
+}
+.dict.done { border-left-color: var(--good); }
+.dict-row { display: flex; flex-wrap: wrap; gap: .45rem; align-items: center; }
+.dict-num::before {
+  content: "第 " counter(d) " 句"; font-size: .78rem; font-weight: 700; color: var(--unit);
+  border: 1px solid color-mix(in srgb, var(--unit) 45%, transparent); border-radius: 6px; padding: 0 .4rem;
+}
+.dict input {
+  flex: 1 1 15rem; min-width: 0; font-family: var(--en-font); font-size: 1.05rem;
+  padding: .35rem .6rem; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); color: var(--ink);
+}
+.dict .feedback { margin: .5rem 0 0; }
+.dict-score { font-weight: 700; margin-right: auto; font-size: .95rem; }
+.dict-score .bar { display: block; height: 6px; width: min(260px, 60vw); background: var(--line); border-radius: 99px; overflow: hidden; margin-top: .2rem; }
+.dict-score .bar i { display: block; height: 100%; width: 0; background: var(--unit); transition: width .3s; }
+@media (max-width: 720px) { .dict-score { flex-basis: 100%; } }
+
+/* ---------- 辨音遊戲 ---------- */
+.pair-quiz {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 18px;
+  padding: 1rem 1.2rem; margin: 1.2rem 0; box-shadow: var(--shadow);
+}
+.pair-quiz > h4 { margin: 0 0 .2rem; font-size: 1.1rem; font-family: var(--serif); }
+.pair-quiz > p { margin: .2rem 0 .5rem; }
+.pq-list { display: flex; flex-wrap: wrap; gap: .4rem .7rem; margin: .5rem 0; }
+.pq-pair { display: inline-flex; align-items: center; gap: .1rem; }
+.pq-game { border-top: 1px dashed var(--line); margin-top: .6rem; padding-top: .3rem; }
+.pq-game .feedback { margin: .2rem 0; }
+.pq-score { font-weight: 700; color: var(--unit); }
+.small-btn { font-size: .8rem; padding: .15rem .5rem; }
+.pq-choices { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; margin: .5rem 0; }
+.pq-choices button { font-size: 1.45rem; padding: .6rem; }
+.pq-choices button.right { background: var(--good-soft); border-color: var(--good); color: var(--ink); }
+.pq-choices button.wrong { background: var(--bad-soft); border-color: var(--bad); color: var(--ink); }
+.pq-say { display: flex; flex-wrap: wrap; gap: .4rem; align-items: center; border-top: 1px dashed var(--line); margin-top: .6rem; padding-top: .6rem; }
+.pq-target { font-size: 1.35rem; font-weight: 700; color: var(--unit); }
+
+/* ---------- 單字重音 ---------- */
+.syl { font-family: var(--en-font); font-size: 1.1rem; letter-spacing: .02em; }
+.syl u { text-decoration: none; color: var(--unit); font-weight: 800; text-transform: uppercase; }
+.q .opt { font-family: var(--en-font); }
+
+/* ---------- 口說 ---------- */
+.timer432 { text-align: center; }
+.timer-rounds { display: flex; flex-wrap: wrap; justify-content: center; gap: .4rem; }
+.timer-rounds span { padding: .1rem .7rem; border-radius: 99px; border: 1px solid var(--line); font-size: .85rem; color: var(--ink-2); }
+.timer-rounds span.on { background: var(--unit); color: #fff; border-color: var(--unit); }
+.timer-display { font-family: var(--en-font); font-size: clamp(2.6rem, 10vw, 3.6rem); font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1.3; margin: .3rem 0; }
+.timer432.ending .timer-display { color: var(--bad); }
+
+.frames { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: .55rem; margin: 1rem 0; }
+.frame { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: .5rem .75rem; }
+.frame .en { font-weight: 700; }
+.frame small { display: block; color: var(--ink-2); font-size: .85rem; }
+
+.keywords { display: flex; flex-wrap: wrap; gap: .4rem; margin: .5rem 0; }
+.keywords span { font-family: var(--en-font); border: 1px dashed var(--unit); border-radius: 8px; padding: 0 .55rem; background: var(--bg); }
+
+.copybox pre {
+  white-space: pre-wrap; font-family: var(--en-font); font-size: .95rem; line-height: 1.7;
+  background: var(--surface-2); border-radius: 10px; padding: .8rem 1rem; margin: .5rem 0;
+}
+
+.sound-table td:first-child { white-space: nowrap; }
+.sound-table .en { white-space: nowrap; }
+
+@media print {
+  .voicebar, .tools, .recorder, .shadow-practice, .steps-check, .pq-game, .pq-say, .dict-row button { display: none !important; }
+  .hide-text .shadow-text { filter: none; }
+}
+
+@media (max-width: 480px) {
+  .shadow { padding: .8rem .8rem 1rem; }
+  .shadow-text { font-size: 1.08rem; padding: .5rem .7rem; }
+  .pq-choices button { font-size: 1.2rem; }
+}
