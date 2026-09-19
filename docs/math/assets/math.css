@@ -1,0 +1,94 @@
+/* ===== 數理邏輯推理：單元專用樣式 ===== */
+
+/* 原題卡片：把社團測驗的題目原文收在同一種框裡 */
+.orig {
+  background: var(--surface); border: 2px dashed color-mix(in srgb, var(--unit) 45%, transparent);
+  border-radius: var(--radius); padding: 1rem 1.1rem; margin: 1rem 0;
+}
+.orig > :first-child { margin-top: 0; }
+.orig > :last-child { margin-bottom: 0; }
+.orig .orig-tag {
+  display: inline-block; font-size: .78rem; font-weight: 700; color: var(--on-color);
+  background: var(--unit); border-radius: 999px; padding: .1rem .7rem; margin-bottom: .5rem;
+}
+.orig .says { margin: .25rem 0; padding-left: .3rem; }
+.orig .says b { color: var(--unit); }
+.orig .choices { margin: .6rem 0 0; font-weight: 700; }
+
+/* 推理鏈：一句話 → 得到什麼條件 */
+.chain { list-style: none; padding: 0; margin: 1rem 0; display: grid; gap: .6rem; }
+.chain > li {
+  background: var(--surface); border-radius: 16px; box-shadow: var(--shadow);
+  padding: .7rem .9rem; display: grid; grid-template-columns: auto 1fr; gap: .2rem .7rem;
+}
+.chain .from { grid-column: 2; font-family: var(--serif); font-size: 1.05rem; }
+.chain .to { grid-column: 2; color: var(--ink-2); }
+.chain .to::before { content: "→ "; color: var(--unit); font-weight: 700; }
+.chain .who {
+  grid-row: span 2; align-self: center; font-weight: 700; font-size: .85rem;
+  background: color-mix(in srgb, var(--unit) 14%, transparent); color: var(--unit);
+  border-radius: 12px; padding: .35rem .55rem; white-space: nowrap;
+}
+
+/* 四邊形圖卡 */
+.shape-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: .8rem; margin: 1rem 0; }
+.shape-card {
+  background: var(--surface); border-radius: 18px; box-shadow: var(--shadow); padding: .7rem; text-align: center;
+}
+.shape-card h4 { margin: .1rem 0 .3rem; font-family: var(--round); font-weight: 400; font-size: 1.05rem; }
+.shape-card svg { width: 100%; height: auto; max-width: 150px; }
+.shape-card .edge { fill: none; stroke: var(--ink); stroke-width: 3; stroke-linejoin: round; }
+.shape-card .diag { stroke: var(--unit); stroke-width: 2.5; stroke-dasharray: 5 4; }
+.shape-card .mark { fill: none; stroke: var(--unit); stroke-width: 2; }
+.shape-card .tick { stroke: var(--accent); stroke-width: 2.5; }
+.shape-card .props { font-size: .82rem; color: var(--ink-2); margin: .2rem 0 0; line-height: 1.5; }
+.shape-card .props b { color: var(--unit); }
+
+/* 互動：對角線性質表 */
+.grid-tool { background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1rem 1.1rem; margin: 1rem 0; }
+.grid-tool h3 { margin: 0 0 .2rem; font-size: 1.05rem; font-family: var(--sans); }
+.grid-tool table { margin: .6rem 0; }
+.grid-tool th, .grid-tool td { text-align: center; }
+.grid-tool td:first-child, .grid-tool th:first-child { text-align: left; white-space: nowrap; }
+.cell-btn {
+  min-width: 3.2em; padding: .25rem .5rem; font-weight: 700; font-size: .95rem;
+  border: 2px solid var(--line); background: var(--bg); color: var(--ink-2);
+}
+.cell-btn[data-v="1"] { background: var(--good-soft); color: var(--good); border-color: color-mix(in srgb, var(--good) 45%, transparent); }
+.cell-btn[data-v="0"] { background: var(--bad-soft); color: var(--bad); border-color: color-mix(in srgb, var(--bad) 45%, transparent); }
+.cell-btn.is-right { outline: 2px solid var(--good); }
+.cell-btn.is-wrong { outline: 2px solid var(--bad); }
+.tool-msg { font-weight: 700; margin: .4rem 0 0; min-height: 1.6em; }
+.tool-msg.ok { color: var(--good); }
+.tool-msg.no { color: var(--bad); }
+
+/* 互動：假設法檢查表 */
+.case-tabs { display: flex; flex-wrap: wrap; gap: .4rem; margin: .6rem 0; }
+.case-tabs button[aria-pressed="true"] { background: var(--unit); color: var(--on-color); border-color: var(--unit); }
+.case-out { margin: .6rem 0 0; }
+.case-out .line { display: flex; gap: .5rem; align-items: baseline; padding: .3rem .1rem; border-bottom: 1px dashed var(--line); }
+.case-out .line:last-of-type { border-bottom: 0; }
+.case-out .tf { font-weight: 700; border-radius: 999px; padding: 0 .55rem; font-size: .85rem; }
+.case-out .tf.t { background: var(--good-soft); color: var(--good); }
+.case-out .tf.f { background: var(--bad-soft); color: var(--bad); }
+.case-out .verdict { font-weight: 700; margin-top: .5rem; }
+
+/* 互動：額頭數字探測器 */
+.num-tool .row { display: flex; flex-wrap: wrap; gap: .6rem; align-items: flex-end; }
+.num-tool label { font-weight: 700; font-size: .9rem; display: block; }
+.num-tool input {
+  width: 7em; font: inherit; font-size: 1.05rem; padding: .35rem .6rem; margin-top: .2rem;
+  border: 2px solid var(--line); border-radius: 12px; background: var(--bg); color: var(--ink);
+}
+.num-tool .cands { display: flex; flex-wrap: wrap; gap: .5rem; margin: .8rem 0 .3rem; }
+.num-tool .cand {
+  background: var(--surface-2); border-radius: 14px; padding: .4rem .8rem; font-weight: 700;
+  box-shadow: inset 3px 0 0 var(--unit);
+}
+.num-tool .cand small { display: block; font-weight: 400; color: var(--ink-2); font-size: .78rem; }
+.num-tool .cand.dead { opacity: .55; box-shadow: inset 3px 0 0 var(--bad); text-decoration: line-through; }
+
+/* 小表格的排版微調 */
+.tight td, .tight th { padding: .45rem .6rem; }
+.yes { color: var(--good); font-weight: 700; }
+.no-mark { color: var(--bad); font-weight: 700; }

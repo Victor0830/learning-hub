@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>數理邏輯推理｜探索未來世界的能力</title>
+<meta name="description" content="數理精英社團課後測驗的三題邏輯推理：真假話、四邊形對角線性質的牌卡對話、額頭上的數字，一題一個概念頁加練習題。">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧩</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Huninn&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="assets/math.css">
+</head>
+<body data-unit="math">
+<header class="site-header">
+  <div class="inner">
+    <a class="brand" href="../index.html"><span class="seal">探</span>探索未來世界的能力</a>
+    <nav class="section-nav" aria-label="主題">
+      <a href="../chinese/index.html">國文閱讀</a>
+      <a href="../english/index.html">英文聽說寫</a>
+      <a href="../math/index.html" aria-current="true">數理邏輯</a>
+      <a href="../economics/index.html">經濟與金錢</a>
+      <a href="../history/index.html">世界史與台灣史</a>
+      <a href="../fitness/index.html">體能訓練</a>
+      <a href="../planning/index.html">升學規劃</a>
+    </nav>
+  </div>
+  <div class="subnav"><div class="inner">
+    <a class="sub-home" href="index.html">🧩 數理邏輯推理</a>
+    <nav class="site-nav" aria-label="數理邏輯頁面">
+      <a href="index.html" aria-current="page">總覽與三題</a>
+      <a href="truth.html">① 真假話推理</a>
+      <a href="shapes.html">② 四邊形與對角線</a>
+      <a href="heads.html">③ 額頭上的數字</a>
+    </nav>
+  </div></div>
+</header>
+
+<main>
+  <section class="hero">
+    <span class="eyebrow">數理精英社團 × 課後測驗</span>
+    <h1>這三題不用算式，只要會「排除」</h1>
+    <p class="lead">社團測驗的這三題，看起來一題是幾何、一題是說謊、一題是猜數字，其實考的是<b>同一種能力</b>：把每一句話變成條件，列出所有可能，再一個一個刪掉不合的，剩下那個就是答案。這一區把三題各自需要的概念拆開講，再配上練習題。</p>
+  </section>
+
+  <div class="goals">
+    <h3>🎯 這個單元學完，你會……</h3>
+    <ul>
+      <li>把「只有一人說實話」這種句子，當成<b>可以用來檢查的條件</b>，而不是背景說明</li>
+      <li>用<b>假設法</b>：假設一種情況 → 檢查有沒有矛盾 → 不合就刪掉</li>
+      <li>記得五種四邊形的<b>對角線性質表</b>，並用它判斷兩個圖形有沒有共同性質</li>
+      <li>看懂最難的一招：別人說「<b>我不知道</b>」，本身就是給你的線索</li>
+    </ul>
+  </div>
+
+  <nav class="toc" aria-label="本頁目錄">
+    <a href="#three">測驗的三題</a><a href="#same">三題的共同點</a><a href="#tools">推理四步驟</a><a href="#pages">三個概念頁</a><a href="#traps">常見的四個坑</a><a href="#parents">給家長</a>
+  </nav>
+
+  <h2 id="three"><span class="num">一</span>先看這次測驗的三題</h2>
+  <p>把題目原文放在這裡，等一下每一頁都會回來對照。<b>先自己想想看再往下看解析</b>，想不出來也沒關係，這三題本來就是競賽題。</p>
+
+  <div class="orig">
+    <span class="orig-tag">第 1 題　107 年數學競賽初賽</span>
+    <p>桌上有五張分別寫上<b>長方形、正方形、菱形、箏形、等腰梯形</b>的牌卡，面朝下洗勻之後，甲、乙兩人分別從中抽取一張，自己可以看但對方不能看。老師分別看了甲、乙兩人的牌之後對他們說：「這兩個四邊形，它們的對角線性質（垂直、互相平分、等長）<b>完全沒有重複</b>。」接著甲、乙有了以下對話：</p>
+    <p class="says"><b>甲</b>：「我不知道你的牌。」</p>
+    <p class="says"><b>乙</b>：「我原本也不知道，但是聽你說完我就知道。」</p>
+    <p class="says"><b>甲</b>：「那我也知道你的牌了。」</p>
+    <p>請問甲、乙兩人抽到的四邊形分別為何？</p>
+    <p class="choices">(A) 正方形、菱形　(B) 長方形、菱形　(C) 菱形、箏形　(D) 等腰梯形、箏形</p>
+    <p class="small muted">👉 解析與練習在 <a href="shapes.html">② 四邊形與對角線</a></p>
+  </div>
+
+  <div class="orig">
+    <span class="orig-tag">第 2 題　106 年數學競賽初賽</span>
+    <p>教室的玻璃被打破了，在場目睹過程的人有甲、乙、丙三人，且這件事一定是甲、乙、丙三人其中一人所為。當老師分別詢問三人時，</p>
+    <p class="says"><b>甲</b>說：「是乙做的。」</p>
+    <p class="says"><b>乙</b>說：「不是我做的。」</p>
+    <p class="says"><b>丙</b>說：「也不是我做的。」</p>
+    <p>已知三人中<b>只有一人說了實話</b>，請問玻璃是誰打破的？</p>
+    <p class="choices">(A) 甲　(B) 乙　(C) 丙　(D) 條件不足，無法有效判斷</p>
+    <p class="small muted">👉 解析與練習在 <a href="truth.html">① 真假話推理</a></p>
+  </div>
+
+  <div class="orig">
+    <span class="orig-tag">挑戰題</span>
+    <p>老師把三個<b>不同的正整數</b>分別貼在小金、小楷、小治三人的額頭上，讓他們看不到自己的數字，只能看到另外兩人的數字；老師說：「這三個數字裡，其中<b>兩個相加剛好等於另一個</b>。你們知道自己頭上是什麼數字了嗎？」</p>
+    <p class="says">小楷、小治還沒反應，<b>小金</b>就搶先說：「我知道，我的是 180！」</p>
+    <p class="says">小楷、小治一聽，馬上也雙雙說：「<b>我也知道了！</b>」</p>
+    <p>請問，180 以外的兩個數字是什麼？</p>
+    <p class="small muted">👉 解析與練習在 <a href="heads.html">③ 額頭上的數字</a></p>
+  </div>
+
+  <h2 id="same"><span class="num">二</span>三題長得完全不一樣，為什麼說是同一類？</h2>
+  <p>因為它們都給你一堆「可能」，再給你幾句話，要你用那幾句話把可能<b>刪到只剩一個</b>。數學上這叫<b>窮舉與排除</b>。</p>
+  <div class="table-wrap">
+    <table class="tight">
+      <thead><tr><th></th><th>所有可能是什麼</th><th>拿來刪的條件</th></tr></thead>
+      <tbody>
+        <tr><td><b>第 1 題</b></td><td>兩人各拿一張牌，共 20 種組合</td><td>「對角線性質完全沒有重複」＋三句對話</td></tr>
+        <tr><td><b>第 2 題</b></td><td>犯人是甲、是乙、是丙，共 3 種</td><td>「只有一人說實話」</td></tr>
+        <tr><td><b>挑戰題</b></td><td>三個數字有無限多種</td><td>「兩數相加＝第三數」＋誰先知道、誰後知道</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout key">
+    <span class="title">🔑 最重要的一句話</span>
+    <p>題目裡「只有一人說實話」「完全沒有重複」「他們馬上也知道了」這些句子，<b>不是氣氛，是條件</b>。每讀到一句，就問自己：這句話讓哪些可能死掉了？</p>
+  </div>
+
+  <h2 id="tools"><span class="num">三</span>推理四步驟</h2>
+  <ol class="steps-list">
+    <li><b>把可能全部列出來</b><br>能列表就列表，能畫格子就畫格子。腦中想很容易漏掉，寫下來就不會。</li>
+    <li><b>把每句話翻譯成條件</b><br>「不是我做的」→ 如果犯人是我，這句就是假的。「我不知道」→ 我看到的情況，答案不只一種。</li>
+    <li><b>假設法：一個一個試</b><br>假設犯人是甲 → 檢查所有條件 → 有矛盾就刪掉。試完全部，看誰活下來。</li>
+    <li><b>確認「只剩一個」</b><br>推理題的答案必須<b>唯一</b>。如果最後活下來兩個，代表你漏掉一個條件；如果一個都不剩，代表你有一步翻譯錯了。</li>
+  </ol>
+  <div class="callout tip">
+    <span class="title">💡 高手的加速鍵</span>
+    <p>第 2 題還有一招更快的：找出<b>互相矛盾的兩句話</b>。甲說「是乙做的」、乙說「不是我做的」——這兩句一定<b>一真一假</b>。既然只有一個人說真話，那真話一定在這兩人之間，<b>丙一定在說謊</b>，所以丙就是犯人。這招在 <a href="truth.html">① 真假話推理</a> 有完整練習。</p>
+  </div>
+
+  <h2 id="pages"><span class="num">四</span>三個概念頁</h2>
+  <div class="page-links">
+    <a href="truth.html"><b>🕵️ ① 真假話推理</b><span>假設法與矛盾對：把「只有一人說實話」變成檢查表。含測驗第 2 題完整解析與 12 題練習。</span></a>
+    <a href="shapes.html"><b>📐 ② 四邊形與對角線</b><span>五種四邊形的對角線性質表（互動自填），再用它破解牌卡對話。含測驗第 1 題完整解析與練習。</span></a>
+    <a href="heads.html"><b>🧠 ③ 額頭上的數字</b><span>最難的一招：從別人「知道／不知道」反推。含挑戰題完整解析、互動探測器與練習。</span></a>
+  </div>
+
+  <h2 id="traps"><span class="num">五</span>這類題目最常踩的四個坑</h2>
+  <div class="table-wrap">
+    <table class="tight">
+      <thead><tr><th>坑</th><th>怎麼避開</th></tr></thead>
+      <tbody>
+        <tr><td>把「說謊」想成「這個人壞」</td><td>邏輯題裡說謊只代表<b>這句話是假的</b>，沒有別的意思。只要照條件檢查就好。</td></tr>
+        <tr><td>只試一種假設就下結論</td><td>一定要<b>三種都試完</b>。剛好符合的那一個不一定是第一個試到的，而且試完才知道答案是不是唯一。</td></tr>
+        <tr><td>把「我不知道」當成沒有資訊</td><td>這是最貴的資訊！它表示<b>從他的角度看，答案不只一種</b>，可以直接刪掉「一看就知道」的情況。</td></tr>
+        <tr><td>幾何性質靠印象</td><td>菱形的對角線等不等長？箏形的對角線互不互相平分？<b>畫一個很扁的圖</b>試試看，別靠記憶中那個「剛好正正的」圖。</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="parents"><span class="num">六</span>給家長</h2>
+  <div class="callout unit">
+    <span class="title">👨‍👩‍👧 陪練的三個提問</span>
+    <ul>
+      <li><b>「這句話刪掉了哪些可能？」</b>——比問「答案是什麼」有用十倍。孩子答得出來，就代表他真的在推理。</li>
+      <li><b>「你怎麼知道不會有第二個答案？」</b>——推理題的核心是唯一性。孩子常常找到一個符合的就停手。</li>
+      <li><b>「如果他先說的是別的話，答案會變嗎？」</b>——把題目改一個字再問一次，這是競賽題最好的複習法。</li>
+    </ul>
+  </div>
+  <p class="small muted">三題的來源是孩子數理精英社團的課後測驗（第 1、2 題標註為 107 年、106 年數學競賽初賽）。這一區的解析與練習題是為了讓概念留下來而寫的，不是官方解答。練習題的作答紀錄只存在這台裝置的瀏覽器裡。</p>
+
+  <nav class="pager">
+    <a href="../index.html"><small>← 回總站</small>探索未來世界的能力</a>
+    <a class="next" href="truth.html"><small>第一個概念 →</small>① 真假話推理</a>
+  </nav>
+</main>
+<footer class="site-footer"><a href="../index.html">探索未來世界的能力</a>．數理邏輯推理．作答紀錄只存在你這台裝置的瀏覽器裡</footer>
+</body>
+</html>

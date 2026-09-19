@@ -8,6 +8,7 @@ DOCS = pathlib.Path(__file__).resolve().parent.parent / "docs"
 SECTIONS = [
     ("chinese", "國文閱讀", True),
     ("english", "英文聽說寫", True),
+    ("math", "數理邏輯", True),
     ("economics", "經濟與金錢", True),
     ("history", "世界史與台灣史", True),
     ("fitness", "體能訓練", True),

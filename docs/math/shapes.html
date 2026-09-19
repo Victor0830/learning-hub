@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>② 四邊形與對角線｜數理邏輯推理｜探索未來世界的能力</title>
+<meta name="description" content="長方形、正方形、菱形、箏形、等腰梯形的對角線性質表（互動自填），以及 107 年數學競賽初賽牌卡對話那題的完整推理。">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧩</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Huninn&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="assets/math.css">
+</head>
+<body data-unit="math" data-page="math-shapes">
+<header class="site-header">
+  <div class="inner">
+    <a class="brand" href="../index.html"><span class="seal">探</span>探索未來世界的能力</a>
+    <nav class="section-nav" aria-label="主題">
+      <a href="../chinese/index.html">國文閱讀</a>
+      <a href="../english/index.html">英文聽說寫</a>
+      <a href="../math/index.html" aria-current="true">數理邏輯</a>
+      <a href="../economics/index.html">經濟與金錢</a>
+      <a href="../history/index.html">世界史與台灣史</a>
+      <a href="../fitness/index.html">體能訓練</a>
+      <a href="../planning/index.html">升學規劃</a>
+    </nav>
+  </div>
+  <div class="subnav"><div class="inner">
+    <a class="sub-home" href="index.html">🧩 數理邏輯推理</a>
+    <nav class="site-nav" aria-label="數理邏輯頁面">
+      <a href="index.html">總覽與三題</a>
+      <a href="truth.html">① 真假話推理</a>
+      <a href="shapes.html" aria-current="page">② 四邊形與對角線</a>
+      <a href="heads.html">③ 額頭上的數字</a>
+    </nav>
+  </div></div>
+</header>
+
+<main>
+  <section class="hero">
+    <span class="eyebrow">概念 ②</span>
+    <h1>四邊形與對角線</h1>
+    <p class="lead">測驗第 1 題其實是<b>兩題合成一題</b>：前半要你記得五種四邊形的對角線性質，後半才是推理。性質表不熟，後面再聰明也推不出來——所以我們先把表格弄熟。</p>
+  </section>
+
+  <div class="goals">
+    <h3>🎯 這一頁學完，你會……</h3>
+    <ul>
+      <li>說出<b>互相平分、垂直、等長</b>三個性質分別在講什麼</li>
+      <li>背（其實是「推」）出五種四邊形的<b>對角線性質表</b></li>
+      <li>把「性質完全沒有重複」翻譯成<b>兩個集合沒有交集</b></li>
+      <li>用三句對話，把 20 種組合刪到剩一組</li>
+    </ul>
+  </div>
+
+  <nav class="toc" aria-label="本頁目錄">
+    <a href="#five">五種四邊形</a><a href="#three">對角線的三個性質</a><a href="#table">性質表（自己填）</a>
+    <a href="#teacher">老師那句話的意思</a><a href="#pairs">合法的配對只有三組</a><a href="#talk">三句對話</a><a href="#practice">練習題</a>
+  </nav>
+
+  <h2 id="five"><span class="num">一</span>先認識這五張牌</h2>
+  <p>虛線是<b>對角線</b>（把不相鄰的兩個頂點連起來）。每個四邊形都有兩條對角線。</p>
+  <div class="shape-grid">
+    <div class="shape-card">
+      <h4>長方形</h4>
+      <svg viewBox="0 0 150 110" role="img" aria-label="長方形與它的兩條對角線">
+        <path class="edge" d="M15 25 H135 V95 H15 Z"/>
+        <path class="diag" d="M15 25 L135 95 M135 25 L15 95"/>
+        <circle cx="75" cy="60" r="3" fill="currentColor"/>
+      </svg>
+      <p class="props">四個角都是直角</p>
+    </div>
+    <div class="shape-card">
+      <h4>正方形</h4>
+      <svg viewBox="0 0 150 110" role="img" aria-label="正方形與它的兩條對角線">
+        <path class="edge" d="M40 20 H110 V90 H40 Z"/>
+        <path class="diag" d="M40 20 L110 90 M110 20 L40 90"/>
+        <path class="mark" d="M75 48 h7 v7"/>
+        <circle cx="75" cy="55" r="3" fill="currentColor"/>
+      </svg>
+      <p class="props">四邊等長＋四個直角</p>
+    </div>
+    <div class="shape-card">
+      <h4>菱形</h4>
+      <svg viewBox="0 0 150 110" role="img" aria-label="菱形與它的兩條對角線">
+        <path class="edge" d="M75 10 L130 55 L75 100 L20 55 Z"/>
+        <path class="diag" d="M75 10 L75 100 M20 55 L130 55"/>
+        <path class="mark" d="M75 48 h7 v7"/>
+        <circle cx="75" cy="55" r="3" fill="currentColor"/>
+      </svg>
+      <p class="props">四邊等長，角不一定是直角</p>
+    </div>
+    <div class="shape-card">
+      <h4>箏形</h4>
+      <svg viewBox="0 0 150 110" role="img" aria-label="箏形與它的兩條對角線">
+        <path class="edge" d="M75 8 L120 50 L75 102 L30 50 Z"/>
+        <path class="diag" d="M75 8 L75 102 M30 50 L120 50"/>
+        <path class="mark" d="M75 43 h7 v7"/>
+        <circle cx="75" cy="50" r="3" fill="currentColor"/>
+      </svg>
+      <p class="props">兩組<b>相鄰</b>的邊等長（像風箏）</p>
+    </div>
+    <div class="shape-card">
+      <h4>等腰梯形</h4>
+      <svg viewBox="0 0 150 110" role="img" aria-label="等腰梯形與它的兩條對角線">
+        <path class="edge" d="M45 20 H105 L133 92 H17 Z"/>
+        <path class="diag" d="M45 20 L133 92 M105 20 L17 92"/>
+      </svg>
+      <p class="props">一組對邊平行，兩腰等長</p>
+    </div>
+  </div>
+  <div class="callout tip">
+    <span class="title">💡 這一題把五個名字當成五種不同的牌</span>
+    <p>嚴格說起來，正方形也是一種長方形、也是一種菱形。但這一題是<b>五張寫著名字的牌卡</b>，抽到「正方形」那張就是正方形。做競賽題時照題目的設定走就好。</p>
+  </div>
+
+  <h2 id="three"><span class="num">二</span>對角線的三個性質，怎麼檢查</h2>
+  <div class="table-wrap">
+    <table class="tight">
+      <thead><tr><th>性質</th><th>意思</th><th>怎麼檢查</th></tr></thead>
+      <tbody>
+        <tr><td><b>互相平分</b></td><td>兩條對角線的交點，<b>剛好是兩條的中點</b>（四段一樣長）</td><td>看交點有沒有把<b>兩條</b>都切成一半</td></tr>
+        <tr><td><b>垂直</b></td><td>兩條對角線交出<b>直角</b></td><td>交點的角是不是 90°</td></tr>
+        <tr><td><b>等長</b></td><td>兩條對角線<b>一樣長</b></td><td>量兩條的全長，比一比</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout warn">
+    <span class="title">⚠️ 最容易錯的一格：箏形</span>
+    <p>箏形的長對角線，會把短對角線<b>平分</b>——但反過來不成立，短的那條<b>沒有</b>把長的平分。「互相」平分是兩條都被切一半，所以箏形<b>不算</b>互相平分。<br>把箏形畫得很長很尖，就會一眼看出來交點根本不在長對角線的中間。</p>
+  </div>
+  <div class="callout tip">
+    <span class="title">💡 不要用背的，用推的</span>
+    <p>忘記的時候就<b>畫一個很扁、很歪的圖</b>：菱形畫得像壓扁的鑽石，馬上看出兩條對角線一長一短（所以<b>不等長</b>）；等腰梯形畫得上底很短，就看出兩條對角線交點偏下（所以<b>不互相平分</b>）。腦中那個「畫得剛剛好」的圖，是害人最深的東西。</p>
+  </div>
+
+  <h2 id="table"><span class="num">三</span>性質表：先自己填填看</h2>
+  <div class="grid-tool" data-tool="prop-grid">
+    <h3>📝 互動：每格點一下，在 ? → ✓ → ✗ 之間切換</h3>
+    <div class="table-wrap">
+      <table class="tight">
+        <thead><tr><th>四邊形</th><th>垂直</th><th>互相平分</th><th>等長</th></tr></thead>
+        <tbody>
+          <tr><td>長方形</td>
+            <td><button class="cell-btn" data-ans="0" aria-label="長方形 垂直"></button></td>
+            <td><button class="cell-btn" data-ans="1" aria-label="長方形 互相平分"></button></td>
+            <td><button class="cell-btn" data-ans="1" aria-label="長方形 等長"></button></td></tr>
+          <tr><td>正方形</td>
+            <td><button class="cell-btn" data-ans="1" aria-label="正方形 垂直"></button></td>
+            <td><button class="cell-btn" data-ans="1" aria-label="正方形 互相平分"></button></td>
+            <td><button class="cell-btn" data-ans="1" aria-label="正方形 等長"></button></td></tr>
+          <tr><td>菱形</td>
+            <td><button class="cell-btn" data-ans="1" aria-label="菱形 垂直"></button></td>
+            <td><button class="cell-btn" data-ans="1" aria-label="菱形 互相平分"></button></td>
+            <td><button class="cell-btn" data-ans="0" aria-label="菱形 等長"></button></td></tr>
+          <tr><td>箏形</td>
+            <td><button class="cell-btn" data-ans="1" aria-label="箏形 垂直"></button></td>
+            <td><button class="cell-btn" data-ans="0" aria-label="箏形 互相平分"></button></td>
+            <td><button class="cell-btn" data-ans="0" aria-label="箏形 等長"></button></td></tr>
+          <tr><td>等腰梯形</td>
+            <td><button class="cell-btn" data-ans="0" aria-label="等腰梯形 垂直"></button></td>
+            <td><button class="cell-btn" data-ans="0" aria-label="等腰梯形 互相平分"></button></td>
+            <td><button class="cell-btn" data-ans="1" aria-label="等腰梯形 等長"></button></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="toolbar" style="position:static">
+      <button class="btn-primary" data-act="check">檢查</button>
+      <button data-act="reveal">看答案</button>
+      <button data-act="clear">清空</button>
+    </div>
+    <p class="tool-msg"></p>
+  </div>
+  <p>填完之後，把每個四邊形的性質寫成一個<b>集合</b>，後面推理會用到：</p>
+  <div class="table-wrap">
+    <table class="tight">
+      <thead><tr><th>四邊形</th><th>它擁有的性質（集合）</th><th>幾個</th></tr></thead>
+      <tbody>
+        <tr><td><b>正方形</b></td><td>｛垂直、互相平分、等長｝</td><td>3</td></tr>
+        <tr><td><b>長方形</b></td><td>｛互相平分、等長｝</td><td>2</td></tr>
+        <tr><td><b>菱形</b></td><td>｛垂直、互相平分｝</td><td>2</td></tr>
+        <tr><td><b>箏形</b></td><td>｛垂直｝</td><td>1</td></tr>
+        <tr><td><b>等腰梯形</b></td><td>｛等長｝</td><td>1</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="teacher"><span class="num">四</span>老師那句話，到底給了什麼條件？</h2>
+  <div class="orig">
+    <span class="orig-tag">老師說</span>
+    <p>「這兩個四邊形，它們的對角線性質（垂直、互相平分、等長）<b>完全沒有重複</b>。」</p>
+  </div>
+  <p>翻譯成數學：甲的性質集合 和 乙的性質集合 <b>沒有交集</b>。一個性質只要兩邊都有，就出局。</p>
+  <div class="callout key">
+    <span class="title">🔑 老師一開口，正方形就出局了</span>
+    <p>正方形三個性質全包。不管對方是誰（其他四種每一種至少有一個性質），一定會撞到。所以<b>甲、乙都不可能是正方形</b>——選項 (A) 直接刪掉。</p>
+  </div>
+
+  <h2 id="pairs"><span class="num">五</span>把十種配對全部檢查一次</h2>
+  <p>五張牌任選兩張，共 10 種組合。一組一組看有沒有共同性質：</p>
+  <div class="table-wrap">
+    <table class="tight">
+      <thead><tr><th>配對</th><th>兩邊的性質</th><th>有沒有重複</th></tr></thead>
+      <tbody>
+        <tr><td>正方形＋長方形</td><td>｛垂,平,等｝／｛平,等｝</td><td>❌ 平分、等長都重複</td></tr>
+        <tr><td>正方形＋菱形</td><td>｛垂,平,等｝／｛垂,平｝</td><td>❌ 重複</td></tr>
+        <tr><td>正方形＋箏形</td><td>｛垂,平,等｝／｛垂｝</td><td>❌ 垂直重複</td></tr>
+        <tr><td>正方形＋等腰梯形</td><td>｛垂,平,等｝／｛等｝</td><td>❌ 等長重複</td></tr>
+        <tr><td>長方形＋菱形</td><td>｛平,等｝／｛垂,平｝</td><td>❌ 平分重複</td></tr>
+        <tr><td><b>長方形＋箏形</b></td><td>｛平,等｝／｛垂｝</td><td class="yes">✅ 沒有重複</td></tr>
+        <tr><td>長方形＋等腰梯形</td><td>｛平,等｝／｛等｝</td><td>❌ 等長重複</td></tr>
+        <tr><td>菱形＋箏形</td><td>｛垂,平｝／｛垂｝</td><td>❌ 垂直重複</td></tr>
+        <tr><td><b>菱形＋等腰梯形</b></td><td>｛垂,平｝／｛等｝</td><td class="yes">✅ 沒有重複</td></tr>
+        <tr><td><b>箏形＋等腰梯形</b></td><td>｛垂｝／｛等｝</td><td class="yes">✅ 沒有重複</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout key">
+    <span class="title">🔑 剩下三組</span>
+    <p>① 長方形＋箏形　② 菱形＋等腰梯形　③ 箏形＋等腰梯形<br>接下來三句對話，就是要從這三組裡選出一組。</p>
+  </div>
+
+  <h2 id="talk"><span class="num">六</span>三句對話，一句一句刪</h2>
+  <p>關鍵觀念：<b>每個人只看得到自己的牌</b>。他看著自己的牌，再對照上面那三組，就知道對方「有哪些可能」。</p>
+  <div class="table-wrap">
+    <table class="tight">
+      <thead><tr><th>如果我的牌是</th><th>對方可能是</th><th>我能不能馬上知道</th></tr></thead>
+      <tbody>
+        <tr><td>長方形</td><td>只能是箏形</td><td class="yes">✅ 馬上知道</td></tr>
+        <tr><td>菱形</td><td>只能是等腰梯形</td><td class="yes">✅ 馬上知道</td></tr>
+        <tr><td>箏形</td><td>長方形 或 等腰梯形</td><td class="no-mark">❌ 不知道</td></tr>
+        <tr><td>等腰梯形</td><td>菱形 或 箏形</td><td class="no-mark">❌ 不知道</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <ul class="chain">
+    <li>
+      <span class="who">甲</span>
+      <span class="from">「我不知道你的牌。」</span>
+      <span class="to">甲不是長方形，也不是菱形（那兩張一看就知道對方）。所以<b>甲是箏形或等腰梯形</b>。</span>
+    </li>
+    <li>
+      <span class="who">乙</span>
+      <span class="from">「我原本也不知道……」</span>
+      <span class="to">同樣的道理，<b>乙也是箏形或等腰梯形</b>。</span>
+    </li>
+    <li>
+      <span class="who">乙</span>
+      <span class="from">「……但是聽你說完我就知道。」</span>
+      <span class="to">乙知道甲只剩箏形、等腰梯形兩種，而其中一張在自己手上 <span class="arrow">→</span> 甲一定是<b>另一張</b>。所以乙真的知道了。</span>
+    </li>
+    <li>
+      <span class="who">甲</span>
+      <span class="from">「那我也知道你的牌了。」</span>
+      <span class="to">甲用同樣的推理，也確定乙是另一張。兩張牌就是<b>箏形和等腰梯形</b>。</span>
+    </li>
+  </ul>
+  <div class="callout key">
+    <span class="title">🔑 答案：(D) 等腰梯形、箏形</span>
+    <p>對話把三組刪到只剩<b>「箏形＋等腰梯形」</b>這一組。四個選項裡，只有 (D) 是這一組，所以選 (D)（甲拿等腰梯形、乙拿箏形）。</p>
+  </div>
+  <div class="callout tip">
+    <span class="title">💡 一個誠實的補充（想深一點的人看）</span>
+    <p>仔細算會發現：這三句對話只能確定<b>「兩張牌是箏形和等腰梯形」</b>，甲乙各拿哪一張，對話本身並沒有分出來——把兩人的牌對調，三句話一樣說得通。這一題靠選項幫我們定了順序。<br>看出這件事不是你算錯，而是你算得比題目還細，值得高興。</p>
+  </div>
+
+  <section class="practice" id="practice">
+    <h2>✍️ 練習題</h2>
+    <div class="toolbar">
+      <div class="score"><span class="label">選擇題</span><span class="bar"><i></i></span></div>
+      <button data-action="show-all" aria-pressed="false">顯示所有答案（家長用）</button>
+      <button data-action="print">列印</button>
+      <button data-action="reset">清除紀錄</button>
+    </div>
+
+    <h3>A. 選擇題</h3>
+    <p class="small muted">前 8 題練性質表，後 4 題練推理。不確定的時候，<b>畫一個很扁的圖</b>再判斷。</p>
+    <div class="quiz-set">
+      <div class="q" data-id="s1" data-answer="1">
+        <p class="q-text">菱形的兩條對角線一定等長嗎？</p>
+        <div class="opts"><button class="opt">一定等長</button><button class="opt">不一定（通常不等長）</button><button class="opt">一定不等長</button><button class="opt">要看邊長</button></div>
+        <div class="explain"><p>把菱形壓扁，就會出現一條很長、一條很短。只有剛好變成<b>正方形</b>時才等長，而正方形在這題是另一張牌。所以菱形的欄位填<b>✗</b>。</p></div>
+      </div>
+      <div class="q" data-id="s2" data-answer="2">
+        <p class="q-text">哪一個四邊形的對角線<b>互相平分、而且等長，但不垂直</b>？</p>
+        <div class="opts"><button class="opt">菱形</button><button class="opt">箏形</button><button class="opt">長方形</button><button class="opt">等腰梯形</button></div>
+        <div class="explain"><p>長方形：｛互相平分、等長｝。它的對角線只有在變成正方形時才垂直。</p></div>
+      </div>
+      <div class="q" data-id="s3" data-answer="2">
+        <p class="q-text">關於<b>箏形</b>的對角線，哪一個敘述正確？</p>
+        <div class="opts long">
+          <button class="opt">兩條互相平分，而且垂直</button>
+          <button class="opt">兩條等長，但不垂直</button>
+          <button class="opt">兩條垂直，其中一條平分另一條，但不是互相平分</button>
+          <button class="opt">兩條既不垂直也不等長，也沒有任何平分關係</button>
+        </div>
+        <div class="explain"><p>箏形的對稱軸（長對角線）會<b>平分</b>另一條，兩條也<b>垂直</b>；但另一條並沒有把長對角線切成一半，所以不是「互相」平分。性質集合＝｛垂直｝。</p></div>
+      </div>
+      <div class="q" data-id="s4" data-answer="0">
+        <p class="q-text"><b>等腰梯形</b>的對角線性質集合是？</p>
+        <div class="opts long">
+          <button class="opt">｛等長｝</button>
+          <button class="opt">｛等長、互相平分｝</button>
+          <button class="opt">｛垂直、等長｝</button>
+          <button class="opt">｛互相平分｝</button>
+        </div>
+        <div class="explain"><p>等腰梯形左右對稱，兩條對角線<b>等長</b>；但上底比下底短，交點偏向上底那側，所以<b>不互相平分</b>，也<b>不垂直</b>。</p></div>
+      </div>
+      <div class="q" data-id="s5" data-answer="1">
+        <p class="q-text">一個四邊形的兩條對角線<b>互相平分</b>，可以確定它是什麼？</p>
+        <div class="opts"><button class="opt">長方形</button><button class="opt">平行四邊形</button><button class="opt">菱形</button><button class="opt">正方形</button></div>
+        <div class="explain"><p>對角線互相平分 ⟺ <b>平行四邊形</b>。再加上「垂直」才是菱形，再加上「等長」才是長方形，三個都有才是正方形。</p></div>
+      </div>
+      <div class="q" data-id="s6" data-answer="2">
+        <p class="q-text">兩條對角線<b>互相平分且垂直</b>（但不等長），是哪一種四邊形？</p>
+        <div class="opts"><button class="opt">長方形</button><button class="opt">箏形</button><button class="opt">菱形</button><button class="opt">等腰梯形</button></div>
+        <div class="explain"><p>互相平分 → 平行四邊形；再加垂直 → <b>菱形</b>。如果又等長，就升級成正方形。</p></div>
+      </div>
+      <div class="q" data-id="s7" data-answer="3">
+        <p class="q-text">兩條對角線<b>垂直、互相平分、而且等長</b>，是哪一種四邊形？</p>
+        <div class="opts"><button class="opt">菱形</button><button class="opt">長方形</button><button class="opt">箏形</button><button class="opt">正方形</button></div>
+        <div class="explain"><p>三個性質全包的只有<b>正方形</b>。這也是為什麼老師一說「完全沒有重複」，正方形就出局了。</p></div>
+      </div>
+      <div class="q" data-id="s8" data-answer="1">
+        <p class="q-text">如果再加一張「<b>平行四邊形</b>」的牌，它的性質集合會是？</p>
+        <div class="opts long">
+          <button class="opt">｛垂直、互相平分｝</button>
+          <button class="opt">｛互相平分｝</button>
+          <button class="opt">｛互相平分、等長｝</button>
+          <button class="opt">空集合（三個都沒有）</button>
+        </div>
+        <div class="explain"><p>一般的平行四邊形，對角線<b>互相平分</b>，但不垂直也不等長。（垂直 → 菱形；等長 → 長方形。）</p></div>
+      </div>
+      <div class="q" data-id="s9" data-answer="0">
+        <p class="q-text">老師說完「兩張牌的對角線性質完全沒有重複」之後，哪一張牌一定<b>沒有</b>被抽到？</p>
+        <div class="opts"><button class="opt">正方形</button><button class="opt">箏形</button><button class="opt">菱形</button><button class="opt">等腰梯形</button></div>
+        <div class="explain"><p>正方形三個性質全包，跟其他四種都會撞到（其他四種每一種至少有一個性質）。所以它一定不在甲、乙手上。</p></div>
+      </div>
+      <div class="q" data-id="s10" data-answer="2">
+        <p class="q-text">五張牌中，符合「對角線性質完全沒有重複」的配對共有幾組？</p>
+        <div class="opts"><button class="opt">1 組</button><button class="opt">2 組</button><button class="opt">3 組</button><button class="opt">4 組</button></div>
+        <div class="explain"><p>長方形＋箏形、菱形＋等腰梯形、箏形＋等腰梯形，共 <b>3 組</b>。十種配對一一檢查最保險。</p></div>
+      </div>
+      <div class="q" data-id="s11" data-answer="3">
+        <p class="q-text">甲說「我不知道你的牌」之後，甲的牌可能是哪些？</p>
+        <div class="opts long">
+          <button class="opt">長方形 或 菱形</button>
+          <button class="opt">只有箏形</button>
+          <button class="opt">長方形、菱形 或 箏形</button>
+          <button class="opt">箏形 或 等腰梯形</button>
+        </div>
+        <div class="explain"><p>長方形的對手只可能是箏形、菱形的對手只可能是等腰梯形——這兩張牌一看就知道答案。既然甲說不知道，甲手上就是<b>有兩種可能</b>的那兩張：箏形（對手可能是長方形或等腰梯形）或等腰梯形（對手可能是菱形或箏形）。</p></div>
+      </div>
+      <div class="q" data-id="s12" data-answer="0">
+        <p class="q-text">如果甲第一句改成「<b>我已經知道你的牌了</b>」，那甲手上可能是哪些牌？</p>
+        <div class="opts long">
+          <button class="opt">長方形 或 菱形</button>
+          <button class="opt">箏形 或 等腰梯形</button>
+          <button class="opt">只有正方形</button>
+          <button class="opt">五張都有可能</button>
+        </div>
+        <div class="explain"><p>「一看就知道」＝對手只有一種可能，那就是<b>長方形</b>（對手必為箏形）或<b>菱形</b>（對手必為等腰梯形）。把題目的一句話反過來，可能性也跟著反過來——這是檢查自己有沒有真的懂的好方法。</p></div>
+      </div>
+    </div>
+
+    <h3>B. 動手寫</h3>
+    <div class="write">
+      <h3>畫圖驗證</h3>
+      <p>在紙上畫一個<b>很扁的菱形</b>和一個<b>上底很短的等腰梯形</b>，各自畫出兩條對角線。寫下你觀察到的三件事（垂不垂直？互不互相平分？等不等長？）</p>
+      <textarea data-note="sw-draw" rows="4" aria-label="畫圖驗證"></textarea>
+      <button class="reveal-btn"></button>
+      <div class="answer">
+        <p><b>菱形：</b>對角線垂直 ✓、互相平分 ✓、等長 ✗（一條明顯比較長）。</p>
+        <p><b>等腰梯形：</b>等長 ✓、垂直 ✗、互相平分 ✗（交點偏向上底那一側，不是兩條的中點）。</p>
+        <p class="small">所以菱形｛垂,平｝和等腰梯形｛等｝完全沒有重複，是合法的一組配對。</p>
+      </div>
+    </div>
+    <div class="write">
+      <h3>用自己的話解釋「完全沒有重複」</h3>
+      <p>如果要你跟同學解釋老師那句話，你會怎麼說？並說明為什麼正方形一定出局。</p>
+      <textarea data-note="sw-explain" rows="4" aria-label="解釋完全沒有重複"></textarea>
+      <button class="reveal-btn"></button>
+      <div class="answer">
+        <p>「兩張牌各自有哪些對角線性質，把它們寫成兩個集合，這兩個集合<b>一個共同的元素都沒有</b>。」</p>
+        <p>正方形的集合是｛垂直、互相平分、等長｝，三個全包；其他四種每一種至少有一個性質，一定會和它重疊，所以正方形不可能出現。</p>
+      </div>
+    </div>
+    <div class="write">
+      <h3>延伸：加一張牌會怎樣</h3>
+      <p>如果把「平行四邊形」也加進去變成六張牌，合法的配對會變成幾組？請列出來。</p>
+      <textarea data-note="sw-six" rows="4" aria-label="六張牌的合法配對"></textarea>
+      <button class="reveal-btn"></button>
+      <div class="answer">
+        <p>平行四邊形＝｛互相平分｝，它可以和｛垂直｝的箏形、｛等長｝的等腰梯形配對。</p>
+        <p>所以合法配對從 3 組變成 <b>5 組</b>：長方形＋箏形、菱形＋等腰梯形、箏形＋等腰梯形、<b>平行四邊形＋箏形</b>、<b>平行四邊形＋等腰梯形</b>。</p>
+        <p class="small">想再挑戰嗎？在六張牌的版本裡，甲說「我不知道」之後還剩幾種可能？（提示：現在連箏形、等腰梯形的可能對手都變多了。）</p>
+      </div>
+    </div>
+  </section>
+
+  <nav class="pager">
+    <a href="truth.html"><small>← 上一個概念</small>① 真假話推理</a>
+    <a class="next" href="heads.html"><small>下一個概念 →</small>③ 額頭上的數字</a>
+  </nav>
+</main>
+<footer class="site-footer"><a href="../index.html">探索未來世界的能力</a>．數理邏輯推理．作答紀錄只存在你這台裝置的瀏覽器裡</footer>
+<script src="../assets/quiz.js"></script>
+<script src="assets/math.js"></script>
+</body>
+</html>

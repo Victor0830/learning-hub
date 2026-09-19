@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>③ 額頭上的數字｜數理邏輯推理｜探索未來世界的能力</title>
+<meta name="description" content="三個人額頭上貼數字、兩數相加等於第三數的挑戰題：為什麼小金能立刻說出 180，另外兩個數字是 60 和 120，附互動探測器與練習。">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧩</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Huninn&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="assets/math.css">
+</head>
+<body data-unit="math" data-page="math-heads">
+<header class="site-header">
+  <div class="inner">
+    <a class="brand" href="../index.html"><span class="seal">探</span>探索未來世界的能力</a>
+    <nav class="section-nav" aria-label="主題">
+      <a href="../chinese/index.html">國文閱讀</a>
+      <a href="../english/index.html">英文聽說寫</a>
+      <a href="../math/index.html" aria-current="true">數理邏輯</a>
+      <a href="../economics/index.html">經濟與金錢</a>
+      <a href="../history/index.html">世界史與台灣史</a>
+      <a href="../fitness/index.html">體能訓練</a>
+      <a href="../planning/index.html">升學規劃</a>
+    </nav>
+  </div>
+  <div class="subnav"><div class="inner">
+    <a class="sub-home" href="index.html">🧩 數理邏輯推理</a>
+    <nav class="site-nav" aria-label="數理邏輯頁面">
+      <a href="index.html">總覽與三題</a>
+      <a href="truth.html">① 真假話推理</a>
+      <a href="shapes.html">② 四邊形與對角線</a>
+      <a href="heads.html" aria-current="page">③ 額頭上的數字</a>
+    </nav>
+  </div></div>
+</header>
+
+<main>
+  <section class="hero">
+    <span class="eyebrow">概念 ③（挑戰題）</span>
+    <h1>額頭上的數字</h1>
+    <p class="lead">看得到別人，看不到自己。這一題的關鍵不是算數，而是問自己：<b>他為什麼有辦法立刻回答？</b>能立刻回答，代表他看到的畫面只留下一種可能——把那種畫面找出來，答案就出來了。</p>
+  </section>
+
+  <div class="goals">
+    <h3>🎯 這一頁學完，你會……</h3>
+    <ul>
+      <li>寫出「我的數字」只有<b>兩種可能</b>：兩數之和、兩數之差</li>
+      <li>找出「差」什麼時候會<b>不合法</b>，因而只剩一種可能</li>
+      <li>由「他立刻知道」反推出<b>他看到的是 2 倍關係</b></li>
+      <li>用同樣的方法，解「他一開始不知道，後來才知道」的第二輪推理</li>
+    </ul>
+  </div>
+
+  <nav class="toc" aria-label="本頁目錄">
+    <a href="#rule">題目的規則</a><a href="#two">我只有兩種可能</a><a href="#when">什麼時候能立刻知道</a>
+    <a href="#solve">解出 180</a><a href="#others">另外兩人為什麼也知道</a><a href="#tool">互動探測器</a><a href="#practice">練習題</a>
+  </nav>
+
+  <div class="orig">
+    <span class="orig-tag">挑戰題</span>
+    <p>老師把三個<b>不同的正整數</b>分別貼在小金、小楷、小治三人的額頭上，看不到自己的，只看得到另外兩人的；老師說：「這三個數字裡，其中<b>兩個相加剛好等於另一個</b>。你們知道自己頭上是什麼數字了嗎？」</p>
+    <p class="says">小楷、小治還沒反應，<b>小金</b>就搶先說：「我知道，我的是 180！」</p>
+    <p class="says">小楷、小治一聽，馬上也雙雙說：「<b>我也知道了！</b>」</p>
+    <p>請問，180 以外的兩個數字是什麼？</p>
+  </div>
+
+  <h2 id="rule"><span class="num">一</span>先把規則寫清楚</h2>
+  <ul>
+    <li>三個數字都是<b>正整數</b>（≥ 1），而且<b>互不相同</b>。</li>
+    <li>其中<b>兩個相加＝第三個</b>。所以最大的那個 ＝ 另外兩個的和。</li>
+    <li>每個人看得到另外兩個數字，看不到自己的。</li>
+  </ul>
+  <div class="callout key">
+    <span class="title">🔑 這題唯一的線索</span>
+    <p>「小金<b>立刻</b>說出答案」。如果他看到的畫面有兩種可能，他就不可能立刻回答。所以真正的問題是：<b>什麼樣的畫面，只會有一種答案？</b></p>
+  </div>
+
+  <h2 id="two"><span class="num">二</span>我看到兩個數字，我的可能有哪些？</h2>
+  <p>假設我看到兩個數字，大的是 <b>大</b>、小的是 <b>小</b>。三個數字裡「兩個相加等於第三個」，只有三種擺法：</p>
+  <div class="table-wrap">
+    <table class="tight">
+      <thead><tr><th>擺法</th><th>我的數字</th><th>合不合法</th></tr></thead>
+      <tbody>
+        <tr><td>大 ＋ 小 ＝ 我</td><td><b>大 ＋ 小</b></td><td class="yes">✅ 永遠合法（比兩個都大，不會撞名）</td></tr>
+        <tr><td>我 ＋ 小 ＝ 大</td><td><b>大 － 小</b></td><td>要檢查：不能等於 0，也不能和「小」重複</td></tr>
+        <tr><td>我 ＋ 大 ＝ 小</td><td>負數</td><td class="no-mark">❌ 不可能（正整數不能加出更小的數）</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout tip">
+    <span class="title">💡 所以只要記一句話</span>
+    <p><b>我的數字＝兩數之和，或兩數之差。</b>最多兩種可能——這就是為什麼「立刻知道」這麼有資訊量：兩種變一種，一定是有一種被刪掉了。</p>
+  </div>
+
+  <h2 id="when"><span class="num">三</span>什麼時候「差」會被刪掉？</h2>
+  <p>差被刪掉只有一個理由：<b>算出來的差和看到的小數字重複了</b>（三個數字必須互不相同）。</p>
+  <div class="example">
+    <p class="src">看到 <b>120</b> 和 <b>60</b></p>
+    <ul>
+      <li>和：120 ＋ 60 ＝ <b>180</b> → 三個數是 180、120、60，互不相同 <span class="yes">✅</span></li>
+      <li>差：120 － 60 ＝ <b>60</b> → 三個數是 60、120、60，<b>和看到的 60 重複</b> <span class="no-mark">❌</span></li>
+    </ul>
+    <p>只剩一種 → <b>立刻知道自己是 180</b>。</p>
+  </div>
+  <p>什麼時候會發生這種重複？就是<b>大 － 小 ＝ 小</b> 的時候，也就是 <b>大 ＝ 2 × 小</b>。</p>
+  <div class="callout key">
+    <span class="title">🔑 核心結論</span>
+    <p>一個人能<b>立刻</b>知道自己的數字 ⟺ 他看到的兩個數字剛好是 <b>2 倍關係</b>（例如 60 和 120、25 和 50）。<br>這時他的數字＝兩數之和＝<b>小數字的 3 倍</b>。</p>
+  </div>
+
+  <h2 id="solve"><span class="num">四</span>解出來：180 以外的兩個數字</h2>
+  <ol class="steps-list">
+    <li><b>小金立刻知道</b><br>→ 他看到的兩個數字是 2 倍關係，設為 <b>k</b> 和 <b>2k</b>。</li>
+    <li><b>他的數字＝兩數之和</b><br>→ k ＋ 2k ＝ <b>3k</b>，而他說自己是 180。</li>
+    <li><b>解出 k</b><br>→ 3k ＝ 180，<b>k ＝ 60</b>。</li>
+    <li><b>寫出答案</b><br>→ 另外兩個數字是 <b>60</b> 和 <b>120</b>。（檢查：60 ＋ 120 ＝ 180 ✅，三數互不相同 ✅）</li>
+  </ol>
+  <div class="callout key">
+    <span class="title">🔑 答案：60 和 120</span>
+  </div>
+
+  <h2 id="others"><span class="num">五</span>為什麼小楷和小治接著也知道了？</h2>
+  <p>他們用的是同一招：<b>從「小金能立刻回答」反推</b>。</p>
+  <div class="table-wrap">
+    <table class="tight">
+      <thead><tr><th></th><th>他看到</th><th>他的可能</th><th>怎麼刪掉錯的那個</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><b>小楷</b></td><td>180、60</td><td>240（和）或 120（差）</td>
+          <td>如果自己是 240，小金就會看到 240 和 60（不是 2 倍關係），小金<b>不可能立刻回答</b>。既然他回答了 → 自己是 <b>120</b>。</td>
+        </tr>
+        <tr>
+          <td><b>小治</b></td><td>180、120</td><td>300（和）或 60（差）</td>
+          <td>如果自己是 300，小金就會看到 300 和 120（不是 2 倍關係），小金也不可能立刻回答 → 自己是 <b>60</b>。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout tip">
+    <span class="title">💡 這就是這類題最漂亮的地方</span>
+    <p>小金<b>沒有告訴任何人他看到什麼</b>，但「他能立刻回答」這件事本身，就讓另外兩個人各自刪掉一個選項。在邏輯裡，<b>別人的反應也是資料</b>。</p>
+  </div>
+
+  <h2 id="tool"><span class="num">六</span>互動：自己試試看各種畫面</h2>
+  <div class="grid-tool num-tool" data-tool="heads">
+    <h3>🔎 額頭數字探測器</h3>
+    <p class="small muted">填入「我看到的兩個數字」，看看我的數字有哪些可能、能不能立刻回答。</p>
+    <div class="row">
+      <div><label for="hn-a">我看到的數字 ①</label><input id="hn-a" type="number" min="1" data-in="a" value="120"></div>
+      <div><label for="hn-b">我看到的數字 ②</label><input id="hn-b" type="number" min="1" data-in="b" value="60"></div>
+    </div>
+    <div class="toolbar" style="position:static">
+      <button data-preset="120,60">120 與 60</button>
+      <button data-preset="180,60">180 與 60</button>
+      <button data-preset="180,120">180 與 120</button>
+      <button data-preset="50,30">50 與 30</button>
+    </div>
+    <div class="cands"></div>
+    <p class="tool-msg"></p>
+  </div>
+
+  <section class="practice" id="practice">
+    <h2>✍️ 練習題</h2>
+    <div class="toolbar">
+      <div class="score"><span class="label">選擇題</span><span class="bar"><i></i></span></div>
+      <button data-action="show-all" aria-pressed="false">顯示所有答案（家長用）</button>
+      <button data-action="print">列印</button>
+      <button data-action="reset">清除紀錄</button>
+    </div>
+
+    <h3>A. 選擇題</h3>
+    <p class="small muted">規則都一樣：三個不同的正整數，其中兩個相加等於第三個。</p>
+    <div class="quiz-set">
+      <div class="q" data-id="h1" data-answer="1">
+        <p class="q-text">小安看到另外兩人是 <b>40</b> 和 <b>20</b>。他能不能立刻知道自己的數字？</p>
+        <div class="opts long">
+          <button class="opt">不能，可能是 60 或 20</button>
+          <button class="opt">能，一定是 60</button>
+          <button class="opt">能，一定是 20</button>
+          <button class="opt">不能，資訊不足</button>
+        </div>
+        <div class="explain"><p>和＝60 ✅；差＝40 － 20 ＝ 20，會和看到的 20 重複 ❌。只剩一種 → <b>60</b>。（40 剛好是 20 的 2 倍，符合「立刻知道」的條件。）</p></div>
+      </div>
+      <div class="q" data-id="h2" data-answer="2">
+        <p class="q-text">小美看到另外兩人是 <b>50</b> 和 <b>30</b>。她的數字有哪些可能？</p>
+        <div class="opts long">
+          <button class="opt">只有 80</button>
+          <button class="opt">只有 20</button>
+          <button class="opt">80 或 20 都有可能</button>
+          <button class="opt">80、20 或 30 都有可能</button>
+        </div>
+        <div class="explain"><p>和＝80 ✅；差＝20，和 50、30 都不重複，也合法 ✅。<b>兩種都可能，所以她還不能回答</b>。50 不是 30 的 2 倍，這正是差沒被刪掉的原因。</p></div>
+      </div>
+      <div class="q" data-id="h3" data-answer="0">
+        <p class="q-text">一個人能<b>立刻</b>說出自己的數字，代表他看到的兩個數字有什麼關係？</p>
+        <div class="opts long">
+          <button class="opt">大的剛好是小的 2 倍</button>
+          <button class="opt">大的剛好是小的 3 倍</button>
+          <button class="opt">兩個數字相加是整百</button>
+          <button class="opt">兩個都是偶數</button>
+        </div>
+        <div class="explain"><p>只有「大 ＝ 2 × 小」時，差才會等於小的那個數而重複、被刪掉，剩下唯一解（＝和）。</p></div>
+      </div>
+      <div class="q" data-id="h4" data-answer="2">
+        <p class="q-text">如果小金立刻說的是「我的是 <b>240</b>」，另外兩個數字是？</p>
+        <div class="opts"><button class="opt">100 和 140</button><button class="opt">60 和 180</button><button class="opt">80 和 160</button><button class="opt">120 和 120</button></div>
+        <div class="explain"><p>立刻知道 → 看到 k 和 2k，自己＝3k＝240 → k＝80，所以是 <b>80 和 160</b>。（檢查：80 ＋ 160 ＝ 240 ✅）</p></div>
+      </div>
+      <div class="q" data-id="h5" data-answer="1">
+        <p class="q-text">同樣的規則，如果有人立刻說「我的是 <b>90</b>」，另外兩個數字是？</p>
+        <div class="opts"><button class="opt">20 和 70</button><button class="opt">30 和 60</button><button class="opt">45 和 45</button><button class="opt">10 和 80</button></div>
+        <div class="explain"><p>3k ＝ 90 → k ＝ 30，另外兩數是 <b>30 和 60</b>。注意 45 和 45 不行——三個數字必須<b>互不相同</b>。</p></div>
+      </div>
+      <div class="q" data-id="h6" data-answer="3">
+        <p class="q-text">小傑看到 <b>21</b> 和 <b>7</b>，他能立刻知道嗎？</p>
+        <div class="opts long">
+          <button class="opt">能，是 28</button>
+          <button class="opt">能，是 14</button>
+          <button class="opt">能，是 7</button>
+          <button class="opt">不能，28 和 14 都有可能</button>
+        </div>
+        <div class="explain"><p>和＝28 ✅；差＝14，和 21、7 都不同，合法 ✅。21 是 7 的 <b>3</b> 倍不是 2 倍，所以差沒被刪掉，他還不能回答。</p></div>
+      </div>
+      <div class="q" data-id="h7" data-answer="1">
+        <p class="q-text">為什麼「兩數之和」這個選項<b>永遠</b>合法，不需要檢查？</p>
+        <div class="opts long">
+          <button class="opt">因為和一定是偶數</button>
+          <button class="opt">因為和比看到的兩個數字都大，不可能和它們重複</button>
+          <button class="opt">因為題目說要相加</button>
+          <button class="opt">因為和一定是 3 的倍數</button>
+        </div>
+        <div class="explain"><p>兩個正整數相加，結果一定比其中任何一個大，所以不會撞到已經看到的數字。要小心檢查的永遠是<b>差</b>。</p></div>
+      </div>
+      <div class="q" data-id="h8" data-answer="2">
+        <p class="q-text">小楷看到 180 和 60，可能是 240 或 120。他為什麼能排除 240？</p>
+        <div class="opts long">
+          <button class="opt">因為 240 太大了</button>
+          <button class="opt">因為 240 不是 60 的倍數</button>
+          <button class="opt">因為若他是 240，小金看到 240 和 60 就不會是 2 倍關係，小金不可能立刻回答</button>
+          <button class="opt">因為小金說了他是 180</button>
+        </div>
+        <div class="explain"><p>關鍵是<b>用小金的「立刻」來檢查每一個假設</b>。若小楷是 240，小金看到的是 240 和 60（4 倍關係），他會有 300 和 180 兩種可能，不可能立刻回答。事實上他回答了，所以這個假設出局。</p></div>
+      </div>
+      <div class="q" data-id="h9" data-answer="1">
+        <p class="q-text">「小楷、小治還沒反應」這句話告訴我們什麼？</p>
+        <div class="opts long">
+          <button class="opt">他們兩個反應比較慢</button>
+          <button class="opt">他們各自看到的兩個數字都不是 2 倍關係</button>
+          <button class="opt">他們的數字比小金大</button>
+          <button class="opt">完全沒有任何資訊</button>
+        </div>
+        <div class="explain"><p>沒能立刻回答＝看到的畫面有兩種可能＝不是 2 倍關係。檢查一下：小楷看到 180 和 60（3 倍）、小治看到 180 和 120（1.5 倍），都不是 2 倍 ✅ 和答案一致。</p><p class="small">（這一題就算不用這句話也解得出來，但它幫我們<b>驗算</b>。）</p></div>
+      </div>
+      <div class="q" data-id="h10" data-answer="0">
+        <p class="q-text">如果題目沒有規定「三個數字互不相同」，小金還能立刻知道自己是 180 嗎？</p>
+        <div class="opts long">
+          <button class="opt">不能，因為這時候差 60 也合法，會有 180 和 60 兩種可能</button>
+          <button class="opt">可以，答案不變</button>
+          <button class="opt">可以，但答案會變成 60</button>
+          <button class="opt">和這個規定沒有關係</button>
+        </div>
+        <div class="explain"><p>「互不相同」正是刪掉「差」的唯一武器。拿掉它，看到 120 和 60 的人就有 180（和）與 60（差）兩種可能，誰也立刻回答不了。<b>題目每一個條件都有用</b>。</p></div>
+      </div>
+      <div class="q" data-id="h11" data-answer="2">
+        <p class="q-text">用 k 表示：某人能立刻回答時，三個數字一定長什麼樣子？</p>
+        <div class="opts long">
+          <button class="opt">k、k＋1、2k＋1</button>
+          <button class="opt">k、3k、4k</button>
+          <button class="opt">k、2k、3k</button>
+          <button class="opt">k、2k、4k</button>
+        </div>
+        <div class="explain"><p>他看到 k 和 2k，自己是 3k。所以三個數字是 <b>k、2k、3k</b>（本題 k＝60：60、120、180）。<br>順帶一提，這也表示三個數字<b>一定是同一個數的 1、2、3 倍</b>——很好用的檢查法。</p></div>
+      </div>
+      <div class="q" data-id="h12" data-answer="1">
+        <p class="q-text">三個數字是 <b>30、50、20</b>（30 ＋ 20 ＝ 50）。額頭 30 的叫 A、50 的叫 B、20 的叫 C。A 先說：「我不知道。」接著 B 說：「那我知道了，我是 50。」B 是怎麼推出來的？</p>
+        <div class="opts long">
+          <button class="opt">因為他看到的 30 和 20 相加剛好是 50</button>
+          <button class="opt">若自己是 10，A 就會看到 10 和 20（2 倍）而立刻知道；A 說不知道，所以自己不是 10，只能是 50</button>
+          <button class="opt">因為 50 是三個數字中最大的</button>
+          <button class="opt">因為 30 是 20 的 1.5 倍</button>
+        </div>
+        <div class="explain">
+          <p>B 看到 30 和 20，自己可能是 <b>50</b>（和）或 <b>10</b>（差，和 30、20 都不同，本來也合法）。光看數字分不出來——選項 (A) 只說明 50 有可能，沒有排除 10。</p>
+          <p>真正的關鍵是 A 那句「我不知道」：假設 B 是 10，A 就會看到 10 和 20，剛好 2 倍，A 第一輪就該立刻回答。事實上 A 不知道 ❌，所以 B 不是 10 → <b>B 是 50</b>。</p>
+          <p class="small">這叫<b>第二輪推理</b>：第一輪的「不知道」，變成第二輪的條件。難一點的題目要跑三、四輪。</p>
+        </div>
+      </div>
+    </div>
+
+    <h3>B. 動手寫</h3>
+    <div class="write">
+      <h3>不看解析，自己寫一次</h3>
+      <p>請完整寫出：為什麼小金能立刻知道，以及另外兩個數字怎麼算出來。（提示：從「我的數字只有兩種可能」開始寫。）</p>
+      <textarea data-note="hw-main" rows="5" aria-label="寫出180的推理"></textarea>
+      <button class="reveal-btn"></button>
+      <div class="answer">
+        <p>① 看到兩個數字時，我的數字只可能是「和」或「差」。</p>
+        <p>② 和永遠合法；差只有在「大＝2×小」時才會和小的重複而被刪掉。</p>
+        <p>③ 小金立刻知道 → 他看到的是 k 和 2k，他自己是 3k。</p>
+        <p>④ 3k ＝ 180 → k ＝ 60 → 另外兩個數字是 <b>60 和 120</b>。</p>
+      </div>
+    </div>
+    <div class="write">
+      <h3>換一個數字</h3>
+      <p>如果小金立刻說「我的是 <b>96</b>」，另外兩個數字是什麼？寫出算式並檢查。</p>
+      <textarea data-note="hw-96" rows="3" aria-label="96 的情況"></textarea>
+      <button class="reveal-btn"></button>
+      <div class="answer">
+        <p>3k ＝ 96 → k ＝ 32 → 另外兩數是 <b>32 和 64</b>。</p>
+        <p>檢查：32 ＋ 64 ＝ 96 ✅、三數互不相同 ✅、64 ＝ 2 × 32 ✅（所以他才能立刻知道）。</p>
+      </div>
+    </div>
+    <div class="write">
+      <h3>挑戰：第二輪推理</h3>
+      <p>三個數字是 <b>60、100、40</b>（60 ＋ 40 ＝ 100）。額頭 60 的叫 A、100 的叫 B、40 的叫 C。<br>① A 第一輪能不能知道自己的數字？②　若 A 說「我不知道」，B 能不能確定自己是 100？請寫下理由。</p>
+      <textarea data-note="hw-round2" rows="5" aria-label="第二輪推理"></textarea>
+      <button class="reveal-btn"></button>
+      <div class="answer">
+        <p>① A 看到 100 和 40：和＝140、差＝60，兩個都合法（60 和 100、40 都不同）→ <b>A 不知道</b>。（100 不是 40 的 2 倍，所以差沒被刪掉。）</p>
+        <p>② B 看到 60 和 40：自己可能是 100（和）或 20（差）。假設自己是 20 → A 就會看到 20 和 40，剛好 2 倍 → A 第一輪就該立刻知道。可是 A 說不知道 ❌，所以自己不是 20 → <b>B 確定自己是 100</b>。</p>
+        <p class="small">看懂這一題，你就完全掌握了這個單元最核心的一招：<b>把別人的「不知道」當成條件用</b>。</p>
+      </div>
+    </div>
+  </section>
+
+  <nav class="pager">
+    <a href="shapes.html"><small>← 上一個概念</small>② 四邊形與對角線</a>
+    <a class="next" href="index.html"><small>回到 →</small>總覽與三題</a>
+  </nav>
+</main>
+<footer class="site-footer"><a href="../index.html">探索未來世界的能力</a>．數理邏輯推理．作答紀錄只存在你這台裝置的瀏覽器裡</footer>
+<script src="../assets/quiz.js"></script>
+<script src="assets/math.js"></script>
+</body>
+</html>
