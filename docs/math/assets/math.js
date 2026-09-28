@@ -5,21 +5,39 @@
  * 純前端，不存任何紀錄。
  */
 (function () {
-  /* ---------- 1. 對角線性質表 ---------- */
+  /* ---------- 1. 可自己填的表格（性質表、邏輯表格） ---------- */
   document.querySelectorAll('[data-tool="prop-grid"]').forEach(function (tool) {
     var cells = Array.prototype.slice.call(tool.querySelectorAll('.cell-btn'));
     var msg = tool.querySelector('.tool-msg');
-    var faces = ['?', '✓', '✗'];
+    var faces = ['?', '\u2713', '\u2717'];
+    var cross = (tool.dataset.autocross || '').split(/[ ,]+/);
+    var crossRow = cross.indexOf('row') >= 0;
+    var crossCol = cross.indexOf('col') >= 0;
+    var doneMsg = tool.dataset.doneMsg || '\uD83C\uDF89 全部正確！';
+
+    function setCell(c, v) {
+      c.dataset.v = v;
+      c.textContent = v === '1' ? '\u2713' : (v === '0' ? '\u2717' : '?');
+      c.classList.remove('is-right', 'is-wrong');
+    }
+
+    function autocross(c) {
+      if (!crossRow && !crossCol) return;
+      cells.forEach(function (o) {
+        if (o === c || o.dataset.v === '0') return;
+        var sameRow = crossRow && o.dataset.r === c.dataset.r;
+        var sameCol = crossCol && o.dataset.c === c.dataset.c;
+        if (sameRow || sameCol) setCell(o, '0');
+      });
+    }
 
     cells.forEach(function (c) {
       c.type = 'button';
-      c.dataset.v = '';
-      c.textContent = '?';
+      setCell(c, '');
       c.addEventListener('click', function () {
         var next = (faces.indexOf(c.textContent) + 1) % 3;
-        c.textContent = faces[next];
-        c.dataset.v = next === 0 ? '' : (next === 1 ? '1' : '0');
-        c.classList.remove('is-right', 'is-wrong');
+        setCell(c, next === 0 ? '' : (next === 1 ? '1' : '0'));
+        if (next === 1) autocross(c);
       });
     });
 
@@ -33,30 +51,24 @@
       });
       if (blank) {
         msg.className = 'tool-msg';
-        msg.textContent = '還有 ' + blank + ' 格沒填（每格點一下會在 ? → ✓ → ✗ 之間換）。';
+        msg.textContent = '還有 ' + blank + ' 格沒填（每格點一下會在 ? \u2192 \u2713 \u2192 \u2717 之間換）。';
       } else if (wrong) {
         msg.className = 'tool-msg no';
-        msg.textContent = '有 ' + wrong + ' 格要再想想：畫出對角線，量量看再改。';
+        msg.textContent = '有 ' + wrong + ' 格要再想想：回去對照線索，一條一條重看。';
       } else {
         msg.className = 'tool-msg ok';
-        msg.textContent = '🎉 全部正確！這張表就是第 1 題的鑰匙。';
+        msg.textContent = doneMsg;
       }
     });
 
     tool.querySelector('[data-act="reveal"]').addEventListener('click', function () {
-      cells.forEach(function (c) {
-        c.dataset.v = c.dataset.ans;
-        c.textContent = c.dataset.ans === '1' ? '✓' : '✗';
-        c.classList.remove('is-right', 'is-wrong');
-      });
+      cells.forEach(function (c) { setCell(c, c.dataset.ans); });
       msg.className = 'tool-msg';
       msg.textContent = '這是正確答案，對照一下剛剛哪幾格想錯了。';
     });
 
     tool.querySelector('[data-act="clear"]').addEventListener('click', function () {
-      cells.forEach(function (c) {
-        c.dataset.v = ''; c.textContent = '?'; c.classList.remove('is-right', 'is-wrong');
-      });
+      cells.forEach(function (c) { setCell(c, ''); });
       msg.className = 'tool-msg';
       msg.textContent = '';
     });

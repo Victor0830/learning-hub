@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>⑤ 對一半與標籤全錯｜數理邏輯推理｜探索未來世界的能力</title>
+<meta name="description" content="每個人說的話剛好對一半、四位老師只有一人猜對、三隻熊的帽子、標籤全部貼錯的糖果盒：四種「話中有話」的推理題與練習。">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧩</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Huninn&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="assets/math.css">
+</head>
+<body data-unit="math" data-page="math-halftrue">
+<header class="site-header">
+  <div class="inner">
+    <a class="brand" href="../index.html"><span class="seal">探</span>探索未來世界的能力</a>
+    <nav class="section-nav" aria-label="主題">
+      <a href="../chinese/index.html">國文閱讀</a>
+      <a href="../english/index.html">英文聽說寫</a>
+      <a href="../math/index.html" aria-current="true">數理邏輯</a>
+      <a href="../economics/index.html">經濟與金錢</a>
+      <a href="../history/index.html">世界史與台灣史</a>
+      <a href="../fitness/index.html">體能訓練</a>
+      <a href="../planning/index.html">升學規劃</a>
+    </nav>
+  </div>
+  <div class="subnav"><div class="inner">
+    <a class="sub-home" href="index.html">🧩 數理邏輯推理</a>
+    <nav class="site-nav" aria-label="數理邏輯頁面">
+      <a href="index.html">總覽與題目</a>
+      <a href="truth.html">① 真假話推理</a>
+      <a href="shapes.html">② 四邊形與對角線</a>
+      <a href="heads.html">③ 額頭上的數字</a>
+      <a href="grid.html">④ 表格推理法</a>
+      <a href="halftrue.html" aria-current="page">⑤ 對一半與標籤全錯</a>
+    </nav>
+  </div></div>
+</header>
+
+<main>
+  <section class="hero">
+    <span class="eyebrow">概念 ⑤</span>
+    <h1>對一半與標籤全錯</h1>
+    <p class="lead">這一頁收四種「話裡藏話」的題型：每個人說的<b>剛好對一半</b>、四位老師<b>只有一人猜對</b>、從<b>誰在說話</b>看出身分，還有<b>標籤全部貼錯</b>的糖果盒。共同點是：句子本身不重要，重要的是<b>那個限制條件</b>。</p>
+  </section>
+
+  <div class="goals">
+    <h3>🎯 這一頁學完，你會……</h3>
+    <ul>
+      <li>解「每人說兩句、剛好對一半」的排名題，並知道要<b>從重複出現的主張下手</b></li>
+      <li>用假設法處理「只有一人猜對」，並看出<b>否定句涵蓋的範圍最大</b></li>
+      <li>從「<b>誰在說話</b>、<b>誰在回話</b>」推出身分</li>
+      <li>解釋為什麼「標籤全錯」的三盒糖果，只要打開<b>一盒</b>就夠</li>
+    </ul>
+  </div>
+
+  <nav class="toc" aria-label="本頁目錄">
+    <a href="#half">剛好對一半</a><a href="#one">只有一人猜對</a><a href="#who">誰在說話</a><a href="#box">挑戰題：標籤全錯</a><a href="#practice">練習題</a>
+  </nav>
+
+  <h2 id="half"><span class="num">一</span>每個人剛好對一半（第 5 題）</h2>
+  <div class="orig">
+    <span class="orig-tag">第 5 題</span>
+    <p>小龍、小虎、小雀、小武、小麟五名業務員的本月業績是公司前五名，五人憑自己的印象推論說出以下的話：</p>
+    <p class="says"><b>小龍</b>：「小虎是第三名，小雀是第五名。」</p>
+    <p class="says"><b>小虎</b>：「小武是第二名，小麟是第四名。」</p>
+    <p class="says"><b>小雀</b>：「小龍是第一名，小麟是第四名。」</p>
+    <p class="says"><b>小武</b>：「小雀是第一名，小虎是第二名。」</p>
+    <p class="says"><b>小麟</b>：「小武是第二名，小龍是第三名。」</p>
+    <p>會計總結說：「你們五位的推論<b>剛好都對一半</b>。」請問五人的排名由第一到第五分別是誰？</p>
+  </div>
+  <div class="callout key">
+    <span class="title">🔑 「剛好對一半」是什麼意思</span>
+    <p>每個人說了<b>兩句</b>，其中<b>恰好一句真、一句假</b>。所以只要確定其中一句的真假，同一個人的另一句就自動確定了——這比 <a href="truth.html">① 真假話推理</a> 的條件還好用。</p>
+  </div>
+  <div class="callout tip">
+    <span class="title">💡 從哪裡下手：找重複出現的主張</span>
+    <p>「<b>小麟是第四名</b>」同時出現在小虎和小雀的話裡。只要假設它的真假，<b>一次就決定兩個人的另一句話</b>，推理速度會快很多。找重複的主張，是這類題目的起手式。</p>
+  </div>
+  <p><b>第一條路：假設「小麟是第四名」是真的</b></p>
+  <ul class="chain">
+    <li><span class="who">小虎</span><span class="from">小武第二 ／ 小麟第四</span><span class="to">小麟第四是真 → 「小武第二」是<b>假</b></span></li>
+    <li><span class="who">小雀</span><span class="from">小龍第一 ／ 小麟第四</span><span class="to">小麟第四是真 → 「小龍第一」是<b>假</b></span></li>
+    <li><span class="who">小麟</span><span class="from">小武第二 ／ 小龍第三</span><span class="to">小武第二已知是假 → 「小龍第三」是真 → <b>小龍＝第 3 名</b></span></li>
+    <li><span class="who">小龍</span><span class="from">小虎第三 ／ 小雀第五</span><span class="to">第三名是小龍，所以「小虎第三」假 → <b>小雀＝第 5 名</b></span></li>
+    <li><span class="who">小武</span><span class="from">小雀第一 ／ 小虎第二</span><span class="to">小雀是第五，所以「小雀第一」假 → <b>小虎＝第 2 名</b></span></li>
+    <li><span class="who">收尾</span><span class="from">剩下第 1 名和第 4 名，小麟已是第 4</span><span class="to"><b>小武＝第 1 名</b></span></li>
+  </ul>
+  <p><b>第二條路：假設「小麟是第四名」是假的</b>（一定要試，才知道答案唯一）</p>
+  <ul class="chain">
+    <li><span class="who">小虎</span><span class="from">小麟第四是假</span><span class="to">→「小武第二」是<b>真</b>，小武＝第 2 名</span></li>
+    <li><span class="who">小雀</span><span class="from">小麟第四是假</span><span class="to">→「小龍第一」是<b>真</b>，小龍＝第 1 名</span></li>
+    <li><span class="who">小武</span><span class="from">小雀第一 ／ 小虎第二</span><span class="to">第一名是小龍 →「小雀第一」假 →「小虎第二」必須是真；但第二名已經是小武 <b>✗ 矛盾</b></span></li>
+  </ul>
+  <div class="callout key">
+    <span class="title">🔑 答案</span>
+    <p>第 1 名 <b>小武</b>、第 2 名 <b>小虎</b>、第 3 名 <b>小龍</b>、第 4 名 <b>小麟</b>、第 5 名 <b>小雀</b>。</p>
+    <p class="small">兩條路只有一條走得通，所以答案唯一。最後記得<b>把五句話全部代回去檢查</b>：每個人都剛好一真一假 ✅</p>
+  </div>
+  <div class="grid-tool" data-tool="prop-grid" data-autocross="row col" data-done-msg="🎉 全對！由第一名到第五名是：小武、小虎、小龍、小麟、小雀。">
+    <h3>📝 互動：把排名填進表格</h3>
+    <div class="table-wrap">
+      <table class="tight">
+        <thead><tr><th></th><th>第 1</th><th>第 2</th><th>第 3</th><th>第 4</th><th>第 5</th></tr></thead>
+        <tbody>
+          <tr><td>小龍</td>
+            <td><button class="cell-btn" data-r="1" data-c="1" data-ans="0" aria-label="小龍 第1"></button></td>
+            <td><button class="cell-btn" data-r="1" data-c="2" data-ans="0" aria-label="小龍 第2"></button></td>
+            <td><button class="cell-btn" data-r="1" data-c="3" data-ans="1" aria-label="小龍 第3"></button></td>
+            <td><button class="cell-btn" data-r="1" data-c="4" data-ans="0" aria-label="小龍 第4"></button></td>
+            <td><button class="cell-btn" data-r="1" data-c="5" data-ans="0" aria-label="小龍 第5"></button></td></tr>
+          <tr><td>小虎</td>
+            <td><button class="cell-btn" data-r="2" data-c="1" data-ans="0" aria-label="小虎 第1"></button></td>
+            <td><button class="cell-btn" data-r="2" data-c="2" data-ans="1" aria-label="小虎 第2"></button></td>
+            <td><button class="cell-btn" data-r="2" data-c="3" data-ans="0" aria-label="小虎 第3"></button></td>
+            <td><button class="cell-btn" data-r="2" data-c="4" data-ans="0" aria-label="小虎 第4"></button></td>
+            <td><button class="cell-btn" data-r="2" data-c="5" data-ans="0" aria-label="小虎 第5"></button></td></tr>
+          <tr><td>小雀</td>
+            <td><button class="cell-btn" data-r="3" data-c="1" data-ans="0" aria-label="小雀 第1"></button></td>
+            <td><button class="cell-btn" data-r="3" data-c="2" data-ans="0" aria-label="小雀 第2"></button></td>
+            <td><button class="cell-btn" data-r="3" data-c="3" data-ans="0" aria-label="小雀 第3"></button></td>
+            <td><button class="cell-btn" data-r="3" data-c="4" data-ans="0" aria-label="小雀 第4"></button></td>
+            <td><button class="cell-btn" data-r="3" data-c="5" data-ans="1" aria-label="小雀 第5"></button></td></tr>
+          <tr><td>小武</td>
+            <td><button class="cell-btn" data-r="4" data-c="1" data-ans="1" aria-label="小武 第1"></button></td>
+            <td><button class="cell-btn" data-r="4" data-c="2" data-ans="0" aria-label="小武 第2"></button></td>
+            <td><button class="cell-btn" data-r="4" data-c="3" data-ans="0" aria-label="小武 第3"></button></td>
+            <td><button class="cell-btn" data-r="4" data-c="4" data-ans="0" aria-label="小武 第4"></button></td>
+            <td><button class="cell-btn" data-r="4" data-c="5" data-ans="0" aria-label="小武 第5"></button></td></tr>
+          <tr><td>小麟</td>
+            <td><button class="cell-btn" data-r="5" data-c="1" data-ans="0" aria-label="小麟 第1"></button></td>
+            <td><button class="cell-btn" data-r="5" data-c="2" data-ans="0" aria-label="小麟 第2"></button></td>
+            <td><button class="cell-btn" data-r="5" data-c="3" data-ans="0" aria-label="小麟 第3"></button></td>
+            <td><button class="cell-btn" data-r="5" data-c="4" data-ans="1" aria-label="小麟 第4"></button></td>
+            <td><button class="cell-btn" data-r="5" data-c="5" data-ans="0" aria-label="小麟 第5"></button></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="toolbar" style="position:static">
+      <button class="btn-primary" data-act="check">檢查</button>
+      <button data-act="reveal">看答案</button>
+      <button data-act="clear">清空</button>
+    </div>
+    <p class="tool-msg"></p>
+  </div>
+
+  <h2 id="one"><span class="num">二</span>只有一個人猜對（第 6 題）</h2>
+  <div class="orig">
+    <span class="orig-tag">第 6 題</span>
+    <p>小禮、小樂、小射、小御、小畫、小數六人參加數學競賽，金牌得主只有一位。四位數學老師做了以下猜測：</p>
+    <p class="says"><b>第一位</b>：「小禮和小樂有機會。」　<b>第二位</b>：「小禮和小射有機會。」</p>
+    <p class="says"><b>第三位</b>：「小畫和小數有機會。」　<b>第四位</b>：「不可能是小禮。」</p>
+    <p>結果出爐，四位老師中<b>只有一人的猜測是正確的</b>。請問誰奪得金牌？</p>
+  </div>
+  <p>做法和 <a href="truth.html">① 真假話推理</a> 完全一樣：<b>假設每個人是冠軍，數數看有幾位老師猜對</b>。</p>
+  <div class="table-wrap">
+    <table class="tight">
+      <thead><tr><th>假設冠軍是</th><th>①「禮或樂」</th><th>②「禮或射」</th><th>③「畫或數」</th><th>④「不是禮」</th><th>猜對幾人</th></tr></thead>
+      <tbody>
+        <tr><td><b>小禮</b></td><td class="yes">對</td><td class="yes">對</td><td class="no-mark">錯</td><td class="no-mark">錯</td><td>2 ❌</td></tr>
+        <tr><td><b>小樂</b></td><td class="yes">對</td><td class="no-mark">錯</td><td class="no-mark">錯</td><td class="yes">對</td><td>2 ❌</td></tr>
+        <tr><td><b>小射</b></td><td class="no-mark">錯</td><td class="yes">對</td><td class="no-mark">錯</td><td class="yes">對</td><td>2 ❌</td></tr>
+        <tr><td><b>小御</b></td><td class="no-mark">錯</td><td class="no-mark">錯</td><td class="no-mark">錯</td><td class="yes">對</td><td><b>1 ✅</b></td></tr>
+        <tr><td><b>小畫</b></td><td class="no-mark">錯</td><td class="no-mark">錯</td><td class="yes">對</td><td class="yes">對</td><td>2 ❌</td></tr>
+        <tr><td><b>小數</b></td><td class="no-mark">錯</td><td class="no-mark">錯</td><td class="yes">對</td><td class="yes">對</td><td>2 ❌</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout key">
+    <span class="title">🔑 答案：小御</span>
+    <p>六個人只有「小御」會讓猜對的人數剛好是 1（只有第四位老師猜對）。</p>
+  </div>
+  <div class="callout tip">
+    <span class="title">💡 為什麼答案會是「沒有人猜到的那個人」</span>
+    <p>看第四位老師：「<b>不可能是小禮</b>」——只要冠軍不是小禮，他就猜對了，<b>六個人裡有五個都算他對</b>。否定句涵蓋的範圍特別大，所以它幾乎一定是那唯一猜對的人。<br>既然真話的額度被他用掉了，其他三位老師就<b>全部要猜錯</b>；把他們提到的名字（禮、樂、射、畫、數）全部刪掉，只剩<b>小御</b>。這是不畫表格也能秒解的思路。</p>
+  </div>
+
+  <h2 id="who"><span class="num">三</span>誰在說話，也是線索（第 2 題）</h2>
+  <div class="orig">
+    <span class="orig-tag">第 2 題</span>
+    <p>馬戲團有白熊、黑熊、棕熊，團長把三頂帽子分給三隻熊，帽子的顏色恰好是白色、黑色和棕色。</p>
+    <p class="says">其中<b>一隻拿到白帽子</b>的熊很開心地說：「我們大家拿到的帽子真剛好，<b>白熊沒拿到白帽，黑熊沒拿到黑帽，棕熊沒拿到棕帽</b>。」</p>
+    <p class="says"><b>黑熊</b>：「真的耶！你沒說的話，我還沒發現那！」</p>
+    <p>請問白熊、黑熊、棕熊分別拿到什麼顏色的帽子？</p>
+  </div>
+  <ul class="chain">
+    <li><span class="who">說話者</span><span class="from">他拿到白帽，而他自己說「白熊沒拿到白帽」</span><span class="to">說話的<b>不是白熊</b></span></li>
+    <li><span class="who">黑熊</span><span class="from">黑熊在<b>回話</b>（「你沒說的話，我還沒發現」）</span><span class="to">說話的<b>不是黑熊</b> → 只剩 <b>棕熊拿白帽</b></span></li>
+    <li><span class="who">黑熊</span><span class="from">黑熊沒拿到黑帽，白帽也被棕熊拿走</span><span class="to"><b>黑熊拿棕帽</b></span></li>
+    <li><span class="who">白熊</span><span class="from">只剩黑帽</span><span class="to"><b>白熊拿黑帽</b>（也符合「白熊沒拿到白帽」）</span></li>
+  </ul>
+  <div class="callout key">
+    <span class="title">🔑 答案</span>
+    <p>白熊 → <b>黑帽</b>　黑熊 → <b>棕帽</b>　棕熊 → <b>白帽</b></p>
+    <p class="small">整題真正的線索只有一句：<b>黑熊「回話」代表他不是說話的人</b>。題目把它藏在一句聽起來只是搭腔的話裡。</p>
+  </div>
+  <div class="grid-tool" data-tool="prop-grid" data-autocross="row col" data-done-msg="🎉 全對！三隻熊都沒拿到跟自己同色的帽子。">
+    <h3>📝 互動：熊 × 帽子</h3>
+    <div class="table-wrap">
+      <table class="tight">
+        <thead><tr><th></th><th>白帽</th><th>黑帽</th><th>棕帽</th></tr></thead>
+        <tbody>
+          <tr><td>白熊</td>
+            <td><button class="cell-btn" data-r="1" data-c="1" data-ans="0" aria-label="白熊 白帽"></button></td>
+            <td><button class="cell-btn" data-r="1" data-c="2" data-ans="1" aria-label="白熊 黑帽"></button></td>
+            <td><button class="cell-btn" data-r="1" data-c="3" data-ans="0" aria-label="白熊 棕帽"></button></td></tr>
+          <tr><td>黑熊</td>
+            <td><button class="cell-btn" data-r="2" data-c="1" data-ans="0" aria-label="黑熊 白帽"></button></td>
+            <td><button class="cell-btn" data-r="2" data-c="2" data-ans="0" aria-label="黑熊 黑帽"></button></td>
+            <td><button class="cell-btn" data-r="2" data-c="3" data-ans="1" aria-label="黑熊 棕帽"></button></td></tr>
+          <tr><td>棕熊</td>
+            <td><button class="cell-btn" data-r="3" data-c="1" data-ans="1" aria-label="棕熊 白帽"></button></td>
+            <td><button class="cell-btn" data-r="3" data-c="2" data-ans="0" aria-label="棕熊 黑帽"></button></td>
+            <td><button class="cell-btn" data-r="3" data-c="3" data-ans="0" aria-label="棕熊 棕帽"></button></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="toolbar" style="position:static">
+      <button class="btn-primary" data-act="check">檢查</button>
+      <button data-act="reveal">看答案</button>
+      <button data-act="clear">清空</button>
+    </div>
+    <p class="tool-msg"></p>
+  </div>
+
+  <h2 id="box"><span class="num">四</span>挑戰題：標籤全部貼錯的糖果盒</h2>
+  <div class="orig">
+    <span class="orig-tag">挑戰題</span>
+    <p>糖果小販收到三個<b>不透明</b>的盒子：一個裝草莓糖，一個裝葡萄糖，還有一個混合裝草莓糖和葡萄糖。盒子上的標籤分別寫著「草莓」、「葡萄」、「混合」，但小販被告知<b>所有的標籤都是錯誤的</b>。</p>
+    <p>如果小販想確定每個盒子裡裝的是什麼口味，請問他<b>最少要打開幾次盒子</b>（每次拿出一顆糖看）？為什麼？</p>
+  </div>
+  <div class="callout key">
+    <span class="title">🔑 答案：只要 1 次，而且一定要開標著「混合」的那一盒</span>
+  </div>
+  <ol class="steps-list">
+    <li><b>標「混合」的盒子一定不是混合</b><br>因為所有標籤都是錯的。它不是混合，就只能是<b>純草莓</b>或<b>純葡萄</b>。</li>
+    <li><b>所以拿一顆糖就能確定它</b><br>純的盒子裡每一顆都一樣。拿到草莓糖 → 這盒就是<b>草莓</b>盒（拿到葡萄糖同理）。</li>
+    <li><b>剩下兩盒用「標籤全錯」推</b><br>假設剛剛那盒是草莓。標「葡萄」的盒子不能是葡萄（標籤錯），也不能是草莓（草莓已經找到了）→ 它是<b>混合</b>。</li>
+    <li><b>最後一盒自動確定</b><br>標「草莓」的盒子就是<b>葡萄</b>。三盒全部確定，總共只開了 1 次。</li>
+  </ol>
+  <div class="callout warn">
+    <span class="title">⚠️ 為什麼不能先開別的盒子？</span>
+    <p>假設先開標「<b>草莓</b>」的盒子：它不是草莓，所以是<b>葡萄</b>或<b>混合</b>。如果拿出來的是一顆葡萄糖——那它可能是純葡萄盒，也可能是混合盒剛好抽到葡萄糖，<b>分不出來</b>，還得再拿。<br>只有標「混合」的那一盒，因為<b>保證是純的</b>，一顆糖就足以定案。選對盒子，才是這題真正的考點。</p>
+  </div>
+  <div class="callout tip">
+    <span class="title">💡 很多人會答「2 次」</span>
+    <p>因為直覺上「三個盒子總要開兩個才知道」。但「<b>標籤全錯</b>」這個條件很強：它等於先送了你一大堆 ✗。把它用足，第三盒就不用開了。<br>遇到「最少幾次」的題目，先問自己：<b>題目給的條件，我全部用到了嗎？</b></p>
+  </div>
+
+  <section class="practice" id="practice">
+    <h2>✍️ 練習題</h2>
+    <div class="toolbar">
+      <div class="score"><span class="label">選擇題</span><span class="bar"><i></i></span></div>
+      <button data-action="show-all" aria-pressed="false">顯示所有答案（家長用）</button>
+      <button data-action="print">列印</button>
+      <button data-action="reset">清除紀錄</button>
+    </div>
+
+    <h3>A. 選擇題</h3>
+    <div class="quiz-set">
+      <div class="q" data-id="f1" data-answer="2">
+        <p class="q-text">「五位的推論剛好都對一半」是什麼意思？</p>
+        <div class="opts long">
+          <button class="opt">五個人裡有一半的人說對了</button>
+          <button class="opt">每個人都說了一半的話</button>
+          <button class="opt">每個人說的兩句話裡，恰好一句真、一句假</button>
+          <button class="opt">每句話都有一半是對的</button>
+        </div>
+        <div class="explain"><p>每人兩句，恰好一真一假。好處是：<b>確定一句，另一句就自動確定</b>，資訊量比「只有一人說實話」還大。</p></div>
+      </div>
+      <div class="q" data-id="f2" data-answer="1">
+        <p class="q-text">解第 5 題時，為什麼要先從「小麟是第四名」下手？</p>
+        <div class="opts long">
+          <button class="opt">因為第四名比較好猜</button>
+          <button class="opt">因為這句話同時出現在兩個人的話裡，假設一次可以決定兩個人的另一句</button>
+          <button class="opt">因為小麟排在最後面</button>
+          <button class="opt">因為小麟說的話最多</button>
+        </div>
+        <div class="explain"><p>小虎和小雀都說了「小麟是第四名」。假設它真或假，兩個人的另一句話同時確定，推理一下子就滾起來了。<b>找重複出現的主張</b>是這類題的起手式。</p></div>
+      </div>
+      <div class="q" data-id="f3" data-answer="0">
+        <p class="q-text">第 5 題中，如果假設「小麟是第四名」是<b>假的</b>，會推出什麼矛盾？</p>
+        <div class="opts long">
+          <button class="opt">推出小武是第二名，又推出小虎是第二名</button>
+          <button class="opt">推出沒有人是第一名</button>
+          <button class="opt">推出小麟是第五名</button>
+          <button class="opt">不會有矛盾，兩種都成立</button>
+        </div>
+        <div class="explain"><p>小麟第四為假 → 小虎的「小武第二」真、小雀的「小龍第一」真。小武說「小雀第一／小虎第二」，第一名已是小龍 → 前句假 → 後句「小虎第二」必須真，但第二名已經是小武，<b>兩個人擠在第二名</b>，矛盾。</p></div>
+      </div>
+      <div class="q" data-id="f4" data-answer="3">
+        <p class="q-text">第 5 題的第一名是誰？</p>
+        <div class="opts"><button class="opt">小龍</button><button class="opt">小虎</button><button class="opt">小雀</button><button class="opt">小武</button></div>
+        <div class="explain"><p>完整答案是小武、小虎、小龍、小麟、小雀。有趣的是：<b>小武自己說的兩句都沒提到自己</b>，冠軍反而是沒人猜到的那個。</p></div>
+      </div>
+      <div class="q" data-id="f5" data-answer="1">
+        <p class="q-text">推完之後，最後一定要做的事是什麼？</p>
+        <div class="opts long">
+          <button class="opt">把答案背下來</button>
+          <button class="opt">把答案代回五句話，檢查每個人是不是真的剛好一真一假</button>
+          <button class="opt">再算一次加減</button>
+          <button class="opt">看看有沒有人重複</button>
+        </div>
+        <div class="explain"><p>推理題的最後一步永遠是<b>代回去驗算</b>。只要有一個人變成兩句都真或兩句都假，就代表中間推錯了。</p></div>
+      </div>
+      <div class="q" data-id="f6" data-answer="2">
+        <p class="q-text">第 6 題裡，第四位老師說「不可能是小禮」。這種<b>否定</b>的猜測有什麼特點？</p>
+        <div class="opts long">
+          <button class="opt">最難猜對，因為範圍太小</button>
+          <button class="opt">和別人一樣，沒有差別</button>
+          <button class="opt">六個人裡有五個都會讓他猜對，是最容易對的一句</button>
+          <button class="opt">一定是錯的</button>
+        </div>
+        <div class="explain"><p>「不是小禮」涵蓋了其他五個人。既然只有一人猜對，這位老師<b>幾乎一定就是那個對的人</b>——其他三位老師提到的名字就全部可以刪掉。</p></div>
+      </div>
+      <div class="q" data-id="f7" data-answer="2">
+        <p class="q-text">第 6 題的金牌得主是誰？</p>
+        <div class="opts"><button class="opt">小禮</button><button class="opt">小畫</button><button class="opt">小御</button><button class="opt">小數</button></div>
+        <div class="explain"><p>把前三位老師提到的名字（禮、樂、射、畫、數）全部刪掉，只剩<b>小御</b>；代回去檢查，剛好只有第四位老師猜對 ✅</p></div>
+      </div>
+      <div class="q" data-id="f8" data-answer="3">
+        <p class="q-text">如果第 6 題的條件改成「<b>只有一位老師猜錯</b>」，答案會是誰？</p>
+        <div class="opts long">
+          <button class="opt">小禮</button>
+          <button class="opt">小畫</button>
+          <button class="opt">小御</button>
+          <button class="opt">沒有人符合，這樣的題目無解</button>
+        </div>
+        <div class="explain"><p>「只有一人猜錯」＝要有 3 位猜對。但六個人算下來，猜對的人數最多只有 2（小禮、小樂、小射、小畫、小數都是 2，小御是 1），<b>沒有人能讓 3 位老師同時猜對</b>。<br>換個條件就可能無解——所以做完一定要檢查「剛好剩一個」。</p></div>
+      </div>
+      <div class="q" data-id="f9" data-answer="1">
+        <p class="q-text">熊與帽子那題，為什麼可以確定說話的不是白熊？</p>
+        <div class="opts long">
+          <button class="opt">因為白熊沒有說話的習慣</button>
+          <button class="opt">因為說話的熊拿到白帽，而他自己說「白熊沒拿到白帽」</button>
+          <button class="opt">因為黑熊回話了</button>
+          <button class="opt">因為白熊拿到棕帽</button>
+        </div>
+        <div class="explain"><p>說話者手上是白帽；如果他是白熊，就變成「白熊拿到白帽」，和他自己說的話衝突。所以他不是白熊。</p></div>
+      </div>
+      <div class="q" data-id="f10" data-answer="0">
+        <p class="q-text">黑熊說「真的耶！你沒說的話，我還沒發現」，這句話提供了什麼關鍵資訊？</p>
+        <div class="opts long">
+          <button class="opt">黑熊是在回話，所以說話的那隻熊不是黑熊</button>
+          <button class="opt">黑熊拿到白帽</button>
+          <button class="opt">黑熊比較笨</button>
+          <button class="opt">沒有提供任何資訊</button>
+        </div>
+        <div class="explain"><p>這句聽起來像閒聊的話，其實是整題唯一的關鍵：黑熊在回應別人 → 說話者不是黑熊 → 加上不是白熊 → 說話者是<b>棕熊</b>，而他拿白帽。</p></div>
+      </div>
+      <div class="q" data-id="f11" data-answer="1">
+        <p class="q-text">糖果盒那題，應該先打開標著什麼的盒子？</p>
+        <div class="opts"><button class="opt">「草莓」</button><button class="opt">「混合」</button><button class="opt">「葡萄」</button><button class="opt">哪一盒都可以</button></div>
+        <div class="explain"><p>標籤全錯 → 標「混合」的一定<b>不是</b>混合，所以它是純的，拿一顆糖就能確定。其他兩盒都可能是混合，拿一顆可能還是分不出來。</p></div>
+      </div>
+      <div class="q" data-id="f12" data-answer="2">
+        <p class="q-text">先打開標「草莓」的盒子，拿出一顆<b>葡萄糖</b>。這時能確定什麼？</p>
+        <div class="opts long">
+          <button class="opt">這盒一定是純葡萄</button>
+          <button class="opt">這盒一定是混合</button>
+          <button class="opt">這盒是純葡萄或混合，還分不出來</button>
+          <button class="opt">這盒是純草莓</button>
+        </div>
+        <div class="explain"><p>標籤錯 → 這盒不是草莓，剩下葡萄或混合兩種可能；而混合盒裡也有葡萄糖，所以<b>一顆糖分不出來</b>，可能還要再拿。這就是為什麼一定要從標「混合」的那盒開始。</p></div>
+      </div>
+    </div>
+
+    <h3>B. 動手寫</h3>
+    <div class="write">
+      <h3>換一個假設，自己推一次</h3>
+      <p>第 5 題裡，如果改從「<b>小武是第二名</b>」（同時出現在小虎和小麟的話裡）下手，假設它是<b>真的</b>，會推出什麼？會不會矛盾？</p>
+      <textarea data-note="fw-alt" rows="5" aria-label="換一個假設"></textarea>
+      <button class="reveal-btn"></button>
+      <div class="answer">
+        <p>小武第二為真 → 小虎的「小麟第四」假、小麟的「小龍第三」假。</p>
+        <p>小雀說「小龍第一／小麟第四」，小麟第四已假 → <b>小龍第一</b>為真。</p>
+        <p>小武說「小雀第一／小虎第二」：小龍已是第一 → 前句假 → <b>小虎第二</b>為真；但第二名已經是小武 <b>✗ 矛盾</b>。</p>
+        <p>所以「小武是第二名」是假的，和正確答案（小武是第一名）相符 ✅</p>
+        <p class="small">同一題可以從不同的重複主張切入，殊途同歸——這也是很好的驗算方式。</p>
+      </div>
+    </div>
+    <div class="write">
+      <h3>自己出一題「只有一人猜對」</h3>
+      <p>四個人（小安、小宇、小晴、小澄）比賽，冠軍一位。設計三句老師的猜測，讓「只有一人猜對」時答案剛好是<b>小澄</b>，而且答案唯一。寫完請用表格檢查。</p>
+      <textarea data-note="fw-make" rows="5" aria-label="自己出一題"></textarea>
+      <button class="reveal-btn"></button>
+      <div class="answer">
+        <p>例：① 「小安或小宇」　② 「小安或小晴」　③ 「不是小安」</p>
+        <p>小安：①對②對③錯＝2 ❌　小宇：①對②錯③對＝2 ❌　小晴：①錯②對③對＝2 ❌　<b>小澄：①錯②錯③對＝1 ✅</b></p>
+        <p class="small">訣竅和原題一樣：讓一句「否定句」當唯一的真話，再把其他句子提到的名字剛好蓋住其他所有人。</p>
+      </div>
+    </div>
+    <div class="write">
+      <h3>糖果盒：用自己的話解釋</h3>
+      <p>如果同學說「一定要開兩盒才知道」，你會怎麼說服他一盒就夠？請寫下你的說法。</p>
+      <textarea data-note="fw-box" rows="4" aria-label="糖果盒解釋"></textarea>
+      <button class="reveal-btn"></button>
+      <div class="answer">
+        <p>「標籤全錯」等於先幫我們刪掉一大半可能：標「混合」的一定不是混合，所以它是純的，拿一顆糖就知道是草莓還是葡萄。</p>
+        <p>確定那一盒之後，另外兩盒只剩兩種口味，而標籤又不能對，位置就被逼死了——不用打開也知道。</p>
+        <p class="small">一句話版本：<b>不是「開了才知道」，是「條件已經告訴我們一半，只差一個確認」。</b></p>
+      </div>
+    </div>
+  </section>
+
+  <nav class="pager">
+    <a href="grid.html"><small>← 上一個概念</small>④ 表格推理法</a>
+    <a class="next" href="index.html"><small>回到 →</small>總覽與題目</a>
+  </nav>
+</main>
+<footer class="site-footer"><a href="../index.html">探索未來世界的能力</a>．數理邏輯推理．作答紀錄只存在你這台裝置的瀏覽器裡</footer>
+<script src="../assets/quiz.js"></script>
+<script src="assets/math.js"></script>
+</body>
+</html>
