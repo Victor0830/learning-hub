@@ -210,6 +210,17 @@ local-context.md        家庭與孩子的狀況（不進版控，備份在 clau
 
 ## 十、換新電腦時
 
+**第一次在一台新電腦開工時，不要叫使用者照清單手動做，自己執行：**
+
+```bash
+bash tools/setup_new_machine.sh          # 想先看不動手就加 --check
+```
+
+腳本會檢查工具、clone 私有 repo `claude-config` 並跑它的 `install.sh`（還原全域偏好、各專案
+memory、`local-context.md`），可以重複執行，偵測到既有 memory 不會覆蓋（除非 `--force`）。
+跑完之後**接著主動把側邊欄群組建起來**（第十一節），不用等使用者開口。
+README 也有同一份四步流程。下面是細節與腳本做不到的部分：
+
 1. 安裝 Claude Code、git、python3，以及 GitHub CLI（`gh auth login` 由使用者自己登入）。
 2. `git clone https://github.com/Victor0830/learning-hub.git`，在這個資料夾開 Claude Code，
    本檔會自動被讀取。
