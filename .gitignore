@@ -1,6 +1,7 @@
 .DS_Store
 .claude/*
 !.claude/launch.json
+!.claude/settings.json
 node_modules/
 docs/assets/hero-family2.png
 local-context.md
